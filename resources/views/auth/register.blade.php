@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/index.html" class="header__reg button__back">⬅ Назад</a>
+    <a href="{{ route('index') }}" class="header__reg button__back">⬅ Назад</a>
     <div class="form_zapoln">
         <img class="right_photo" src="{{ asset('img/glare/first_part-2.png') }}" alt="blick" />
         <img class="left_photo" src="{{ asset('img/glare/first_part-1.png') }}" alt="blick" />
@@ -48,7 +48,7 @@
                 <li><button type="submit" href="/">{{ __('Зарегистрироваться') }}</button></li>
             </ul>
             <div class="text-center link__list">
-                <a href="/sign_in.html">Войти</a>
+                <a href="{{ route('login') }}">Войти</a>
             </div>
         </form>
     </div>

@@ -29,7 +29,12 @@
             <ul class="header__reg flex align-center">
                 @if (Route::has('login'))
                     @auth
-                        <li><a href="{{ url('/home') }}">Профиль</a></li>
+                        @if (request()->is('profile'))
+                            <li><a>{{ Auth::user()->name }}</a></li>
+                            <li><a href="{{ route('profile') }}">Выйти</a></li>
+                        @else
+                            <li><a href="{{ route('profile') }}">Профиль</a></li>
+                        @endif
                     @else
                         <li><a href="{{ route('login') }}">Вход</a></li>
                         @if (Route::has('register'))
@@ -60,21 +65,3 @@
         <li><a href="/sign_in.html">Вход</a></li>
     </ul>
 </div>
-
-{{-- @if (Route::has('login'))
-    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-        @auth
-            <a href="{{ url('/home') }}"
-                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-        @else
-            <a href="{{ route('login') }}"
-                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                in</a>
-
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}"
-                    class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-            @endif
-        @endauth
-    </div>
-@endif --}}

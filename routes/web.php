@@ -22,7 +22,7 @@ Auth::routes();
 
 
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () { 
-    Route::get('/home','index')->name('home');
+    Route::get('/profile','index')->name('profile');
 });
 
 Route::controller(App\Http\Controllers\IndexController::class)->group(function () {
