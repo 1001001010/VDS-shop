@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('index')
 
 @section('content')
     <section class="second__section second">
