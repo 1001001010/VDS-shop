@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    {{-- <title>ZETRIX - надежный хостинг для вашего бизнеса.</title> --}}
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">

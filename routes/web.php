@@ -28,5 +28,6 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
 Route::controller(App\Http\Controllers\IndexController::class)->group(function () {
     Route::get('/','index')->name('index');
 });
-
-// ->middleware([admin::class])
+Route::controller(App\Http\Controllers\AdminUserController::class)->group(function () {
+    Route::get('/admin/users','all_users')->name('admin_AllUsers')->middleware([admin::class]);
+});

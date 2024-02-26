@@ -20,7 +20,7 @@
                 <li><a href="/buy_server.html">Серверы</a></li>
                 <li><a href="/">Информация</a></li>
                 @if (Auth::user() && Auth::user()->is_admin == 1)
-                    <li><a href="/admin">Админка</a></li>
+                    <li><a href="{{ route('admin_AllUsers') }}">Админка</a></li>
                 @endif
             </ul>
             <svg class="divider">
