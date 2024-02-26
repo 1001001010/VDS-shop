@@ -16,7 +16,7 @@
         </div>
         <div class="header__right flex align-center">
             <ul class="header__ul flex align-center">
-                <li><a href="/">Главная</a></li>
+                <li><a href="{{ route('index') }}">Главная</a></li>
                 <li><a href="/buy_server.html">Серверы</a></li>
                 <li><a href="/">Информация</a></li>
                 @if (Auth::user() && Auth::user()->is_admin == 1)
@@ -65,11 +65,34 @@
 </header>
 <div class="menu__body">
     <ul class="menu__list">
-        <li><a href="/">Главная</a></li>
+        <li><a href="{{ route('index') }}">Главная</a></li>
         <li><a href="/buy_server.html">Серверы</a></li>
         <li><a href="/">Информация</a></li>
-        <li><a href="/registr.html">Регистрация</a></li>
-        <li><a href="/sign_in.html">Вход</a></li>
+        @if (Auth::user() && Auth::user()->is_admin == 1)
+            <li><a href="{{ route('admin_AllUsers') }}">Админка</a></li>
+        @endif
+        @if (Route::has('login'))
+            @auth
+                @if (request()->is('profile'))
+                    <li><a>{{ Auth::user()->name }}</a></li>
+                    {{-- <li><a href="{{ route('logout') }}">Выйти</a></li> --}}
+                    <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                            {{ __('Выйти') }}
+                        </a>
+                    </li>
+                @else
+                    <li><a href="{{ route('profile') }}">Профиль</a></li>
+                @endif
+            @else
+                <li><a href="{{ route('login') }}">Вход</a></li>
+                @if (Route::has('register'))
+                    <li><a href="{{ route('register') }}">Регистрация</a></li>
+                @endif
+            @endauth
+        @endif
     </ul>
 </div>
 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
