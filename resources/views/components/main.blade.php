@@ -352,7 +352,7 @@
                     <div class="col-4">
                         <div class="fourth__card">
                             <div class="fourth__back">
-                                <img src="{{ asset('img/why/c1.svg') }}" alt="" />
+                                <img src="{{ asset('img/why/c2.svg') }}" alt="" />
                             </div>
                             <div class="fourth__name">Сверхбыстрые диски</div>
                             <div class="fourth__desc">
@@ -364,7 +364,7 @@
                     <div class="col-4">
                         <div class="fourth__card">
                             <div class="fourth__back">
-                                <img src="{{ asset('img/why/c1.svg') }}" alt="" />
+                                <img src="{{ asset('img/why/c3.svg') }}" alt="" />
                             </div>
                             <div class="fourth__name">Гарантированная доля CPU</div>
                             <div class="fourth__desc">
@@ -376,7 +376,7 @@
                     <div class="col-4">
                         <div class="fourth__card">
                             <div class="fourth__back">
-                                <img src="{{ asset('img/why/c1.svg') }}" alt="" />
+                                <img src="{{ asset('img/why/c4.svg') }}" alt="" />
                             </div>
                             <div class="fourth__name">Поддержка 24/7</div>
                             <div class="fourth__desc">
@@ -388,7 +388,7 @@
                     <div class="col-4">
                         <div class="fourth__card">
                             <div class="fourth__back">
-                                <img src="{{ asset('img/why/c1.svg') }}" alt="" />
+                                <img src="{{ asset('img/why/c5.svg') }}" alt="" />
                             </div>
                             <div class="fourth__name">Мощные процессоры</div>
                             <div class="fourth__desc">
@@ -400,7 +400,7 @@
                     <div class="col-4">
                         <div class="fourth__card">
                             <div class="fourth__back">
-                                <img src="{{ asset('img/why/c1.svg') }}" alt="" />
+                                <img src="{{ asset('img/why/c6.svg') }}" alt="" />
                             </div>
                             <div class="fourth__name">Ваши данные надежно защищены</div>
                             <div class="fourth__desc">
