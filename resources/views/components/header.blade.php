@@ -31,7 +31,14 @@
                     @auth
                         @if (request()->is('profile'))
                             <li><a>{{ Auth::user()->name }}</a></li>
-                            <li><a href="{{ route('profile') }}">Выйти</a></li>
+                            {{-- <li><a href="{{ route('logout') }}">Выйти</a></li> --}}
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                                    {{ __('Выйти') }}
+                                </a>
+                            </li>
                         @else
                             <li><a href="{{ route('profile') }}">Профиль</a></li>
                         @endif
@@ -65,3 +72,6 @@
         <li><a href="/sign_in.html">Вход</a></li>
     </ul>
 </div>
+<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+    @csrf
+</form>
