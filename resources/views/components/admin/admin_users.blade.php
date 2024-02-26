@@ -33,7 +33,7 @@
                                         <a href="/" class="table__item">
                                             <div class="table__item-name">{{ $user->id }}</div>
                                         </a>
-                                        <a href="" class="table__item">
+                                        <a href="{{ route('admin_user', ['id' => $user->id]) }}" class="table__item">
                                             <div class="table__item">{{ $user->email }}</div>
                                         </a>
                                         <div class="table__item percent">{{ $user->balance }}₽</div>

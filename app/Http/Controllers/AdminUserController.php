@@ -12,4 +12,7 @@ class AdminUserController extends Controller
         $users = DB::table('users')->get();
         return view('components.admin.admin_users', ['users' => $users]);
     }
+    public function user($id) {
+        dd($id);
+    }
 }
