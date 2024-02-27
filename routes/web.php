@@ -31,4 +31,5 @@ Route::controller(App\Http\Controllers\IndexController::class)->group(function (
 Route::controller(App\Http\Controllers\AdminUserController::class)->group(function () {
     Route::get('/admin/users','all_users')->name('admin_AllUsers')->middleware([admin::class]);
     Route::get('/admin/user/{id}','user')->name('admin_user')->middleware([admin::class]);
+    Route::get('/admin/user/ban/{id}','ban_user')->name('ban_user')->middleware([admin::class]);
 });
