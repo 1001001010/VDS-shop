@@ -24,6 +24,13 @@
                                 <li>
                                     <p>Регистрации Unix: <span class="bold">{{ $user->unix }}</span></p>
                                 </li>
+                                <li>
+                                    @if ($user->ban == 1)
+                                        <p>Статус блокироки: <span class="bold">Заблокирован</span></p>
+                                    @else
+                                        <p>Статус блокироки: <span class="bold">Разблокирован</span></p>
+                                    @endif
+                                </li>
                                 <div class="flex wrapper flex__col__start button__reduct_user gap__15 padding-t__15">
                                     <div class="table__item">
                                         @if ($user->ban == 0)

@@ -20,7 +20,7 @@ class AdminUserController extends Controller
         $user = DB::table('users')->where('id', '=', $id)->first();
         if($user) {
             DB::table('users')->where('id', $id)->update([
-                'ban' => ($user->ban == 1) ? 0 : 1,
+                'ban' => ($user->ban == 1) ? 0 : 1
             ]);
         }
     }
