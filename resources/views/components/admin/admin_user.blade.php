@@ -4,6 +4,15 @@
     <main>
         <section class="second__section second">
             <div class="container">
+                @if (session('success'))
+                    {{-- <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div> --}}
+                    <div id="notification" class="alert alert-success">
+                        <span id="notification-text">{{ session('success') }}</span>
+                        <button id="close-button"><img src="{{ asset('img/close.svg') }}" alt="Close"></button>
+                    </div>
+                @endif
                 <div class="tovar">
                     <div class="Offers">
                         <div class="left_block">

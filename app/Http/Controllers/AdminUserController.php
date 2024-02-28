@@ -19,10 +19,13 @@ class AdminUserController extends Controller
     public function ban_user($id) {
         $user = DB::table('users')->where('id', '=', $id)->first();
         if($user) {
+            $ban = ($user->ban == 1) ? 0 : 1;
             DB::table('users')->where('id', $id)->update([
-                'ban' => ($user->ban == 1) ? 0 : 1
+                'ban' => $ban
             ]);
+            $message = $ban == 1 ? 'Пользователь был забанен' : 'Пользователь был разбанен';
+            return redirect()->back()->with('success', $message);
         }
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Пользователь не найден');
     }
 }
