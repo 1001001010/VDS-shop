@@ -23,5 +23,6 @@ class AdminUserController extends Controller
                 'ban' => ($user->ban == 1) ? 0 : 1
             ]);
         }
+        return redirect()->back();
     }
 }

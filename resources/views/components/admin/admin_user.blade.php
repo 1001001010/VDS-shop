@@ -41,9 +41,9 @@
                                 <div class="flex wrapper flex__col__start button__reduct_user gap__15 padding-t__15">
                                     <div class="table__item">
                                         @if ($user->ban == 0)
-                                            <a href="{{ route('ban_user', ['id' => $user->id]) }}" target="_blank">Ban</a>
+                                            <a href="{{ route('ban_user', ['id' => $user->id]) }}">Ban</a>
                                         @else
-                                            <a href="{{ route('ban_user', ['id' => $user->id]) }}" target="_blank">Unban</a>
+                                            <a href="{{ route('ban_user', ['id' => $user->id]) }}">Unban</a>
                                         @endif
                                     </div>
                                     <div class="table__item">
