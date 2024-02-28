@@ -1,37 +1,43 @@
-// Уведы
-const notification = document.getElementById('notification');
-const closeButton = document.getElementById('close-button');
-
 // Function to show the notification
 function showNotification() {
-    notification.style.display = 'block';
-    setTimeout(() => {
-        notification.style.display = 'none';
-    }, 7000);
-}
-function closeNotification() {
+  const notification = document.getElementById('notification');
+  const closeButton = document.getElementById('close-button');
+  
+  notification.style.display = 'block';
+  setTimeout(() => {
     notification.style.display = 'none';
+  }, 7000);
+
+  closeButton.addEventListener('click', closeNotification);
 }
-window.onload = showNotification;
-closeButton.addEventListener('click', closeNotification);
 
-// Боковое меню
-const icon = document.querySelector(".menu__icon"),
-  menuBody = document.querySelector(".menu__body");
+function closeNotification() {
+  const notification = document.getElementById('notification');
+  notification.style.display = 'none';
+}
 
-icon.addEventListener("click", function () {
-  menuBody.classList.toggle("_active");
-  icon.classList.toggle("_active");
+// Wait for the DOM to fully load before running the script
+document.addEventListener('DOMContentLoaded', function () {
+  window.onload = showNotification;
+
+  // Боковое меню
+  const icon = document.querySelector(".menu__icon"),
+    menuBody = document.querySelector(".menu__body");
+
+  icon.addEventListener("click", function () {
+    menuBody.classList.toggle("_active");
+    icon.classList.toggle("_active");
+  });
+
+  document.addEventListener("click", function (event) {
+    const target = event.target;
+    const isClickInside = icon.contains(target);
+    if (!isClickInside && menuBody.classList.contains("_active") && target.closest(".none") == null) {
+      menuBody.classList.remove("_active");
+      icon.classList.remove("_active");
+    }
+  });
 });
-document.addEventListener("click", function (event) {
-  const target = event.target;
-  const isClickInside = icon.contains(target);
-  if (!isClickInside && menuBody.classList.contains("_active") && target.closest(".none") == null) {
-    menuBody.classList.remove("_active");
-    icon.classList.remove("_active");
-  }
-});
-
 
 // var cpu = document.getElementById('cpu');
 // var cpu_screen = document.getElementById('cpu_screen');
