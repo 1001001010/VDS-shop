@@ -32,4 +32,5 @@ Route::controller(App\Http\Controllers\AdminUserController::class)->group(functi
     Route::get('/admin/users','all_users')->name('admin_AllUsers')->middleware([admin::class]);
     Route::get('/admin/user/{id}','user')->name('admin_user')->middleware([admin::class]);
     Route::get('/admin/user/ban/{id}','ban_user')->name('ban_user')->middleware([admin::class]);
+    Route::get('/admin/user/make_admin/{id}','make_admin')->name('make_admin')->middleware([admin::class]);
 });

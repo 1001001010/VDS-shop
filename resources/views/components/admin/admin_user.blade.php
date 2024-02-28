@@ -62,7 +62,13 @@
                                         <a href="/" target="_blank">Изменить балланс</a>
                                     </div>
                                     <div class="table__item">
-                                        <a href="/" target="_blank">Назначить администратором</a>
+                                        @if ($user->is_admin == 0)
+                                            <a href="{{ route('make_admin', ['id' => $user->id]) }}">Назначить
+                                                администратором</a>
+                                        @else
+                                            <a href="{{ route('make_admin', ['id' => $user->id]) }}">Забрать админку</a>
+                                        @endif
+                                        {{-- <a href="/" target="_blank">Назначить администратором</a> --}}
                                     </div>
                                 </div>
                             </ul>

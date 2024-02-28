@@ -28,4 +28,17 @@ class AdminUserController extends Controller
         }
         return redirect()->back()->with('error', 'Пользователь не найден');
     }
+
+    public function make_admin($id) {
+        $user = DB::table('users')->where('id', '=', $id)->first();
+        if($user) {
+            $is_admin = ($user->is_admin == 1) ? 0 : 1;
+            DB::table('users')->where('id', $id)->update([
+                'is_admin' => $is_admin
+            ]);
+            $message = $is_admin == 1 ? 'Пользователь назначен администратором' : 'Пользователь больше не администратор';
+            return redirect()->back()->with('success', $message);
+        }
+        return redirect()->back()->with('error', 'Пользователь не найден');
+    }
 }

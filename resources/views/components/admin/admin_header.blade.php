@@ -11,7 +11,7 @@
         </div>
         <div class="header__right flex align-center">
             <ul class="header__ul flex align-center">
-                <li><a href="/">Пользователи</a></li>
+                <li><a href="{{ route('admin_AllUsers') }}">Пользователи</a></li>
                 <li><a href="/buy_server.html">Серверы</a></li>
                 <li><a href="/">Настройки</a></li>
                 <li><a href="/">Статистика</a></li>
