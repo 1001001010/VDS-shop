@@ -23,7 +23,7 @@ class AdminUserController extends Controller
             DB::table('users')->where('id', $id)->update([
                 'ban' => $ban
             ]);
-            $message = $ban == 1 ? 'Пользователь был забанен' : 'Пользователь был разбанен';
+            $message = $ban == 1 ? 'Пользователь был заблокирован' : 'Пользователь был разблокирован';
             return redirect()->back()->with('success', $message);
         }
         return redirect()->back()->with('error', 'Пользователь не найден');

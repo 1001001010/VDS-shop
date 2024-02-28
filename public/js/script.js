@@ -1,3 +1,4 @@
+// Уведы
 const notification = document.getElementById('notification');
 const closeButton = document.getElementById('close-button');
 
@@ -6,20 +7,15 @@ function showNotification() {
     notification.style.display = 'block';
     setTimeout(() => {
         notification.style.display = 'none';
-    }, 15000); // Hides the notification after 15 seconds
+    }, 7000);
 }
-
-// Function to close the notification
 function closeNotification() {
     notification.style.display = 'none';
 }
-
-// Call the showNotification function when the page loads
 window.onload = showNotification;
-
-// Add an event listener to the close button
 closeButton.addEventListener('click', closeNotification);
 
+// Боковое меню
 const icon = document.querySelector(".menu__icon"),
   menuBody = document.querySelector(".menu__body");
 
