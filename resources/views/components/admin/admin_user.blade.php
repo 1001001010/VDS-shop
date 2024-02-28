@@ -31,6 +31,13 @@
                                         <p>Статус блокироки: <span class="bold">Разблокирован</span></p>
                                     @endif
                                 </li>
+                                <li>
+                                    @if ($user->is_admin == 1)
+                                        <p>Уровень доступа: <span class="bold">Администратор</span></p>
+                                    @else
+                                        <p>Уровень доступа: <span class="bold">Пользователь</span></p>
+                                    @endif
+                                </li>
                                 <div class="flex wrapper flex__col__start button__reduct_user gap__15 padding-t__15">
                                     <div class="table__item">
                                         @if ($user->ban == 0)
