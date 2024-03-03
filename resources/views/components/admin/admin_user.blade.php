@@ -56,7 +56,7 @@
                                         @endif
                                     </div>
                                     <div class="table__item">
-                                        <a href="/" target="_blank">Выдать балланс</a>
+                                        <a id="addBalance">Выдать балланс</a>
                                     </div>
                                     <div class="table__item">
                                         <a href="/" target="_blank">Изменить балланс</a>
@@ -139,6 +139,32 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             showNotification();
+        });
+
+        const id = '{{ $user->id }}';
+        const button = document.getElementById("addBalance");
+        button.addEventListener("click", function() {
+            let result = prompt("Введите сумму");
+            const numberPattern = /^[0-9]+(.[0-9]+)?$/;
+            if (!numberPattern.test(result)) {
+                alert("Пожалуйста, введите число.");
+                return;
+            }
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = `/admin/user/addbalance/${id}`;
+            const csrfField = document.createElement('input');
+            csrfField.type = 'hidden';
+            csrfField.name = '_token';
+            csrfField.value = '{{ csrf_token() }}';
+            const numberField = document.createElement('input');
+            numberField.type = 'hidden';
+            numberField.name = 'number';
+            numberField.value = result;
+            form.appendChild(csrfField);
+            form.appendChild(numberField);
+            document.body.appendChild(form);
+            form.submit();
         });
     </script>
 @endsection

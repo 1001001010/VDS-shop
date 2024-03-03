@@ -29,6 +29,7 @@ Route::controller(App\Http\Controllers\AdminUserController::class)->group(functi
     Route::get('/admin/users/search','search_users')->name('admin_users_search')->middleware([admin::class]);
     Route::get('/admin/user/ban/{id}','ban_user')->name('ban_user')->middleware([admin::class]);
     Route::get('/admin/user/make_admin/{id}','make_admin')->name('make_admin')->middleware([admin::class]);
+    Route::post('/admin/user/addbalance/{id}', 'addbalance')->name('addbalance')->middleware([admin::class]);
 });
 
 Route::controller(App\Http\Controllers\AdminStatsController::class)->group(function () {

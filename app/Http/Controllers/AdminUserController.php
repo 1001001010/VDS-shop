@@ -47,4 +47,11 @@ class AdminUserController extends Controller
         $users = DB::table('users')->where('email', 'LIKE', "%{$word}%")->orderBy('email')->get();
         return view('components.admin.admin_users', ['users' => $users]);
     }
+    public function addbalance(Request $request, $id)
+    {
+        DB::table('users')->where('id', $id)->increment('balance', $request->input('number'));
+        $user = DB::table('users')->where('id', '=', $id)->first();
+        $message = 'Балланс успешно выдан';
+        return redirect()->back()->with('success', $message);
+    }
 }
