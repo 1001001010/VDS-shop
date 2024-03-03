@@ -59,7 +59,7 @@
                                         <a id="addBalance">Выдать балланс</a>
                                     </div>
                                     <div class="table__item">
-                                        <a href="/" target="_blank">Изменить балланс</a>
+                                        <a id="reworkBalance">Изменить балланс</a>
                                     </div>
                                     <div class="table__item">
                                         @if ($user->is_admin == 0)
@@ -165,6 +165,31 @@
             form.appendChild(numberField);
             document.body.appendChild(form);
             form.submit();
+        });
+
+        const button2 = document.getElementById("reworkBalance");
+        button2.addEventListener("click", function() {
+            let result2 = prompt("Введите сумму");
+            const numberPattern2 = /^[0-9]+(.[0-9]+)?$/;
+            if (!numberPattern2.test(result2)) {
+                alert("Пожалуйста, введите число.");
+                return;
+            }
+            const form2 = document.createElement('form');
+            form2.method = 'POST';
+            form2.action = `/admin/user/reworklance/${id}`;
+            const csrfField2 = document.createElement('input');
+            csrfField2.type = 'hidden';
+            csrfField2.name = '_token';
+            csrfField2.value = '{{ csrf_token() }}';
+            const numberField2 = document.createElement('input');
+            numberField2.type = 'hidden';
+            numberField2.name = 'number';
+            numberField2.value = result2;
+            form2.appendChild(csrfField2);
+            form2.appendChild(numberField2);
+            document.body.appendChild(form2);
+            form2.submit();
         });
 
         function formatNumber(num) {
