@@ -25,7 +25,7 @@
                                     <p>Mail: <span class="bold">{{ $user->email }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Балланс: <span id="balanceValue" class="bold">{{ $user->balance }}₽</span></p>
+                                    <p>Балланс: <span id="balanceValue" class="bold"></span></p>
                                 </li>
                                 <li>
                                     <p>Дата регистрации: <span class="bold">{{ $user->created_at }}</span></p>
@@ -166,6 +166,11 @@
             document.body.appendChild(form);
             form.submit();
         });
+
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+        }
+
         $(document).ready(function() {
             const balanceValue = $('#balanceValue');
             const newBalance = '{{ $user->balance }}';
@@ -175,7 +180,7 @@
             }, {
                 duration: 500,
                 step: function(num) {
-                    $(this).text(Math.trunc(num) + '₽');
+                    $(this).text(formatNumber(Math.trunc(num)) + '₽');
                 }
             });
         });

@@ -39,7 +39,8 @@
                                             <a href="{{ route('admin_user', ['id' => $user->id]) }}" class="table__item">
                                                 <div class="table__item">{{ $user->email }}</div>
                                             </a>
-                                            <div class="table__item percent">{{ $user->balance }}₽</div>
+                                            <div class="table__item percent">
+                                                {{ number_format($user->balance, 0, '', ' ') }}₽</div>
                                             @if ($user->created_at == '')
                                                 <div class="table__item volume">None</div>
                                             @else

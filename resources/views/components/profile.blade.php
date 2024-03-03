@@ -73,6 +73,10 @@
         </section>
     </main>
     <script>
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+        }
+
         $(document).ready(function() {
             const balanceValue = $('#balanceValue');
             const newBalance = '{{ Auth::user()->balance }}';
@@ -82,7 +86,7 @@
             }, {
                 duration: 500,
                 step: function(num) {
-                    $(this).text(Math.trunc(num) + '₽');
+                    $(this).text(formatNumber(Math.trunc(num)) + '₽');
                 }
             });
         });
