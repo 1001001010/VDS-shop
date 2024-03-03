@@ -13,7 +13,8 @@
                                     <p>Email: <span class="bold">{{ Auth::user()->email }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Балланс: <span class="bold">{{ Auth::user()->balance }}₽</span></p>
+                                    <p>Балланс: <span id="balanceValue" class="bold">{{ Auth::user()->balance }}₽</span>
+                                    </p>
                                 </li>
                                 <li>
                                     <p>Дата регистрации: <span class="bold">{{ Auth::user()->created_at }}</span></p>
@@ -71,4 +72,19 @@
             </div>
         </section>
     </main>
+    <script>
+        $(document).ready(function() {
+            const balanceValue = $('#balanceValue');
+            const newBalance = '{{ Auth::user()->balance }}';
+            const newBalanceInt = Math.trunc(newBalance);
+            balanceValue.animate({
+                num: newBalanceInt
+            }, {
+                duration: 500,
+                step: function(num) {
+                    $(this).text(Math.trunc(num) + '₽');
+                }
+            });
+        });
+    </script>
 @endsection

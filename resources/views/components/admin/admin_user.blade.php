@@ -25,7 +25,7 @@
                                     <p>Mail: <span class="bold">{{ $user->email }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Балланс: <span class="bold">{{ $user->balance }}₽</span></p>
+                                    <p>Балланс: <span id="balanceValue" class="bold">{{ $user->balance }}₽</span></p>
                                 </li>
                                 <li>
                                     <p>Дата регистрации: <span class="bold">{{ $user->created_at }}</span></p>
@@ -165,6 +165,19 @@
             form.appendChild(numberField);
             document.body.appendChild(form);
             form.submit();
+        });
+        $(document).ready(function() {
+            const balanceValue = $('#balanceValue');
+            const newBalance = '{{ $user->balance }}';
+            const newBalanceInt = Math.trunc(newBalance);
+            balanceValue.animate({
+                num: newBalanceInt
+            }, {
+                duration: 500,
+                step: function(num) {
+                    $(this).text(Math.trunc(num) + '₽');
+                }
+            });
         });
     </script>
 @endsection
