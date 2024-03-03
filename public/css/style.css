@@ -1622,7 +1622,7 @@ input[type="range"] {
 #notification {
     position: fixed;
     bottom: 10px;
-    left: 50%;
+    right: 0%;
     transform: translateX(-50%);
     background-color: #333;
     color: #fff;
@@ -1795,11 +1795,11 @@ input[type="range"] {
     }
 
     .left_block {
-        min-width: 30%
+        min-width: 40%
     }
 
     .right_block {
-        min-width: 70%
+        min-width: 60%
     }
 }
 
