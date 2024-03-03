@@ -15,7 +15,7 @@
             </div>
             @error('email')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong class="alert-center">{{ $message }}</strong>
                 </span>
             @enderror
             <div class="reg__input flex align-center">
@@ -26,7 +26,7 @@
             </div>
             @error('password')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong class="alert-center">{{ $message }}</strong>
                 </span>
             @enderror
             <ul class="header__reg flex justify-center">

@@ -17,7 +17,7 @@
         <div class="header__right flex align-center">
             <ul class="header__ul flex align-center">
                 <li><a href="{{ route('index') }}">Главная</a></li>
-                <li><a href="/buy_server.html">Серверы</a></li>
+                <li><a href="{{ route('servers', ['region' => 'Moskow']) }}">Серверы</a></li>
                 <li><a href="/">Информация</a></li>
                 @if (Auth::user() && Auth::user()->is_admin == 1)
                     <li><a href="{{ route('admin_AllUsers') }}">Админка</a></li>
@@ -31,7 +31,6 @@
                     @auth
                         @if (request()->is('profile'))
                             <li><a>{{ Auth::user()->name }}</a></li>
-                            {{-- <li><a href="{{ route('logout') }}">Выйти</a></li> --}}
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -66,7 +65,7 @@
 <div class="menu__body">
     <ul class="menu__list">
         <li><a href="{{ route('index') }}">Главная</a></li>
-        <li><a href="/buy_server.html">Серверы</a></li>
+        <li><a href="{{ route('servers', ['region' => 'Moskow']) }}">Серверы</a></li>
         <li><a href="/">Информация</a></li>
         @if (Auth::user() && Auth::user()->is_admin == 1)
             <li><a href="{{ route('admin_AllUsers') }}">Админка</a></li>

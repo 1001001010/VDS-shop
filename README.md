@@ -31,5 +31,5 @@
 
 ---
 Возможности: 
-- Добавление root `php artisan db:seed --class=UserSeeder`
+- Добавление root и тест пользователей `php artisan db:seed --class=UserSeeder`
 

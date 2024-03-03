@@ -119,4 +119,26 @@
             </div>
         </section>
     </main>
+    <script>
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            const closeButton = document.getElementById('close-button');
+
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 7000);
+
+            closeButton.addEventListener('click', closeNotification);
+        }
+
+        function closeNotification() {
+            const notification = document.getElementById('notification');
+            notification.style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showNotification();
+        });
+    </script>
 @endsection

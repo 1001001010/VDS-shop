@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\IsBan;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,23 +15,22 @@ use App\Http\Middleware\IsAdmin;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
-
 Auth::routes();
 
 
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () { 
-    Route::get('/profile','index')->name('profile');
-});
-
-Route::controller(App\Http\Controllers\IndexController::class)->group(function () {
-    Route::get('/','index')->name('index');
+    Route::get('/','index')->name('index')->middleware([IsBan::class]);
+    Route::get('/profile','profile')->name('profile')->middleware([IsBan::class, 'auth']);
+    Route::get('/servers/{region}', 'servers')->name('servers')->middleware([IsBan::class]);
 });
 Route::controller(App\Http\Controllers\AdminUserController::class)->group(function () {
     Route::get('/admin/users','all_users')->name('admin_AllUsers')->middleware([admin::class]);
     Route::get('/admin/user/{id}','user')->name('admin_user')->middleware([admin::class]);
+    Route::get('/admin/users/search','search_users')->name('admin_users_search')->middleware([admin::class]);
     Route::get('/admin/user/ban/{id}','ban_user')->name('ban_user')->middleware([admin::class]);
     Route::get('/admin/user/make_admin/{id}','make_admin')->name('make_admin')->middleware([admin::class]);
+});
+
+Route::controller(App\Http\Controllers\AdminStatsController::class)->group(function () {
+    Route::get('/admin/stats','stats')->name('admin_stats')->middleware([admin::class]);
 });

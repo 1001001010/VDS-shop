@@ -237,6 +237,13 @@ table {
     align-items: center
 }
 
+.alert-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0fb5ff;
+}
+
 .justify-center {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -903,7 +910,7 @@ section {
 }
 
 .form_zapoln {
-    padding: 250px 0 42px 0;
+    padding: 150px 0 42px 0;
     overflow: hidden
 }
 
@@ -1117,6 +1124,23 @@ section {
 }
 
 .fifth__input a:hover {
+    opacity: .7
+}
+
+.fifth__input button {
+    border-radius: 6px;
+    background: radial-gradient(100.04% 100% at 50% 0, #66cbf9 0, #0fb5ff 100%);
+    padding: 10px 24px;
+    color: #08090b;
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: 10px;
+    -webkit-transition: all .2s;
+    transition: all .2s
+}
+
+.fifth__input button:hover {
     opacity: .7
 }
 
@@ -2082,6 +2106,12 @@ input[type="range"] {
         padding: 10px;
         font-size: 16px
     }
+
+    .fifth__input button {
+        padding: 10px;
+        font-size: 16px
+    }
+
 
     .first__name img {
         display: none

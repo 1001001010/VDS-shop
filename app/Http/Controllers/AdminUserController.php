@@ -41,4 +41,10 @@ class AdminUserController extends Controller
         }
         return redirect()->back()->with('error', 'Пользователь не найден');
     }
+
+    public function search_users(Request $request) {
+        $word = $request->search_users;
+        $users = DB::table('users')->where('email', 'LIKE', "%{$word}%")->orderBy('email')->get();
+        return view('components.admin.admin_users', ['users' => $users]);
+    }
 }

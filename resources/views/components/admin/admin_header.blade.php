@@ -14,7 +14,7 @@
                 <li><a href="{{ route('admin_AllUsers') }}">Пользователи</a></li>
                 <li><a href="/buy_server.html">Серверы</a></li>
                 <li><a href="/">Настройки</a></li>
-                <li><a href="/">Статистика</a></li>
+                <li><a href="{{ route('admin_stats') }}">Статистика</a></li>
             </ul>
             <svg class="divider">
                 <use xlink:href="{{ asset('img/icons.svg#divider') }}"></use>
@@ -37,10 +37,10 @@
 </header>
 <div class="menu__body">
     <ul class="menu__list">
-        <li><a href="/">Пользователи</a></li>
+        <li><a href="{{ route('admin_AllUsers') }}">Пользователи</a></li>
         <li><a href="/buy_server.html">Серверы</a></li>
         <li><a href="/">Настройки</a></li>
-        <li><a href="/">Статистика</a></li>
+        <li><a href="{{ route('admin_stats') }}">Статистика</a></li>
         <li><a href="{{ route('index') }}">Выход</a></li>
     </ul>
 </div>
