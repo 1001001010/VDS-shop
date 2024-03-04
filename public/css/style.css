@@ -1461,7 +1461,7 @@ section {
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-bottom: 50px
+    margin-bottom: 50px;
 }
 
 .serv__inf__block_start {
@@ -1622,10 +1622,11 @@ input[type="range"] {
 #notification {
     position: fixed;
     bottom: 10px;
-    right: 0%;
+    left: 50%;
     transform: translateX(-50%);
-    background-color: #333;
-    color: #fff;
+    /* background-color: #333; */
+    border: 1px solid #222d3e;
+    color: #464e62;
     padding: 10px 20px;
     border-radius: 5px;
     display: none;
