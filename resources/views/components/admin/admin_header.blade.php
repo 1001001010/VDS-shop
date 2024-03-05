@@ -12,7 +12,7 @@
         <div class="header__right flex align-center">
             <ul class="header__ul flex align-center">
                 <li><a href="{{ route('admin_AllUsers') }}">Пользователи</a></li>
-                <li><a href="/buy_server.html">Серверы</a></li>
+                <li><a href="{{ route('admin_AllServers') }}">Серверы</a></li>
                 <li><a href="/">Настройки</a></li>
                 <li><a href="{{ route('admin_stats') }}">Статистика</a></li>
             </ul>
@@ -38,7 +38,7 @@
 <div class="menu__body">
     <ul class="menu__list">
         <li><a href="{{ route('admin_AllUsers') }}">Пользователи</a></li>
-        <li><a href="/buy_server.html">Серверы</a></li>
+        <li><a href="{{ route('admin_AllServers') }}">Серверы</a></li>
         <li><a href="/">Настройки</a></li>
         <li><a href="{{ route('admin_stats') }}">Статистика</a></li>
         <li><a href="{{ route('index') }}">Выход</a></li>

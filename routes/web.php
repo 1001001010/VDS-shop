@@ -33,6 +33,10 @@ Route::controller(App\Http\Controllers\AdminUserController::class)->group(functi
     Route::post('/admin/user/reworklance/{id}', 'reworklance')->name('reworklance')->middleware([admin::class]);
 });
 
+Route::controller(App\Http\Controllers\AdminServersController::class)->group(function () {
+    Route::get('/admin/servers','all_servers')->name('admin_AllServers')->middleware([admin::class]);
+});
+
 Route::controller(App\Http\Controllers\AdminStatsController::class)->group(function () {
     Route::get('/admin/stats','stats')->name('admin_stats')->middleware([admin::class]);
 });

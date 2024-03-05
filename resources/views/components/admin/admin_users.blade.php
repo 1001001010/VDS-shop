@@ -31,7 +31,7 @@
                             </div>
                             <div class="table__body">
                                 @foreach ($users as $user)
-                                    <div class="table__row">
+                                    <div class="table__row light">
                                         <div class="table__right">
                                             <a href="/" class="table__item">
                                                 <div class="table__item-name">{{ $user->id }}</div>
