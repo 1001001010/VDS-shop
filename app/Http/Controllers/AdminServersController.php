@@ -11,4 +11,8 @@ class AdminServersController extends Controller
         $servers = DB::table('servers')->get();
         return view('components.admin.admin_servers', ['servers' => $servers]);
     }
+    public function server($id) {
+        $server = DB::table('servers')->where('id', '=', $id)->first();
+        return view('components.admin.admin_server', ['server' => $server]);
+    }
 }

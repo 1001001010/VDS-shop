@@ -29,25 +29,25 @@
                                 </div>
                             </div>
                             @foreach ($servers as $server)
-                                <a href="">
-                                    <div class="table__body">
-                                        <div class="table__row light">
-                                            <div class="table__right">
-                                                <a href="/" class="table__item">
-                                                    <div class="table__item-name">{{ $server->id }}</div>
-                                                </a>
-                                                <a href="" class="table__item">
-                                                    <div class="table__item percent">{{ $server->ip }}</div>
-                                                </a>
-                                                <div class="table__item">{{ $server->location }}</div>
-                                                <div class="table__item volume">{{ $server->price_month }}₽</div>
-                                                <div class="table__item">
-                                                    <a target="_blank">{{ $server->status }}</a>
-                                                </div>
+                                <div class="table__body">
+                                    <div class="table__row light">
+                                        <div class="table__right">
+                                            <a href="{{ route('admin_server', ['id' => $server->id]) }}"
+                                                class="table__item">
+                                                <div class="table__item-name">{{ $server->id }}</div>
+                                            </a>
+                                            <a href="{{ route('admin_server', ['id' => $server->id]) }}"
+                                                class="table__item">
+                                                <div class="table__item percent">{{ $server->ip }}</div>
+                                            </a>
+                                            <div class="table__item">{{ $server->location }}</div>
+                                            <div class="table__item volume">{{ $server->price_month }}₽</div>
+                                            <div class="table__item">
+                                                <a target="_blank">{{ $server->status }}</a>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </div>
                             @endforeach
                         @else
                             <p>Записей не найдено...</p>
