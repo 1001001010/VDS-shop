@@ -15,6 +15,7 @@
                     <input type="text" placeholder="Поиск" />
                     <a href="/">Поиск</a>
                 </div>
+                <button class="new_sever">Добавить сервер</button>
                 @if (count($servers))
                     <div class="table__wrapper">
                         <div class="table">
@@ -28,7 +29,7 @@
                                 </div>
                             </div>
                             @foreach ($servers as $server)
-                                <a href="/">
+                                <a href="">
                                     <div class="table__body">
                                         <div class="table__row light">
                                             <div class="table__right">

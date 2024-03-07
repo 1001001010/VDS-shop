@@ -562,7 +562,7 @@ section {
 
 .second .container {
     position: relative;
-    padding: 100px 0 90px 0
+    padding: 50px 0 90px 0
 }
 
 .second .fifth__input {
@@ -1148,23 +1148,6 @@ section {
     transition: all .2s
 }
 
-.new_server {
-    border-radius: 6px;
-    background: radial-gradient(100.04% 100% at 50% 0, #66cbf9 0, #0fb5ff 100%);
-    padding: 10px 24px;
-    color: #08090b;
-    font-size: 18px;
-    font-weight: 500;
-    white-space: nowrap;
-    margin-left: 10px;
-    -webkit-transition: all .2s;
-    transition: all .2s
-}
-
-.new_server:hover {
-    opacity: .7
-}
-
 .fifth__input button:hover {
     opacity: .7
 }
@@ -1418,6 +1401,22 @@ section {
     flex-direction: row;
     flex-wrap: nowrap;
     margin-top: 15px
+}
+
+.new_sever {
+    color: #cee7ff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 24px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    background: radial-gradient(100.04% 100% at 50% 0, #26314e 0, #1e253c 100%);
+    -webkit-transition: all .2s;
+    transition: all .2s
+}
+
+.new_sever:hover {
+    opacity: .7
 }
 
 .Characteristics {
