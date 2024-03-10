@@ -48,7 +48,7 @@
                                 <li>
                                     <p>Статус: <span class="bold">{{ $server->status }}</span></p>
                                 </li>
-                                <div class="flex wrapper flex__col__start button__reduct_user gap__15 padding-t__15">
+                                <div class="flex wrapper button__reduct_user flex-wrap gap__15 padding-t__15">
                                     <div class="table__item">
                                         <a href="/" target="_blank">Изменить цену</a>
                                     </div>

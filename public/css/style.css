@@ -329,6 +329,11 @@ main {
     flex-direction: column
 }
 
+.flex-wrap {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .container {
     width: 1600px;
     margin: 0 auto
