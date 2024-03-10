@@ -75,7 +75,9 @@
                                 <p>Арендовал</p>
                             </div>
                             <div class="serv__inf__block">
-                                <p>ID Пользователя: <span class="bold">{{ $server->id_tenant }}</span></p>
+                                @if (isset($user))
+                                    <p>ID Пользователя: <span class="bold">{{ $user->id }}</span></p>
+                                @endif
                             </div>
                             <div class="serv__inf__block">
                                 <p>Mail: <span class="bold">zimicorafri-1906@yopmail.com</span></p>
