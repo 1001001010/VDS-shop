@@ -70,25 +70,25 @@
                                 </div>
                             </ul>
                         </div>
-                        <div class="right_block">
-                            <div class="title-centre">
-                                <p>Арендовал</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                @if (isset($user))
+                        @if (isset($user))
+                            <div class="right_block">
+                                <div class="title-centre">
+                                    <p>Арендовал</p>
+                                </div>
+                                <div class="serv__inf__block">
                                     <p>ID Пользователя: <span class="bold">{{ $user->id }}</span></p>
-                                @endif
+                                </div>
+                                <div class="serv__inf__block">
+                                    <p>Mail: <span class="bold">{{ $user->mail }}</span></p>
+                                </div>
+                                <div class="serv__inf__block">
+                                    <p>Срок аренды: <span class="bold">Месяц</span></p>
+                                </div>
+                                <div class="serv__inf__block">
+                                    <p>Цена аренды: <span class="bold">950₽</span></p>
+                                </div>
                             </div>
-                            <div class="serv__inf__block">
-                                <p>Mail: <span class="bold">zimicorafri-1906@yopmail.com</span></p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>Срок аренды: <span class="bold">Месяц</span></p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>Цена аренды: <span class="bold">950₽</span></p>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
