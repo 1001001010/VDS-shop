@@ -5,7 +5,7 @@
         <section class="first__section first">
             <div class="container flex align-center justify-between">
                 <div class="first__left">
-                    <h1>Пользователи</h1>
+                    <h1>Серверы</h1>
                 </div>
             </div>
         </section>
@@ -59,7 +59,8 @@
                                         <a href="/" target="_blank">Изменить логин</a>
                                     </div>
                                     <div class="table__item">
-                                        <a href="/" target="_blank">Изменить пароль</a>
+                                        <a href="{{ route('new_ServerPassword', ['id' => $server->id]) }}">Изменить
+                                            пароль</a>
                                     </div>
                                     <div class="table__item">
                                         <a href="/" target="_blank">Изменить IP-адрес</a>
@@ -73,13 +74,13 @@
                         @if (isset($user))
                             <div class="right_block">
                                 <div class="title-centre">
-                                    <p>Арендовал</p>
+                                    <p>Аренда</p>
                                 </div>
                                 <div class="serv__inf__block">
                                     <p>ID Пользователя: <span class="bold">{{ $user->id }}</span></p>
                                 </div>
                                 <div class="serv__inf__block">
-                                    <p>Mail: <span class="bold">{{ $user->mail }}</span></p>
+                                    <p>Mail: <span class="bold">{{ $user->email }}</span></p>
                                 </div>
                                 <div class="serv__inf__block">
                                     <p>Срок аренды: <span class="bold">Месяц</span></p>
