@@ -50,7 +50,31 @@
                                 </li>
                                 <div class="flex wrapper button__reduct_user flex-wrap gap__15 padding-t__15">
                                     <div class="table__item">
-                                        <a href="/" target="_blank">Изменить цену</a>
+                                        <a id="open-modal_price">Изменить цену</a>
+                                        <div id="modal" class="modal">
+                                            <div class="modal-content">
+                                                {{-- <span class="close">Закрыть</span> --}}
+                                                <div class="form_zapoln2">
+                                                    <form method="POST" action="{{ route('login') }}">
+                                                        @csrf
+                                                        <div class="reg__input flex align-center">
+                                                            <input id="email" type="email" placeholder="Email"
+                                                                class="input" name="email" value="{{ old('email') }}"
+                                                                required autocomplete="email" autofocus />
+                                                        </div>
+                                                        <div class="reg__input flex align-center">
+                                                            <input id="password" type="password" placeholder="Password"
+                                                                class="input" name="password" required
+                                                                autocomplete="current-password" />
+                                                        </div>
+                                                        <ul class="header__reg flex justify-start">
+                                                            <li><button type="submit" href="/">Сохранить</button>
+                                                            </li>
+                                                        </ul>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="table__item">
                                         <a href="/" target="_blank">Изменить локацию</a>
@@ -95,4 +119,20 @@
             </div>
         </section>
     </main>
+    <script>
+        document.getElementById('open-modal_price').addEventListener('click', function() {
+            document.getElementById('modal').style.display = 'block';
+        });
+
+
+        document.getElementsByClassName('close')[0].addEventListener('click', function() {
+            document.getElementById('modal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('modal')) {
+                document.getElementById('modal').style.display = 'none';
+            }
+        });
+    </script>
 @endsection

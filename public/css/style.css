@@ -516,7 +516,7 @@ section {
 }
 
 .first {
-    padding: 88px 0 70px 0;
+    padding: 50px 0 70px 0;
     overflow: hidden
 }
 
@@ -535,6 +535,32 @@ section {
     width: -moz-max-content;
     width: max-content;
     font-weight: 600
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #08090b;
+    width: 80%;
+    height: 50%;
+    padding: 20px;
+    margin: 15% auto;
+    border: 1px solid #222d3e;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap
 }
 
 .first__name img {
@@ -924,6 +950,11 @@ section {
 
 .form_zapoln {
     padding: 150px 0 42px 0;
+    overflow: hidden
+}
+
+.form_zapoln2 {
+    padding: 110px 0 0 0;
     overflow: hidden
 }
 
