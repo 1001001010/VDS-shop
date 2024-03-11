@@ -558,9 +558,12 @@ section {
     border: 1px solid #222d3e;
     border-radius: 30px;
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: nowrap
+    justify-content: start;
+}
+
+.modal-content span {
+    cursor: pointer;
+    height: 10px;
 }
 
 .first__name img {
@@ -950,11 +953,6 @@ section {
 
 .form_zapoln {
     padding: 150px 0 42px 0;
-    overflow: hidden
-}
-
-.form_zapoln2 {
-    padding: 110px 0 0 0;
     overflow: hidden
 }
 

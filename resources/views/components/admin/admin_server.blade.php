@@ -52,25 +52,30 @@
                                     <div class="table__item">
                                         <a id="open-modal_price">Изменить цену</a>
                                         <div id="modal" class="modal">
-                                            <div class="modal-content">
-                                                {{-- <span class="close">Закрыть</span> --}}
-                                                <div class="form_zapoln2">
-                                                    <form method="POST" action="{{ route('login') }}">
+                                            <div class="modal-content flex flex__col__centr justify-center">
+                                                <div class="">
+                                                    <form method="POST" action="{{ route('login') }}"
+                                                        class="flex flex__col__centr">
                                                         @csrf
+                                                        <p>Цена аренды на час</p>
                                                         <div class="reg__input flex align-center">
-                                                            <input id="email" type="email" placeholder="Email"
-                                                                class="input" name="email" value="{{ old('email') }}"
-                                                                required autocomplete="email" autofocus />
+                                                            <p><span class="bold">₽</span></p>
+                                                            <input id="price_hours" type="text" class="input"
+                                                                name="price_hours" value="{{ $server->price_hour }}"
+                                                                autocomplete="price_hours" autofocus />
                                                         </div>
+                                                        <p>Цена аренды на месяц</p>
                                                         <div class="reg__input flex align-center">
-                                                            <input id="password" type="password" placeholder="Password"
-                                                                class="input" name="password" required
-                                                                autocomplete="current-password" />
+                                                            <p><span class="bold">₽</span></p>
+                                                            <input id="price_month" type="text" class="input"
+                                                                name="password" value="{{ $server->price_month }}"
+                                                                autocomplete="" />
                                                         </div>
                                                         <ul class="header__reg flex justify-start">
                                                             <li><button type="submit" href="/">Сохранить</button>
                                                             </li>
                                                         </ul>
+                                                        <span class="close">Закрыть</span>
                                                     </form>
                                                 </div>
                                             </div>
