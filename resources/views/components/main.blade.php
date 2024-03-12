@@ -307,7 +307,7 @@
                         задачах и достижении успеха.
                     </h2>
                 </div>
-                <div class="third__right flex">
+                <div class="third__right flex justify-between">
                     <div class="col">
                         <div class="third__img">
                             <img src="{{ asset('img/bank/t1.svg') }}" alt="" />
@@ -320,17 +320,6 @@
                         </div>
                     </div>
                     <img src="{{ asset('img/glare/third_part_2.png') }}" alt="" class="third__part-2" />
-                    <div class="col">
-                        <div class="third__img">
-                            <img src="{{ asset('img/bank/t4.svg') }}" alt="" />
-                        </div>
-                        <div class="third__img">
-                            <img src="{{ asset('img/bank/t5.svg') }}" alt="" />
-                        </div>
-                        <div class="third__img">
-                            <img src="{{ asset('img/bank/t6.svg') }}" alt="" />
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

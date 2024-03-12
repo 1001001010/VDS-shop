@@ -1542,6 +1542,27 @@ section {
     transition: all .2s
 }
 
+.for_what {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9);
+    transform-origin: left top;
+    transition: all 0.15s cubic-bezier(0.65, 0, 0.35, 1) 0s;
+    min-width: 270px;
+    max-width: 270px;
+    padding: 16px 12px;
+    position: absolute;
+    left: 0px;
+    top: calc(100% + 8px);
+    background: rgb(255, 255, 255);
+    border: 0.5px solid rgb(225, 225, 225);
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.28) 2px 4px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 20px;
+}
+
 .padding-t__15 {
     padding-top: 15px;
 }
@@ -1985,6 +2006,10 @@ input[type="range"] {
         margin: 0 auto
     }
 
+    .for_what {
+        left: 100%;
+    }
+
     .fifth h1 {
         font-size: 36px;
         line-height: 42px
@@ -2202,6 +2227,11 @@ input[type="range"] {
 @media (max-width:374.97px) {
     .wrapper {
         zoom: .8
+    }
+
+    .for_what {
+        min-width: 300px;
+        max-width: 300px;
     }
 
     .Characteristic,
