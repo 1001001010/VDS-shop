@@ -48,6 +48,9 @@
                                 <li>
                                     <p>Статус: <span class="bold">{{ $server->status }}</span></p>
                                 </li>
+                                <li>
+                                    <p>Тип: <span class="bold">{{ $server->status }}</span></p>
+                                </li>
                                 <div class="flex wrapper button__reduct_user flex-wrap gap__15 padding-t__15">
                                     <div class="table__item">
                                         <a id="open-modal_price">Изменить цену</a>
