@@ -55,7 +55,7 @@
                                     <div class="table__item">
                                         <a id="open-modal_price">Изменить цену</a>
                                         <div id="modal" class="modal">
-                                            <div class="modal-content flex flex__col__centr justify-center">
+                                            <div class="modal-content new_server">
                                                 <div class="">
                                                     <form method="POST" action="{{ route('login') }}"
                                                         class="flex flex__col__centr">

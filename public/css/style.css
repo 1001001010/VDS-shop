@@ -549,16 +549,27 @@ section {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.new_ser_form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.new_ser_form {
+    justify-content: start;
+}
+
+
 .modal-content {
     background-color: #08090b;
     width: 80%;
-    height: 50%;
+    height: auto;
     padding: 20px;
     margin: 15% auto;
     border: 1px solid #222d3e;
     border-radius: 30px;
-    display: flex;
-    justify-content: start;
 }
 
 .modal-content span {
@@ -1039,6 +1050,23 @@ section {
     width: -moz-max-content;
     width: max-content;
     margin: 20px auto 20px auto
+}
+
+.reg_select select {
+    border-radius: 6px;
+    background: radial-gradient(100.04% 100% at 50% 0, #26314e 0, #252b3d 100%);
+    padding: 10px 24px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    margin: 20px auto 20px auto;
+    color: #6d799c;
+    font-size: 18px;
+}
+
+
+.reg_select option {
+    font-size: 18px;
 }
 
 .reg__input svg {
