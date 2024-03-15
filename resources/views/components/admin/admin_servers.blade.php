@@ -26,17 +26,17 @@
                                     <div class="reg__input flex align-center">
                                         {{-- <p><span class="bold"></span></p> --}}
                                         <img src="{{ asset('img/PC/CPU.svg') }}" alt="CPU">
-                                        <input id="cpu" type="text" class="input" name="cpu"
+                                        <input id="cpu" type="number" class="input" name="cpu"
                                             placeholder="Кол-во ядер" autofocus />
                                     </div>
                                     <div class="reg__input flex align-center">
                                         <img src="{{ asset('img/PC/RAM.svg') }}" alt="RAM">
-                                        <input id="ram" type="text" class="input" name="ram"
+                                        <input id="ram" type="number" class="input" name="ram"
                                             placeholder="Кол-во оперативной памяти" autofocus />
                                     </div>
                                     <div class="reg__input flex align-center">
                                         <img src="{{ asset('img/PC/SSD.svg') }}" alt="SSD">
-                                        <input id="ssd" type="text" class="input" name="ssd"
+                                        <input id="ssd" type="number" class="input" name="ssd"
                                             placeholder="Объем SSD" autofocus />
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                     <div class="reg__input flex align-center">
                                         <img src="{{ asset('img/PC/IP.svg') }}" alt="IP">
                                         <input id="ip" type="text" class="input" name="ip"
-                                            placeholder="Объем SSD" autofocus />
+                                            placeholder="IP-адресс" autofocus />
                                     </div>
                                     <div class="reg__input flex align-center">
                                         <img src="{{ asset('img/PC/USERNAME.svg') }}" alt="USERNAME">
@@ -59,13 +59,13 @@
                                 </div>
                                 <div class="new_ser_form">
                                     <div class="reg__input flex align-center">
-                                        <img src="{{ asset('img/PC/PASS.svg') }}" alt="USERNAME">
-                                        <input id="price_month" type="text" class="input" name="price_month"
+                                        <img src="{{ asset('img/PC/DOLLAR.svg') }}" alt="USERNAME">
+                                        <input id="price_month" type="number" class="input" name="price_month"
                                             placeholder="Цена на месяц" autofocus />
                                     </div>
                                     <div class="reg__input flex align-center">
-                                        <img src="{{ asset('img/PC/PASS.svg') }}" alt="USERNAME">
-                                        <input id="price_month" type="text" class="input" name="price_month"
+                                        <img src="{{ asset('img/PC/DOLLAR.svg') }}" alt="USERNAME">
+                                        <input id="price_month" type="number" class="input" name="price_month"
                                             placeholder="Цена на месяц" autofocus />
                                         <a>Сгенерировать</a>
                                     </div>

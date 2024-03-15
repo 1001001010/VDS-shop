@@ -20,7 +20,8 @@ class AdminServersController extends Controller
             return view('components.admin.admin_server', ['server' => $server, 'user' => null]);
         }
     }
-    public function new_server($id) {
+    public function new_server(Request $request) {
+
     }
     public function new_ServerPassword($id) {
         $server = DB::table('servers')->where('id', '=', $id)->first();
