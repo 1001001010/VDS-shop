@@ -17,18 +17,18 @@ return new class extends Migration
             $table->string('location');
             $table->string('cpu');
             $table->string('ram');
-            $table->string('hdd');
-            $table->string('oc');
-            $table->string('panel');
+            $table->string('ssd');
+            $table->string('oc')->nullable();
+            $table->string('panel')->nullable();
             $table->string('ip');
             $table->string('user_name');
             $table->string('user_pass');
-            $table->dateTime('rental_until');
+            $table->dateTime('rental_until')->nullable();
             $table->integer('price_month');
             $table->integer('price_hour');
             $table->string('status');
-            $table->string('type');
-            $table->string('id_tenant')->default(null);
+            $table->string('type')->nullable();
+            $table->string('id_tenant')->nullable()->default(null);
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@
                                 </li>
                                 <li>
                                     <p>Конфигурация: <span class="bold">{{ $server->cpu }} Core | {{ $server->ram }} GB
-                                            DDR4 | {{ $server->hdd }} GB
+                                            DDR4 | {{ $server->ssd }} GB
                                             SSD</span></p>
                                 </li>
                                 <li>

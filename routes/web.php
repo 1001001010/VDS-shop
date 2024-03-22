@@ -36,7 +36,7 @@ Route::controller(App\Http\Controllers\AdminUserController::class)->group(functi
 Route::controller(App\Http\Controllers\AdminServersController::class)->group(function () {
     Route::get('/admin/servers','all_servers')->name('admin_AllServers')->middleware([admin::class]);
     Route::get('/admin/server/{id}','server')->name('admin_server')->middleware([admin::class]);
-    Route::post('/admin/new_server','AdminServersController@new_server')->name('admin_NewServer')->middleware([admin::class]);
+    Route::post('/admin/new_server', 'new_server')->name('admin_NewServer')->middleware([admin::class]);
     Route::get('/admin/new_ServerPassword/{id}','new_ServerPassword')->name('new_ServerPassword')->middleware([admin::class]);
     Route::get('/admin/server/newPrice/{id}','new_ServerPrice')->name('new_ServerPrice')->middleware([admin::class]);
 });

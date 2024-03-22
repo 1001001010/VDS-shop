@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class AdminServersController extends Controller
 {
     public function all_servers() {
@@ -31,7 +32,24 @@ class AdminServersController extends Controller
             'price_month' => 'required|integer',
             'price_hour' => 'required|integer',
         ]);
-        dd($request);
+        
+        $data = [
+            'number' => time(),
+            'location' => $request->location,
+            'cpu' => $request->cpu,
+            'ram' => $request->ram,
+            'ssd' => $request->ssd,
+            'ip' => $request->ip,
+            'user_name' => $request->username,
+            'user_pass' => $request->password,
+            'price_month' => $request->price_month,
+            'price_hour' => $request->price_hour,
+            'status' => 'inactive',
+            'id_tenant' => $request->id_tenant,
+        ];
+    
+        DB::table('servers')->insert($data);
+        return redirect()->back();
     
     }
     public function new_ServerPassword($id) {

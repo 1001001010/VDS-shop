@@ -66,16 +66,16 @@
                                     <div class="reg__input flex align-center">
                                         <img src="{{ asset('img/PC/DOLLAR.svg') }}" alt="USERNAME">
                                         <input id="price_hour" type="number" class="input" name="price_hour"
-                                            placeholder="Цена на месяц" autofocus />
+                                            placeholder="Цена на час" autofocus />
                                     </div>
                                 </div>
                                 <div class="new_ser_form">
                                     <div class="reg_select">
                                         <label for="location">Локация</label>
                                         <select id="location" name="location">
-                                            <option value="" selected>Москва</option>
-                                            <option value="">Фалькенштайн</option>
-                                            <option value="">Хельсинки</option>
+                                            <option value="moscow" selected>Москва</option>
+                                            <option value="falkenstein">Фалькенштайн</option>
+                                            <option value="helsinki">Хельсинки</option>
                                         </select>
                                     </div>
                                 </div>
