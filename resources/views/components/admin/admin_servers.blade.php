@@ -20,7 +20,7 @@
                     <div id="modal" class="modal">
                         <div class="modal-content">
                             <span class="close">Закрыть</span>
-                            <form method="POST" action="{{ route('login') }}" class="">
+                            <form method="POST" action="{{ route('admin_NewServer') }}" class="">
                                 @csrf
                                 <div class="new_ser_form">
                                     <div class="reg__input flex align-center">
@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="reg__input flex align-center">
                                         <img src="{{ asset('img/PC/PASS.svg') }}" alt="USERNAME">
-                                        <input id="password" type="text" class="input" name="password"
+                                        <input id="password" type="password" class="input" name="password"
                                             placeholder="Password" autofocus />
                                     </div>
                                 </div>
@@ -65,50 +65,24 @@
                                     </div>
                                     <div class="reg__input flex align-center">
                                         <img src="{{ asset('img/PC/DOLLAR.svg') }}" alt="USERNAME">
-                                        <input id="price_month" type="number" class="input" name="price_month"
+                                        <input id="price_hour" type="number" class="input" name="price_hour"
                                             placeholder="Цена на месяц" autofocus />
-                                        <a>Сгенерировать</a>
                                     </div>
                                 </div>
                                 <div class="new_ser_form">
                                     <div class="reg_select">
                                         <label for="location">Локация</label>
                                         <select id="location" name="location">
-                                            <option value="">Москва</option>
+                                            <option value="" selected>Москва</option>
                                             <option value="">Фалькенштайн</option>
                                             <option value="">Хельсинки</option>
-                                        </select>
-                                    </div>
-                                    <div class="reg_select">
-                                        <label for="OC">Операционная система: </label>
-                                        <select id="OC" name="OC">
-                                            <option value="">Almalinux</option>
-                                            <option value="">Centos</option>
-                                            <option value="">Debian</option>
-                                            <option value="">Ubuntu</option>
-                                            <option value="">Astralinux</option>
-                                            <option value="">Windows</option>
-                                            <option value="">FreeBSD</option>
-                                            <option value="">Rockylinux</option>
-                                        </select>
-                                    </div>
-                                    <div class="reg_select">
-                                        <label for="PO">Доп. ПО: </label>
-                                        <select id="PO" name="PO">
-                                            <option value="">Gitlab</option>
-                                            <option value="">Doker</option>
-                                            <option value="">Fastpanel</option>
-                                            <option value="">Node js</option>
-                                            <option value="">Redmine</option>
-                                            <option value="">Wireguard</option>
-                                            <option value="">Ruby on Rails</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="flex flex__col__start">
                                     <ul class="header__reg flex justify-start">
                                         <li>
-                                            <button type="submit" href="/">Сохранить</button>
+                                            <button type="submit">Сохранить</button>
                                         </li>
                                     </ul>
                                 </div>

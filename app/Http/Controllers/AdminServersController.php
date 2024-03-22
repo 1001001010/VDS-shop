@@ -21,7 +21,18 @@ class AdminServersController extends Controller
         }
     }
     public function new_server(Request $request) {
-
+        $validatedData = $request->validate([
+            'cpu' => 'required|integer|min:1',
+            'ram' => 'required|integer|min:1',
+            'ssd' => 'required|integer|min:20',
+            'ip' => 'required|ip',
+            'username' => 'required|string',
+            'password' => 'required|string',
+            'price_month' => 'required|integer',
+            'price_hour' => 'required|integer',
+        ]);
+        dd($request);
+    
     }
     public function new_ServerPassword($id) {
         $server = DB::table('servers')->where('id', '=', $id)->first();
