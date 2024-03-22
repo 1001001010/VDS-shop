@@ -2,13 +2,13 @@
 
 @section('admin_content')
     <main>
-        <section class="first__section first">
+        {{-- <section class="first__section first">
             <div class="container flex align-center justify-between">
                 <div class="first__left">
                     <h1>Серверы</h1>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <section class="second__section second">
             <div class="container">
                 <div class="tovar">
@@ -49,7 +49,7 @@
                                     <p>Статус: <span class="bold">{{ $server->status }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Тип: <span class="bold">{{ $server->status }}</span></p>
+                                    <p>Тип: <span class="bold">{{ $server->type }}</span></p>
                                 </li>
                                 <div class="flex wrapper button__reduct_user flex-wrap gap__15 padding-t__15">
                                     <div class="table__item">
