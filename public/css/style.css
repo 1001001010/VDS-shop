@@ -1125,6 +1125,11 @@ section {
     width: 260px
 }
 
+.reg__input input:-webkit-autofill {
+    -webkit-text-fill-color: #6d799c;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .reg__input a {
     border-radius: 6px;
     background: radial-gradient(100.04% 100% at 50% 0, #66cbf9 0, #0fb5ff 100%);
