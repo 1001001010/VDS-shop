@@ -120,30 +120,7 @@
         </section>
     </main>
     <script>
-        function showNotification() {
-            const notification = document.getElementById('notification');
-            const closeButton = document.getElementById('close-button');
-
-            notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 7000);
-
-            closeButton.addEventListener('click', closeNotification);
-        }
-
-        function closeNotification() {
-            const notification = document.getElementById('notification');
-            notification.style.display = 'none';
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            showNotification();
-        });
-
-        const id = '{{ $user->id }}';
-        const button = document.getElementById("addBalance");
-        button.addEventListener("click", function() {
+        function addBalance() {
             let result = prompt("Введите сумму");
             const numberPattern = /^[0-9]+(.[0-9]+)?$/;
             if (!numberPattern.test(result)) {
@@ -165,10 +142,9 @@
             form.appendChild(numberField);
             document.body.appendChild(form);
             form.submit();
-        });
+        }
 
-        const button2 = document.getElementById("reworkBalance");
-        button2.addEventListener("click", function() {
+        function reworkBalance() {
             let result2 = prompt("Введите сумму");
             const numberPattern2 = /^[0-9]+(.[0-9]+)?$/;
             if (!numberPattern2.test(result2)) {
@@ -190,7 +166,15 @@
             form2.appendChild(numberField2);
             document.body.appendChild(form2);
             form2.submit();
-        });
+        }
+
+        const id = '{{ $user->id }}';
+
+        const addBtn = document.getElementById('addBalance');
+        const reworkBtn = document.getElementById('reworkBalance');
+
+        addBtn.addEventListener('click', addBalance);
+        reworkBtn.addEventListener('click', reworkBalance);
 
         function formatNumber(num) {
             return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
@@ -199,13 +183,12 @@
         $(document).ready(function() {
             const balanceValue = $('#balanceValue');
             const newBalance = '{{ $user->balance }}';
-            const newBalanceInt = Math.trunc(newBalance);
             balanceValue.animate({
-                num: newBalanceInt
+                num: parseFloat(newBalance)
             }, {
                 duration: 500,
                 step: function(num) {
-                    $(this).text(formatNumber(Math.trunc(num)) + '₽');
+                    $(this).text(formatNumber(Math.floor(num)) + '₽');
                 }
             });
         });
