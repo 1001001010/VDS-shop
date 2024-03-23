@@ -72,4 +72,9 @@ class AdminServersController extends Controller
         //     return view('components.admin.admin_server', ['server' => $server, 'user' => null]);
         // }
     }
+    public function search_servers(Request $request){
+        $word = $request->search_servers;
+        $all_servers = DB::table('servers')->where('number', 'LIKE', "%{$word}%")->orWhere('ip', 'LIKE', "%{$word}%")->orderBy('id')->get();
+        return view('components.admin.admin_servers', ['servers' => $all_servers]);
+    }
 }

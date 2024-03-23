@@ -39,6 +39,7 @@ Route::controller(App\Http\Controllers\AdminServersController::class)->group(fun
     Route::post('/admin/new_server', 'new_server')->name('admin_NewServer')->middleware([admin::class]);
     Route::get('/admin/new_ServerPassword/{id}','new_ServerPassword')->name('new_ServerPassword')->middleware([admin::class]);
     Route::get('/admin/server/newPrice/{id}','new_ServerPrice')->name('new_ServerPrice')->middleware([admin::class]);
+    Route::get('/admin/servers/search','search_servers')->name('admin_servers_search')->middleware([admin::class]);
 });
 
 Route::controller(App\Http\Controllers\AdminStatsController::class)->group(function () {

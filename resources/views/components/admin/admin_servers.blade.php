@@ -11,10 +11,12 @@
         </section>
         <section class="second__section second">
             <div class="container">
-                <div class="fifth__input flex align-center">
-                    <input type="text" placeholder="Поиск" />
-                    <a href="/">Поиск</a>
-                </div>
+                <form method="get" action="{{ route('admin_servers_search') }}">
+                    <div class="fifth__input flex align-center">
+                        <input type="text" placeholder="Поиск" name="search_servers" id="search_servers" />
+                        <button type="submit">Поиск</button>
+                    </div>
+                </form>
                 <div>
                     <button class="new_sever" id="open-modal_newserver">Добавить сервер</button>
                     <div id="modal" class="modal">
