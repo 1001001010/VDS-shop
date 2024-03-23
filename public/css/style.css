@@ -1069,7 +1069,7 @@ section {
 .reg_select select {
     border-radius: 6px;
     background: radial-gradient(100.04% 100% at 50% 0, #26314e 0, #252b3d 100%);
-    padding: 10px 24px;
+    padding: 10px 10px;
     width: -webkit-max-content;
     width: -moz-max-content;
     width: max-content;

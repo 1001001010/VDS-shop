@@ -63,18 +63,17 @@
                                                         <div class="reg__input flex align-center">
                                                             <p><span class="bold">₽</span></p>
                                                             <input id="price_hours" type="text" class="input"
-                                                                name="price_hours" value="{{ $server->price_hour }}"
-                                                                autocomplete="price_hours" autofocus />
+                                                                name="price_hours" value="{{ $server->price_hour }}" />
                                                         </div>
                                                         <p>Цена аренды на месяц</p>
                                                         <div class="reg__input flex align-center">
                                                             <p><span class="bold">₽</span></p>
                                                             <input id="price_month" type="text" class="input"
-                                                                name="password" value="{{ $server->price_month }}"
-                                                                autocomplete="" />
+                                                                name="price_hours" value="{{ $server->price_month }}" />
                                                         </div>
                                                         <ul class="header__reg flex justify-start">
-                                                            <li><button type="submit" href="/">Сохранить</button>
+                                                            <li>
+                                                                <button type="submit">Сохранить</button>
                                                             </li>
                                                         </ul>
                                                         <span class="close">Закрыть</span>

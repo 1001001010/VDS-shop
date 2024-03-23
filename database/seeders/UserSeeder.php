@@ -21,6 +21,6 @@ class UserSeeder extends Seeder
             'is_admin' => true,
             'unix' => time(),
         ]);
-        User::factory()->count(1000)->create();
+        User::factory()->count(100)->create();
     }
 }
