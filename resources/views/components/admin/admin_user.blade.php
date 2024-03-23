@@ -192,5 +192,21 @@
                 }
             });
         });
+
+        const notification = document.getElementById('notification');
+        const closeButton = document.getElementById('close-button');
+
+        function showNotification() {
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 15000);
+        }
+
+        function closeNotification() {
+            notification.style.display = 'none';
+        }
+        window.onload = showNotification;
+        closeButton.addEventListener('click', closeNotification);
     </script>
 @endsection
