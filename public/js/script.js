@@ -14,3 +14,15 @@ document.addEventListener("click", function (event) {
     icon.classList.remove("_active");
   }
 });
+function showNotification() {
+  notification.style.display = 'block';
+  setTimeout(() => {
+      notification.style.display = 'none';
+  }, 15000);
+}
+
+function closeNotification() {
+  notification.style.display = 'none';
+}
+window.onload = showNotification;
+closeButton.addEventListener('click', closeNotification);

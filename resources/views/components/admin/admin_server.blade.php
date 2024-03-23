@@ -2,15 +2,14 @@
 
 @section('admin_content')
     <main>
-        {{-- <section class="first__section first">
-            <div class="container flex align-center justify-between">
-                <div class="first__left">
-                    <h1>Серверы</h1>
-                </div>
-            </div>
-        </section> --}}
         <section class="second__section second">
             <div class="container">
+                @if (session('success'))
+                    <div id="notification" class="alert alert-success">
+                        <span id="notification-text">{{ session('success') }}</span>
+                        <button id="close-button"><img src="{{ asset('img/close.svg') }}" alt="Close"></button>
+                    </div>
+                @endif
                 <div class="tovar">
                     <div class="Offers">
                         <div class="left_block">

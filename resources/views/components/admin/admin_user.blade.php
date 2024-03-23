@@ -5,9 +5,6 @@
         <section class="second__section second">
             <div class="container">
                 @if (session('success'))
-                    {{-- <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div> --}}
                     <div id="notification" class="alert alert-success">
                         <span id="notification-text">{{ session('success') }}</span>
                         <button id="close-button"><img src="{{ asset('img/close.svg') }}" alt="Close"></button>
@@ -195,18 +192,5 @@
 
         const notification = document.getElementById('notification');
         const closeButton = document.getElementById('close-button');
-
-        function showNotification() {
-            notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 15000);
-        }
-
-        function closeNotification() {
-            notification.style.display = 'none';
-        }
-        window.onload = showNotification;
-        closeButton.addEventListener('click', closeNotification);
     </script>
 @endsection

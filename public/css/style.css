@@ -1750,7 +1750,7 @@ input[type="range"] {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    /* background-color: #333; */
+    background-color: #08090b;
     border: 1px solid #222d3e;
     color: #464e62;
     padding: 10px 20px;

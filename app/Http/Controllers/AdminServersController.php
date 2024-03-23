@@ -49,7 +49,8 @@ class AdminServersController extends Controller
         ];
     
         DB::table('servers')->insert($data);
-        return redirect()->back();
+        $message = 'Сервер был успешно добавлен';
+        return redirect()->back()->with('success', $message);
     
     }
     public function new_ServerPassword($id) {
@@ -63,7 +64,8 @@ class AdminServersController extends Controller
             $password .= $chars[random_int(0, $size)]; 
         }
         DB::table('servers')->where('id', $id)->update(['user_pass' => $password]);
-        return redirect()->back();
+        $message = 'Пароль успешно сброшен';
+        return redirect()->back()->with('success', $message);
         // if ($server->id_tenant != null ) {
         //     return view('components.admin.admin_server', ['server' => $server, 'user' => $user]);
         // } else {

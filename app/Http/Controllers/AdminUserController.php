@@ -58,7 +58,6 @@ class AdminUserController extends Controller
     {
         DB::table('users')->where('id', $id)->update(['balance' => $request->input('number')]);
         $user = DB::table('users')->where('id', '=', $id)->first();
-        $message = 'Балланс успешно изменён';
-        return redirect()->back()->with('success', $message);
+ 
     }
 }
