@@ -55,6 +55,7 @@
                                         <a id="open-modal_price">Изменить цену</a>
                                         <div id="modal" class="modal">
                                             <div class="modal-content new_server">
+                                                <span class="close">Закрыть</span>
                                                 <div class="">
                                                     <form method="POST" action="{{ route('login') }}"
                                                         class="flex flex__col__centr">
@@ -76,7 +77,6 @@
                                                                 <button type="submit">Сохранить</button>
                                                             </li>
                                                         </ul>
-                                                        <span class="close">Закрыть</span>
                                                     </form>
                                                 </div>
                                             </div>
