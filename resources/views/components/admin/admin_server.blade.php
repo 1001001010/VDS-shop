@@ -57,7 +57,8 @@
                                             <div class="modal-content new_server">
                                                 <span class="close">Закрыть</span>
                                                 <div class="">
-                                                    <form method="POST" action="{{ route('login') }}"
+                                                    <form method="POST"
+                                                        action="{{ route('admin_serverPrice', ['id' => $server->id]) }}"
                                                         class="flex flex__col__centr">
                                                         @csrf
                                                         <p>Цена аренды на час</p>
@@ -70,7 +71,7 @@
                                                         <div class="reg__input flex align-center">
                                                             <p><span class="bold">₽</span></p>
                                                             <input id="price_month" type="text" class="input"
-                                                                name="price_hours" value="{{ $server->price_month }}" />
+                                                                name="price_month" value="{{ $server->price_month }}" />
                                                         </div>
                                                         <ul class="header__reg flex justify-start">
                                                             <li>
