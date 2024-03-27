@@ -77,8 +77,11 @@ class AdminServersController extends Controller
         $all_servers = DB::table('servers')->where('number', 'LIKE', "%{$word}%")->orWhere('ip', 'LIKE', "%{$word}%")->orderBy('id')->get();
         return view('components.admin.admin_servers', ['servers' => $all_servers]);
     }
-    public function editPrice(Request $request, $id)
-    {
+    public function editPrice(Request $request, $id){
+        $validatedData = $request->validate([
+            'price_month' => 'required|integer',
+            'price_hour' => 'required|integer',
+        ]);
         DB::table('servers')->where('id', $id)->update(['price_month' => $request->price_month, 'price_hour' => $request->price_hours]); #Стоит еще подумать
         $message = 'Цена успешно изменена';
         return redirect()->back()->with('success', $message);
