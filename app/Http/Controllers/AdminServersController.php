@@ -87,6 +87,9 @@ class AdminServersController extends Controller
         return redirect()->back()->with('success', $message);
     }
     public function editLogin(Request $request, $id){
+        $validatedData = $request->validate([
+            'username' => 'required',
+        ]);
         DB::table('servers')->where('id', $id)->update(['user_name' => $request->username]);
         $message = 'username успешно изменен';
         return redirect()->back()->with('success', $message);
