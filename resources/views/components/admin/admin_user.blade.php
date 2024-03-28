@@ -150,7 +150,7 @@
             }
             const form2 = document.createElement('form');
             form2.method = 'POST';
-            form2.action = `/admin/user/reworklance/${id}`;
+            form2.action = `/admin/user/reworkbalance/${id}`;
             const csrfField2 = document.createElement('input');
             csrfField2.type = 'hidden';
             csrfField2.name = '_token';

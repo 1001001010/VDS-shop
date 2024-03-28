@@ -54,10 +54,9 @@ class AdminUserController extends Controller
         $message = 'Балланс успешно выдан';
         return redirect()->back()->with('success', $message);
     }
-    public function reworklance(Request $request, $id)
+    public function reworkbalance(Request $request, $id)
     {
         DB::table('users')->where('id', $id)->update(['balance' => $request->input('number')]);
         $user = DB::table('users')->where('id', '=', $id)->first();
- 
     }
 }

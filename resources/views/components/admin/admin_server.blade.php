@@ -87,7 +87,7 @@
                                         <a href="/" target="_blank">Изменить локацию</a>
                                     </div>
                                     <div class="table__item">
-                                        <a href="/" target="_blank">Изменить логин</a>
+                                        <a id="editUsername">Изменить логин</a>
                                     </div>
                                     <div class="table__item">
                                         <a href="{{ route('new_ServerPassword', ['id' => $server->id]) }}">Изменить
@@ -141,5 +141,28 @@
                 document.getElementById('modal').style.display = 'none';
             }
         });
+
+        const reworkUsernameBtn = document.getElementById('editUsername');
+        reworkUsernameBtn.addEventListener('click', editUsername);
+        const id = '{{ $server->id }}';
+
+        function editUsername() {
+            let result2 = prompt("Введите новый username");
+            const form2 = document.createElement('form');
+            form2.method = 'POST';
+            form2.action = `/admin/server/${id}/editLogin`;
+            const csrfField2 = document.createElement('input');
+            csrfField2.type = 'hidden';
+            csrfField2.name = '_token';
+            csrfField2.value = '{{ csrf_token() }}';
+            const numberField2 = document.createElement('input');
+            numberField2.type = 'hidden';
+            numberField2.name = 'username';
+            numberField2.value = result2;
+            form2.appendChild(csrfField2);
+            form2.appendChild(numberField2);
+            document.body.appendChild(form2);
+            form2.submit();
+        }
     </script>
 @endsection

@@ -86,4 +86,9 @@ class AdminServersController extends Controller
         $message = 'Цена успешно изменена';
         return redirect()->back()->with('success', $message);
     }
+    public function editLogin(Request $request, $id){
+        DB::table('servers')->where('id', $id)->update(['user_name' => $request->username]);
+        $message = 'username успешно изменен';
+        return redirect()->back()->with('success', $message);
+    }
 }

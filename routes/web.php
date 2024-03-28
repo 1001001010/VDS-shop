@@ -30,17 +30,17 @@ Route::controller(App\Http\Controllers\AdminUserController::class)->group(functi
     Route::get('/admin/user/ban/{id}','ban_user')->name('ban_user')->middleware([admin::class]);
     Route::get('/admin/user/make_admin/{id}','make_admin')->name('make_admin')->middleware([admin::class]);
     Route::post('/admin/user/addbalance/{id}', 'addbalance')->name('addbalance')->middleware([admin::class]);
-    Route::post('/admin/user/reworklance/{id}', 'reworklance')->name('reworklance')->middleware([admin::class]);
+    Route::post('/admin/user/reworkbalance/{id}', 'reworkbalance')->name('reworkbalance')->middleware([admin::class]);
 });
 
 Route::controller(App\Http\Controllers\AdminServersController::class)->group(function () {
     Route::get('/admin/servers','all_servers')->name('admin_AllServers')->middleware([admin::class]);
     Route::get('/admin/server/{id}','server')->name('admin_server')->middleware([admin::class]);
+    Route::get('/admin/new_ServerPassword/{id}','new_ServerPassword')->name('new_ServerPassword')->middleware([admin::class]);
+    Route::get('/admin/servers/search','search_servers')->name('admin_servers_search')->middleware([admin::class]);
     Route::post('/admin/server/{id}/editPrice','editPrice')->name('admin_serverPrice')->middleware([admin::class]);
     Route::post('/admin/new_server', 'new_server')->name('admin_NewServer')->middleware([admin::class]);
-    Route::get('/admin/new_ServerPassword/{id}','new_ServerPassword')->name('new_ServerPassword')->middleware([admin::class]);
-    // Route::get('/admin/server/newPrice/{id}','new_ServerPrice')->name('new_ServerPrice')->middleware([admin::class]);
-    Route::get('/admin/servers/search','search_servers')->name('admin_servers_search')->middleware([admin::class]);
+    Route::post('/admin/server/{id}/editLogin', 'editLogin')->name('admin_editLogin')->middleware([admin::class]);
 });
 
 Route::controller(App\Http\Controllers\AdminStatsController::class)->group(function () {

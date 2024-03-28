@@ -98,6 +98,7 @@
                             <div class="table__head table__row">
                                 <div class="table__right">
                                     <div class="table__item id">ID</div>
+                                    <div class="table__item">Номер</div>
                                     <div class="table__item">IP-адрес</div>
                                     <div class="table__item">Локация</div>
                                     <div class="table__item volume">Цена на месяц</div>
@@ -111,6 +112,10 @@
                                             <a href="{{ route('admin_server', ['id' => $server->id]) }}"
                                                 class="table__item">
                                                 <div class="table__item-name">{{ $server->id }}</div>
+                                            </a>
+                                            <a href="{{ route('admin_server', ['id' => $server->id]) }}"
+                                                class="table__item">
+                                                <div class="table__item-name">{{ $server->number }}</div>
                                             </a>
                                             <a href="{{ route('admin_server', ['id' => $server->id]) }}"
                                                 class="table__item">
@@ -148,5 +153,24 @@
                 document.getElementById('modal').style.display = 'none';
             }
         });
+
+        function editlogin() {
+            let result = prompt("Введите новый логин");
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = `/admin/server/${id}/editLogin`;
+            const csrfField = document.createElement('input');
+            csrfField.type = 'hidden';
+            csrfField.name = '_token';
+            csrfField.value = '{{ csrf_token() }}';
+            const numberField = document.createElement('input');
+            numberField.type = 'hidden';
+            numberField.name = 'number';
+            numberField.value = result;
+            form.appendChild(csrfField);
+            form.appendChild(numberField);
+            document.body.appendChild(form);
+            form.submit();
+        }
     </script>
 @endsection
