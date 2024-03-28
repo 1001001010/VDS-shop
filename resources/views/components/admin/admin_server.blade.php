@@ -50,7 +50,7 @@
                                 <li>
                                     <p>Тип: <span class="bold">{{ $server->type }}</span></p>
                                 </li>
-                                <div class="flex wrapper button__reduct_user flex-wrap gap__15 padding-t__15">
+                                <div class="flex wrapper button__reduct_user flex-wrap gap__15 padding-t__15 width__50">
                                     <div class="table__item">
                                         <a id="open-modal_price">Изменить цену</a>
                                         <div id="modal" class="modal">
