@@ -172,5 +172,7 @@
             document.body.appendChild(form);
             form.submit();
         }
+        const notification = document.getElementById('notification');
+        const closeButton = document.getElementById('close-button');
     </script>
 @endsection

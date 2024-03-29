@@ -41,6 +41,7 @@ Route::controller(App\Http\Controllers\AdminServersController::class)->group(fun
     Route::post('/admin/server/{id}/editPrice','editPrice')->name('admin_serverPrice')->middleware([admin::class]);
     Route::post('/admin/new_server', 'new_server')->name('admin_NewServer')->middleware([admin::class]);
     Route::post('/admin/server/{id}/editLogin', 'editLogin')->name('admin_editLogin')->middleware([admin::class]);
+    Route::post('/admin/server/{id}/editIP', 'editIP')->name('admin_editIP')->middleware([admin::class]);
 });
 
 Route::controller(App\Http\Controllers\AdminStatsController::class)->group(function () {

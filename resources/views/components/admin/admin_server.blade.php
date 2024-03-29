@@ -94,7 +94,7 @@
                                             пароль</a>
                                     </div>
                                     <div class="table__item">
-                                        <a href="/" target="_blank">Изменить IP-адрес</a>
+                                        <a id="editIP">Изменить IP-адрес</a>
                                     </div>
                                     <div class="table__item">
                                         <a href="/" target="_blank">Изменить конфигурацию</a>
@@ -144,7 +144,30 @@
 
         const reworkUsernameBtn = document.getElementById('editUsername');
         reworkUsernameBtn.addEventListener('click', editUsername);
+        const reworkIPBtn = document.getElementById('editIP');
+        reworkIPBtn.addEventListener('click', editIP);
+
+        // ID сервера
         const id = '{{ $server->id }}';
+
+        function editIP() {
+            let result2 = prompt("Введите новый IP сервера");
+            const form2 = document.createElement('form');
+            form2.method = 'POST';
+            form2.action = `/admin/server/${id}/editIP`;
+            const csrfField2 = document.createElement('input');
+            csrfField2.type = 'hidden';
+            csrfField2.name = '_token';
+            csrfField2.value = '{{ csrf_token() }}';
+            const numberField2 = document.createElement('input');
+            numberField2.type = 'hidden';
+            numberField2.name = 'IP';
+            numberField2.value = result2;
+            form2.appendChild(csrfField2);
+            form2.appendChild(numberField2);
+            document.body.appendChild(form2);
+            form2.submit();
+        }
 
         function editUsername() {
             let result2 = prompt("Введите новый username");
@@ -164,5 +187,7 @@
             document.body.appendChild(form2);
             form2.submit();
         }
+        const notification = document.getElementById('notification');
+        const closeButton = document.getElementById('close-button');
     </script>
 @endsection

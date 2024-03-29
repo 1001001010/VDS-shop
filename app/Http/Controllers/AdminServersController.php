@@ -94,4 +94,12 @@ class AdminServersController extends Controller
         $message = 'username успешно изменен';
         return redirect()->back()->with('success', $message);
     }
+    public function editIP(Request $request, $id){
+        $validatedData = $request->validate([
+            'IP' => 'required|ip',
+        ]);
+        DB::table('servers')->where('id', $id)->update(['ip' => $request->IP]);
+        $message = 'IP успешно изменен';
+        return redirect()->back()->with('success', $message);
+    }
 }
