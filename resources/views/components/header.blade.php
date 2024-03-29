@@ -26,10 +26,11 @@
             <svg class="divider">
                 <use xlink:href="{{ asset('img/icons.svg#divider') }}"></use>
             </svg>
-            <ul class="header__reg flex align-center">
-                @if (Route::has('login'))
-                    @auth
-                        @if (request()->is('profile'))
+            {{-- <ul class="header__reg flex align-center"> --}}
+            @if (Route::has('login'))
+                @auth
+                    @if (request()->is('profile'))
+                        <ul class="header__reg flex align-center">
                             <li><a>{{ Auth::user()->name }}</a></li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -38,17 +39,30 @@
                                     {{ __('Выйти') }}
                                 </a>
                             </li>
-                        @else
-                            <li><a href="{{ route('profile') }}">Профиль</a></li>
-                        @endif
+                        </ul>
                     @else
+                        <ul class="header__ul flex align-center">
+                            {{-- <li><a href="{{ route('profile') }}">Мой профиль</a></li> --}}
+                            <div class="dropdown">
+                                <li><a>{{ Auth::user()->name }}</a></li>
+                                <div class="dropdown-content">
+                                    <a href="#">Link 1</a>
+                                    <a href="#">Link 2</a>
+                                    <a href="#">Link 3</a>
+                                </div>
+                            </div>
+                        </ul>
+                    @endif
+                @else
+                    <ul class="header__reg flex align-center">
                         <li><a href="{{ route('login') }}">Вход</a></li>
                         @if (Route::has('register'))
                             <li><a href="{{ route('register') }}">Регистрация</a></li>
                         @endif
-                    @endauth
-                @endif
-            </ul>
+                    </ul>
+                @endauth
+            @endif
+            {{-- </ul> --}}
         </div>
         <div class="menu__icon">
             <svg viewBox="0 0 800 650" class="menu__icon">
