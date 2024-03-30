@@ -102,4 +102,11 @@ class AdminServersController extends Controller
         $message = 'IP успешно изменен';
         return redirect()->back()->with('success', $message);
     }
+
+    public function editType(Request $request, $id)
+    {
+        DB::table('servers')->where('id', $id)->update(['type' => $request->server_type]);
+        $message = 'Тип сервера успешно изменен';
+        return redirect()->back()->with('success', $message);
+    }
 }

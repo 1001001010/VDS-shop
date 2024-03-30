@@ -48,7 +48,22 @@
                                     <p>Статус: <span class="bold">{{ $server->status }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Тип: <span class="bold">{{ $server->type }}</span></p>
+                                    <p>
+                                        Тип:
+                                        <span class="bold">
+                                            <select id="server_type">
+                                                <option value="">Не выбрано</option>
+                                                <option value="Shared">Shared</option>
+                                                <option value="Delicated">Delicated</option>
+                                            </select>
+                                        </span>
+                                    </p>
+                                    <form id="server-type-form" method="POST"
+                                        action="{{ route('admin_editType', ['id' => $server->id]) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="server_type" value="">
+                                    </form>
                                 </li>
                                 <div class="flex wrapper button__reduct_user flex-wrap gap__15 padding-t__15 width__50">
                                     <div class="table__item">
@@ -189,5 +204,20 @@
         }
         const notification = document.getElementById('notification');
         const closeButton = document.getElementById('close-button');
+
+        $(document).ready(function() {
+            var serverType = "{{ $server->type ?? '' }}";
+            $('#server_type').val(serverType);
+        });
+
+        document.getElementById('server_type').addEventListener('change', function() {
+            // Set the value of the 'server_type' field to the value of the selected 'option' element
+            document.getElementById('server-type-form').querySelector('input[name="server_type"]').value = this
+                .value;
+
+            // Set the '_method' field to 'POST' and submit the form
+            document.getElementById('server-type-form').querySelector('input[name="_method"]').value = 'POST';
+            document.getElementById('server-type-form').submit();
+        });
     </script>
 @endsection

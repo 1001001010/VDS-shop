@@ -1766,6 +1766,36 @@ input[type="range"] {
     }
 }
 
+select#server_type {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #08090b;
+    border: 1px solid #222d3e;
+    color: #fff;
+    padding: 10px;
+    border-radius: 7px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+select#server_type:focus {
+    outline: none;
+}
+
+select#server_type option {
+    background-color: #08090b;
+    color: #fff;
+}
+
+select#server_type option:checked {
+    background-color: #222d3e;
+}
+
 #cpu_screen,
 #ram_screen,
 #hdd_screen {
