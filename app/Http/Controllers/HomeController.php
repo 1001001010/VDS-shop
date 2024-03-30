@@ -24,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('components.main');
+        $Shared_servers = DB::table('servers')->where('type', 'Shared')->get();
+        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->get();
+return view('components.main', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers]);
     }
     public function profile()
     {
@@ -32,10 +34,9 @@ class HomeController extends Controller
     }
     public function servers()
     {
-        $servers = DB::table('servers')
-                    ->where('type', 'Shared')
-                    ->get();
-        return view('components.servers', ['servers' => $servers]);
+        $Shared_servers = DB::table('servers')->where('type', 'Shared')->get();
+        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->get();
+        return view('components.servers', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers]);
     }
     
 }
