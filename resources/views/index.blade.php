@@ -23,5 +23,19 @@
     @include('components.footer')
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
+<script>
+    let dropdownContent = document.getElementById("dropdown-content");
+
+    document.getElementById("dropdown-toggle").addEventListener("mouseover", dropdownToggle);
+    document.getElementById("dropdown-content").addEventListener("mouseout", dropdownOut);
+
+    function dropdownToggle() {
+        dropdownContent.classList.add("dropdown-show");
+    }
+
+    function dropdownOut() {
+        dropdownContent.classList.remove("dropdown-show");
+    }
+</script>
 
 </html>

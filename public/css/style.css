@@ -1743,7 +1743,7 @@ input[type="range"] {
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #0d0d11;
 }
 
 .dropdown:hover .dropdown-content,

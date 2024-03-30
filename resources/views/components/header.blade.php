@@ -30,25 +30,34 @@
             @if (Route::has('login'))
                 @auth
                     @if (request()->is('profile'))
-                        <ul class="header__reg flex align-center">
-                            <li><a>{{ Auth::user()->name }}</a></li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();">
-                                    {{ __('Выйти') }}
-                                </a>
-                            </li>
+                        <ul class="header__ul flex align-center">
+                            <div class="dropdown">
+                                <li><a id="dropdown-toggle">{{ Auth::user()->name }}</a></li>
+                                <div id="dropdown-content" class="dropdown-content">
+                                    <a href="{{ route('profile') }}">Мой профиль</a>
+                                    <a href="">{{ Auth::user()->balance }}₽</a>
+                                    <a href="#">Настройки</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                        {{ __('Выйти') }}
+                                    </a>
+                                </div>
+                            </div>
                         </ul>
                     @else
                         <ul class="header__ul flex align-center">
-                            {{-- <li><a href="{{ route('profile') }}">Мой профиль</a></li> --}}
                             <div class="dropdown">
-                                <li><a>{{ Auth::user()->name }}</a></li>
-                                <div class="dropdown-content">
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                <li><a id="dropdown-toggle">{{ Auth::user()->name }}</a></li>
+                                <div id="dropdown-content" class="dropdown-content">
+                                    <a href="{{ route('profile') }}">Мой профиль</a>
+                                    <a href="">{{ Auth::user()->balance }}₽</a>
+                                    <a href="#">Настройки</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();">
+                                        {{ __('Выйти') }}
+                                    </a>
                                 </div>
                             </div>
                         </ul>
@@ -88,7 +97,6 @@
             @auth
                 @if (request()->is('profile'))
                     <li><a>{{ Auth::user()->name }}</a></li>
-                    {{-- <li><a href="{{ route('logout') }}">Выйти</a></li> --}}
                     <li>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
