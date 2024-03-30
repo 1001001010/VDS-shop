@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -31,7 +32,10 @@ class HomeController extends Controller
     }
     public function servers()
     {
-        return view('components.servers');
+        $servers = DB::table('servers')
+                    ->where('type', 'Shared')
+                    ->get();
+        return view('components.servers', ['servers' => $servers]);
     }
     
 }

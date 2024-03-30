@@ -65,91 +65,25 @@
                                     <p>Месяц</p>
                                 </div>
                             </div>
-                            <div class="price_block">
-                                <div class="Characteristic">
-                                    <p>1 Core</p>
-                                    <p>2 GB RAM</p>
-                                    <p>20 GB NVME</p>
+                            @foreach ($servers as $server)
+                                <div class="price_block">
+                                    <div class="Characteristic">
+                                        <p>{{ $server->core }} Core</p>
+                                        <p>{{ $server->ram }} GB RAM</p>
+                                        <p>{{ $server->ssd }} GB NVME</p>
+                                    </div>
+                                    <div class="price_hour">
+                                        <a href="/" class="buy_serv">
+                                            <p>{{ $server->price_hour }}</p>
+                                        </a>
+                                    </div>
+                                    <div class="price_month">
+                                        <a href="/" class="buy_serv">
+                                            <p>{{ $server->price_month }}</p>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="price_hour">
-                                    <a href="/" class="buy_serv">
-                                        <p>0.02€</p>
-                                    </a>
-                                </div>
-                                <div class="price_month">
-                                    <a href="/" class="buy_serv">
-                                        <p>4.94€</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="price_block">
-                                <div class="Characteristic">
-                                    <p>1 Core</p>
-                                    <p>2 GB RAM</p>
-                                    <p>20 GB NVME</p>
-                                </div>
-                                <div class="price_hour">
-                                    <a href="/" class="buy_serv">
-                                        <p>0.02€</p>
-                                    </a>
-                                </div>
-                                <div class="price_month">
-                                    <a href="/" class="buy_serv">
-                                        <p>4.94€</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="price_block">
-                                <div class="Characteristic">
-                                    <p>1 Core</p>
-                                    <p>2 GB RAM</p>
-                                    <p>20 GB NVME</p>
-                                </div>
-                                <div class="price_hour">
-                                    <a href="/" class="buy_serv">
-                                        <p>0.02€</p>
-                                    </a>
-                                </div>
-                                <div class="price_month">
-                                    <a href="/" class="buy_serv">
-                                        <p>4.94€</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="price_block">
-                                <div class="Characteristic">
-                                    <p>1 Core</p>
-                                    <p>2 GB RAM</p>
-                                    <p>20 GB NVME</p>
-                                </div>
-                                <div class="price_hour">
-                                    <a href="/" class="buy_serv">
-                                        <p>0.02€</p>
-                                    </a>
-                                </div>
-                                <div class="price_month">
-                                    <a href="/" class="buy_serv">
-                                        <p>4.94€</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="price_block">
-                                <div class="Characteristic">
-                                    <p>1 Core</p>
-                                    <p>2 GB RAM</p>
-                                    <p>20 GB NVME</p>
-                                </div>
-                                <div class="price_hour">
-                                    <a href="/" class="buy_serv">
-                                        <p>0.02€</p>
-                                    </a>
-                                </div>
-                                <div class="price_month">
-                                    <a href="/" class="buy_serv">
-                                        <p>4.94€</p>
-                                    </a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="Offers">
@@ -206,74 +140,6 @@
                                 <div class="price_month">
                                     <a href="/" class="buy_serv">
                                         <p>7.07€</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="price_block">
-                                <div class="Characteristic">
-                                    <p>1 Core</p>
-                                    <p>2 GB RAM</p>
-                                    <p>20 GB NVME</p>
-                                </div>
-                                <div class="price_hour">
-                                    <a href="/" class="buy_serv">
-                                        <p>0.05€</p>
-                                    </a>
-                                </div>
-                                <div class="price_month">
-                                    <a href="/" class="buy_serv">
-                                        <p>14.15€</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="price_block">
-                                <div class="Characteristic">
-                                    <p>1 Core</p>
-                                    <p>2 GB RAM</p>
-                                    <p>20 GB NVME</p>
-                                </div>
-                                <div class="price_hour">
-                                    <a href="/" class="buy_serv">
-                                        <p>0.08€</p>
-                                    </a>
-                                </div>
-                                <div class="price_month">
-                                    <a href="/" class="buy_serv">
-                                        <p>28.28€</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="price_block">
-                                <div class="Characteristic">
-                                    <p>1 Core</p>
-                                    <p>2 GB RAM</p>
-                                    <p>20 GB NVME</p>
-                                </div>
-                                <div class="price_hour">
-                                    <a href="/" class="buy_serv">
-                                        <p>0.15€</p>
-                                    </a>
-                                </div>
-                                <div class="price_month">
-                                    <a href="/" class="buy_serv">
-                                        <p>56.55€</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="price_block">
-                                <div class="Characteristic">
-                                    <p>1 Core</p>
-                                    <p>2 GB RAM</p>
-                                    <p>20 GB NVME</p>
-                                </div>
-                                <div class="price_hour">
-                                    <a href="/" class="buy_serv">
-                                        <p>0.28€</p>
-                                    </a>
-                                </div>
-                                <div class="price_month">
-                                    <a href="/" class="buy_serv">
-                                        <p>113.1€</p>
                                     </a>
                                 </div>
                             </div>
