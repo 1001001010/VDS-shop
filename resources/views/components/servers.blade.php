@@ -20,7 +20,9 @@
                         <div class="country">
                             @foreach ($locations as $location)
                                 <a href="{{ route('servers', ['region' => $location->link]) }}"
-                                    class="table__item">{{ $location->name }}</a>
+                                    class="table__item @if (request()->region == $location->link) active @endif">
+                                    {{ $location->name }}
+                                </a>
                             @endforeach
                         </div>
                         @if (count($Shared_servers) > 0)

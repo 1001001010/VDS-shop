@@ -729,6 +729,10 @@ section {
     width: 36px
 }
 
+.table__item.active {
+    color: #c7e1ff;
+}
+
 .second .table .table__item {
     color: #c7e1ff;
     font-size: 14px;

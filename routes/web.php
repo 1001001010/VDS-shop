@@ -21,7 +21,7 @@ Auth::routes();
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () { 
     Route::get('/','index')->name('index')->middleware([IsBan::class]);
     Route::get('/profile','profile')->name('profile')->middleware([IsBan::class, 'auth']);
-    Route::get('/servers/{region}', 'servers')->name('servers')->middleware([IsBan::class]);
+    Route::get('/servers/{region}', 'servers')->name('servers')->middleware([IsBan::class])->defaults('region', 'Moscow');;
 });
 Route::controller(App\Http\Controllers\AdminUserController::class)->group(function () {
     Route::get('/admin/users','all_users')->name('admin_AllUsers')->middleware([admin::class]);

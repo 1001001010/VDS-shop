@@ -24,18 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $Shared_servers = DB::table('servers')->where('type', 'Shared')->get();
-        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->get();
-        return view('components.main', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers]);
+        // $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location', $region)->get();
+        // $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location', $region)->get();
+        // $locations = DB::table('location')->get();
+        return view('components.main');
     }
     public function profile()
     {
         return view('components.profile');
     }
-    public function servers()
+    public function servers($region)
     {
-        $Shared_servers = DB::table('servers')->where('type', 'Shared')->get();
-        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->get();
+        $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location', $region)->get();
+        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location', $region)->get();
         $locations = DB::table('location')->get();
         return view('components.servers', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers, 'locations' => $locations]);
     }
