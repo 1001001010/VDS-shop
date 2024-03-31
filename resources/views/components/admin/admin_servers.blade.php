@@ -75,9 +75,12 @@
                                     <div class="reg_select">
                                         <label for="location">Локация</label>
                                         <select id="location" name="location">
-                                            <option value="moscow" selected>Москва</option>
+                                            @foreach ($locations as $location)
+                                                {{-- <option value="moscow" selected>Москва</option>
                                             <option value="falkenstein">Фалькенштайн</option>
-                                            <option value="helsinki">Хельсинки</option>
+                                            <option value="helsinki">Хельсинки</option> --}}
+                                                <option value="{{ $location->link }}">{{ $location->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

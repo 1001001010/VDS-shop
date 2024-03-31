@@ -10,7 +10,8 @@ class AdminServersController extends Controller
 {
     public function all_servers() {
         $servers = DB::table('servers')->get();
-        return view('components.admin.admin_servers', ['servers' => $servers]);
+        $location = DB::table('location')->get();
+        return view('components.admin.admin_servers', ['servers' => $servers, 'locations' => $location]);
     }
     public function server($id) {
         $server = DB::table('servers')->where('id', '=', $id)->first();

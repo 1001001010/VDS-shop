@@ -19,158 +19,161 @@
             </div>
         </section>
         <section class="second__section second">
-            <div class="container">
-                @guest
-                    <div class="fifth__input flex align-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" heig.,t="22" viewBox="0 0 22 22" fill="none">
-                            <path
-                                d="M19.7083 16.5001L13.619 11.0001M8.38093 11.0001L2.29168 16.5001M1.83331 6.41675L9.31782 11.6559C9.9239 12.0802 10.2269 12.2923 10.5566 12.3744C10.8477 12.447 11.1522 12.447 11.4434 12.3744C11.773 12.2923 12.0761 12.0802 12.6821 11.6559L20.1666 6.41675M6.23331 18.3334H15.7666C17.3068 18.3334 18.0769 18.3334 18.6651 18.0337C19.1826 17.77 19.6033 17.3493 19.8669 16.8319C20.1666 16.2436 20.1666 15.4736 20.1666 13.9334V8.06675C20.1666 6.5266 20.1666 5.75653 19.8669 5.16827C19.6033 4.65083 19.1826 4.23013 18.6651 3.96648C18.0769 3.66675 17.3068 3.66675 15.7666 3.66675H6.23331C4.69317 3.66675 3.9231 3.66675 3.33484 3.96648C2.81739 4.23013 2.3967 4.65083 2.13305 5.16827C1.83331 5.75653 1.83331 6.5266 1.83331 8.06675V13.9334C1.83331 15.4736 1.83331 16.2436 2.13305 16.8319C2.3967 17.3493 2.81739 17.77 3.33484 18.0337C3.9231 18.3334 4.69317 18.3334 6.23331 18.3334Z"
-                                stroke="#B2BEE2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <input type="email" placeholder="Example@gmail.com" />
-                        <a href="/sign_in.html">Войти</a>
-                    </div>
-                @endguest
-                <div class="tovar">
-                    <div class="country">
-                        <a href="/" class="table__item">Москва</a>
-                        <a href="/" class="table__item">Фалькенштайн</a>
-                        <a href="/" class="table__item">Хельсинки</a>
-                    </div>
-                    @if (count($Shared_servers) > 0)
-                        <div class="Offers">
-                            <div class="left_block">
-                                <p class="for_what1"
-                                    data-tooltip="Облачные серверы с процессором AMD Ryzen 9 7950X3D, общим vCPU и NVMe накопителем, идеальны для размещения веб-сайтов, VPN и разработки проектов. Вложенная виртуализация отключена.">
-                                    Для чего подходит?
-                                </p>
-                                <p class="for_what">Облачные серверы базового уровня по сбалансированной цене на базе
-                                    процессора
-                                    AMD Ryzen 9
-                                    7950X3D, с общим vCPU и NVMe накопителем. Идеальный вариант для таких задач, как
-                                    размещение
-                                    веб-сайтов, VPN, или разработка проектов. Вложенная виртуализация отключена.</p>
-                                <h1>Shared</h1>
-                                <ul type="circle" class="haracter">
-                                    <li>
-                                        <p>Процессор AMD Ryzen 9 7950X3D</p>
-                                    </li>
-                                    <li>
-                                        <p>Частота 4.2-5.7 ГГц</p>
-                                    </li>
-                                    <li>
-                                        <p>Базовая DDoS-защита</p>
-                                    </li>
-                                    <li>
-                                        <p>1 адрес IPv4</p>
-                                    </li>
-                                    <li>
-                                        <p>Интернет до 1 Гбит/с</p>
-                                    </li>
-                                    <li>
-                                        <p>Трафик ∞</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="right_block">
-                                <div class="title">
-                                    <div class="Characteristics">
-                                        <p>Характеристики</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p>Час</p>
-                                    </div>
-                                    <div class="month">
-                                        <p>Месяц</p>
-                                    </div>
-                                </div>
-                                @foreach ($Shared_servers as $Shared_server)
-                                    <div class="price_block">
-                                        <div class="Characteristic">
-                                            <p>{{ $Shared_server->cpu }} Core</p>
-                                            <p>{{ $Shared_server->ram }} GB RAM</p>
-                                            <p>{{ $Shared_server->ssd }} GB NVME</p>
-                                        </div>
-                                        <div class="price_hour">
-                                            <a href="/" class="buy_serv">
-                                                <p>{{ $Shared_server->price_hour }}€</p>
-                                            </a>
-                                        </div>
-                                        <div class="price_month">
-                                            <a href="/" class="buy_serv">
-                                                <p>{{ $Shared_server->price_month }}€</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+            @if (count($Delicated_servers) > 0 && count($Shared_servers) > 0)
+                <div class="container">
+                    @guest
+                        <div class="fifth__input flex align-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" heig.,t="22" viewBox="0 0 22 22"
+                                fill="none">
+                                <path
+                                    d="M19.7083 16.5001L13.619 11.0001M8.38093 11.0001L2.29168 16.5001M1.83331 6.41675L9.31782 11.6559C9.9239 12.0802 10.2269 12.2923 10.5566 12.3744C10.8477 12.447 11.1522 12.447 11.4434 12.3744C11.773 12.2923 12.0761 12.0802 12.6821 11.6559L20.1666 6.41675M6.23331 18.3334H15.7666C17.3068 18.3334 18.0769 18.3334 18.6651 18.0337C19.1826 17.77 19.6033 17.3493 19.8669 16.8319C20.1666 16.2436 20.1666 15.4736 20.1666 13.9334V8.06675C20.1666 6.5266 20.1666 5.75653 19.8669 5.16827C19.6033 4.65083 19.1826 4.23013 18.6651 3.96648C18.0769 3.66675 17.3068 3.66675 15.7666 3.66675H6.23331C4.69317 3.66675 3.9231 3.66675 3.33484 3.96648C2.81739 4.23013 2.3967 4.65083 2.13305 5.16827C1.83331 5.75653 1.83331 6.5266 1.83331 8.06675V13.9334C1.83331 15.4736 1.83331 16.2436 2.13305 16.8319C2.3967 17.3493 2.81739 17.77 3.33484 18.0337C3.9231 18.3334 4.69317 18.3334 6.23331 18.3334Z"
+                                    stroke="#B2BEE2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <input type="email" placeholder="Example@gmail.com" />
+                            <a href="/sign_in.html">Войти</a>
                         </div>
-                    @endif
-                    @if (count($Delicated_servers) > 0)
-                        <div class="Offers">
-                            <div class="left_block">
-                                <p class="for_what1"
-                                    data-tooltip="Облачные серверы с процессором AMD Ryzen 9 7950X3D, общим vCPU и NVMe накопителем, идеальны для размещения веб-сайтов, VPN и разработки проектов. Вложенная виртуализация отключена.">
-                                    Для чего подходит?
-                                </p>
-                                <h1>Delicated</h1>
-                                <ul type="circle" class="haracter">
-                                    <li>
-                                        <p>Процессор AMD Ryzen 9 7950X3D</p>
-                                    </li>
-                                    <li>
-                                        <p>Частота 4.2-5.7 ГГц</p>
-                                    </li>
-                                    <li>
-                                        <p>Базовая DDoS-защита</p>
-                                    </li>
-                                    <li>
-                                        <p>1 адрес IPv4</p>
-                                    </li>
-                                    <li>
-                                        <p>Интернет до 1 Гбит/с</p>
-                                    </li>
-                                    <li>
-                                        <p>Трафик ∞</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="right_block">
-                                <div class="title">
-                                    <div class="Characteristics">
-                                        <p>Характеристики</p>
-                                    </div>
-                                    <div class="hour">
-                                        <p>Час</p>
-                                    </div>
-                                    <div class="month">
-                                        <p>Месяц</p>
-                                    </div>
-                                </div>
-                                @foreach ($Delicated_servers as $Delicated_server)
-                                    <div class="price_block">
-                                        <div class="Characteristic">
-                                            <p>{{ $Delicated_server->cpu }} Core</p>
-                                            <p>{{ $Delicated_server->ram }} GB RAM</p>
-                                            <p>{{ $Delicated_server->ssd }} GB NVME</p>
-                                        </div>
-                                        <div class="price_hour">
-                                            <a href="/" class="buy_serv">
-                                                <p>{{ $Delicated_server->price_hour }}€</p>
-                                            </a>
-                                        </div>
-                                        <div class="price_month">
-                                            <a href="/" class="buy_serv">
-                                                <p>{{ $Delicated_server->price_month }}€</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                    @endguest
+                    <div class="tovar">
+                        <div class="country">
+                            <a href="/" class="table__item">Москва</a>
+                            <a href="/" class="table__item">Фалькенштайн</a>
+                            <a href="/" class="table__item">Хельсинки</a>
                         </div>
-                    @endif
+                        @if (count($Shared_servers) > 0)
+                            <div class="Offers">
+                                <div class="left_block">
+                                    <p class="for_what1"
+                                        data-tooltip="Облачные серверы с процессором AMD Ryzen 9 7950X3D, общим vCPU и NVMe накопителем, идеальны для размещения веб-сайтов, VPN и разработки проектов. Вложенная виртуализация отключена.">
+                                        Для чего подходит?
+                                    </p>
+                                    <p class="for_what">Облачные серверы базового уровня по сбалансированной цене на базе
+                                        процессора
+                                        AMD Ryzen 9
+                                        7950X3D, с общим vCPU и NVMe накопителем. Идеальный вариант для таких задач, как
+                                        размещение
+                                        веб-сайтов, VPN, или разработка проектов. Вложенная виртуализация отключена.</p>
+                                    <h1>Shared</h1>
+                                    <ul type="circle" class="haracter">
+                                        <li>
+                                            <p>Процессор AMD Ryzen 9 7950X3D</p>
+                                        </li>
+                                        <li>
+                                            <p>Частота 4.2-5.7 ГГц</p>
+                                        </li>
+                                        <li>
+                                            <p>Базовая DDoS-защита</p>
+                                        </li>
+                                        <li>
+                                            <p>1 адрес IPv4</p>
+                                        </li>
+                                        <li>
+                                            <p>Интернет до 1 Гбит/с</p>
+                                        </li>
+                                        <li>
+                                            <p>Трафик ∞</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="right_block">
+                                    <div class="title">
+                                        <div class="Characteristics">
+                                            <p>Характеристики</p>
+                                        </div>
+                                        <div class="hour">
+                                            <p>Час</p>
+                                        </div>
+                                        <div class="month">
+                                            <p>Месяц</p>
+                                        </div>
+                                    </div>
+                                    @foreach ($Shared_servers as $Shared_server)
+                                        <div class="price_block">
+                                            <div class="Characteristic">
+                                                <p>{{ $Shared_server->cpu }} Core</p>
+                                                <p>{{ $Shared_server->ram }} GB RAM</p>
+                                                <p>{{ $Shared_server->ssd }} GB NVME</p>
+                                            </div>
+                                            <div class="price_hour">
+                                                <a href="/" class="buy_serv">
+                                                    <p>{{ $Shared_server->price_hour }}€</p>
+                                                </a>
+                                            </div>
+                                            <div class="price_month">
+                                                <a href="/" class="buy_serv">
+                                                    <p>{{ $Shared_server->price_month }}€</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                        @if (count($Delicated_servers) > 0)
+                            <div class="Offers">
+                                <div class="left_block">
+                                    <p class="for_what1"
+                                        data-tooltip="Облачные серверы с процессором AMD Ryzen 9 7950X3D, общим vCPU и NVMe накопителем, идеальны для размещения веб-сайтов, VPN и разработки проектов. Вложенная виртуализация отключена.">
+                                        Для чего подходит?
+                                    </p>
+                                    <h1>Delicated</h1>
+                                    <ul type="circle" class="haracter">
+                                        <li>
+                                            <p>Процессор AMD Ryzen 9 7950X3D</p>
+                                        </li>
+                                        <li>
+                                            <p>Частота 4.2-5.7 ГГц</p>
+                                        </li>
+                                        <li>
+                                            <p>Базовая DDoS-защита</p>
+                                        </li>
+                                        <li>
+                                            <p>1 адрес IPv4</p>
+                                        </li>
+                                        <li>
+                                            <p>Интернет до 1 Гбит/с</p>
+                                        </li>
+                                        <li>
+                                            <p>Трафик ∞</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="right_block">
+                                    <div class="title">
+                                        <div class="Characteristics">
+                                            <p>Характеристики</p>
+                                        </div>
+                                        <div class="hour">
+                                            <p>Час</p>
+                                        </div>
+                                        <div class="month">
+                                            <p>Месяц</p>
+                                        </div>
+                                    </div>
+                                    @foreach ($Delicated_servers as $Delicated_server)
+                                        <div class="price_block">
+                                            <div class="Characteristic">
+                                                <p>{{ $Delicated_server->cpu }} Core</p>
+                                                <p>{{ $Delicated_server->ram }} GB RAM</p>
+                                                <p>{{ $Delicated_server->ssd }} GB NVME</p>
+                                            </div>
+                                            <div class="price_hour">
+                                                <a href="/" class="buy_serv">
+                                                    <p>{{ $Delicated_server->price_hour }}€</p>
+                                                </a>
+                                            </div>
+                                            <div class="price_month">
+                                                <a href="/" class="buy_serv">
+                                                    <p>{{ $Delicated_server->price_month }}€</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                 </div>
-            </div>
+            @endif
         </section>
         <section class="third__section third">
             <img src="{{ asset('img/glare/third_part_1.png') }}" alt="glare" class="third__part-1" />
