@@ -48,3 +48,7 @@ Route::controller(App\Http\Controllers\AdminServersController::class)->group(fun
 Route::controller(App\Http\Controllers\AdminStatsController::class)->group(function () {
     Route::get('/admin/stats','stats')->name('admin_stats')->middleware([admin::class]);
 });
+
+Route::controller(App\Http\Controllers\BuyServersController::class)->group(function () {
+    Route::get('/butServer/{time}/{id}','stats')->name('buyServers')->middleware([admin::class]);
+});

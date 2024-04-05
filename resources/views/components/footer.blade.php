@@ -40,8 +40,6 @@
                             <li><a href="/">Главная</a></li>
                             <li><a href="/">Серверы</a></li>
                             <li><a href="/">Информация</a></li>
-                            <li><a href="/">Mining</a></li>
-                            <li><a href="/">Academy</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">

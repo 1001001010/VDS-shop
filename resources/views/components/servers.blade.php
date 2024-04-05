@@ -80,12 +80,14 @@
                                                 <p>{{ $Shared_server->ssd }} GB NVME</p>
                                             </div>
                                             <div class="price_hour">
-                                                <a href="/" class="buy_serv">
+                                                <a href="{{ route('buyServers', ['time' => 'hour', 'id' => $Shared_server->id]) }}"
+                                                    class="buy_serv">
                                                     <p>{{ $Shared_server->price_hour }}€</p>
                                                 </a>
                                             </div>
                                             <div class="price_month">
-                                                <a href="/" class="buy_serv">
+                                                <a href="{{ route('buyServers', ['time' => 'month', 'id' => $Shared_server->id]) }}"
+                                                    class="buy_serv">
                                                     <p>{{ $Shared_server->price_month }}€</p>
                                                 </a>
                                             </div>

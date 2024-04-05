@@ -1312,7 +1312,7 @@ section {
     font-weight: 500;
     line-height: 160%;
     text-align: center;
-    margin-top: 64px
+    margin-top: 24px
 }
 
 .menu__icon {
@@ -1550,7 +1550,8 @@ section {
 
 .buy_serv {
     font-family: Inter, sans-serif;
-    padding: 7px;
+    margin-top: -4px;
+    padding: 6px;
     width: max-content;
     color: #d5eaff;
     border-top: 1px solid #1e2844;
