@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('servers', function (Blueprint $table) {
             $table->id();
             $table->integer('number');
-            $table->string('location');
+            $table->unsignedBigInteger('location_id');
+            $table->foreign('location_id')->references('id')->on('location')->onDelete('cascade');
             $table->string('cpu');
             $table->string('ram');
             $table->string('ssd');
