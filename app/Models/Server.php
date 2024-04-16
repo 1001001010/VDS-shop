@@ -10,4 +10,7 @@ class Server extends Model
     public function location() {
         return $this->belongsTo(Location::class);
     }
+    public function rental() {
+        return $this->belongsTo(Rentals::class);
+    }
 }

@@ -29,7 +29,6 @@ return new class extends Migration
             $table->integer('price_hour');
             $table->string('status');
             $table->string('type')->nullable();
-            $table->string('id_tenant')->nullable()->default(null);
             $table->timestamps();
         });
     }
