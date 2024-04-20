@@ -79,7 +79,7 @@
                                                 {{-- <option value="moscow" selected>Москва</option>
                                             <option value="falkenstein">Фалькенштайн</option>
                                             <option value="helsinki">Хельсинки</option> --}}
-                                                <option value="{{ $location->link }}">{{ $location->name }}</option>
+                                                <option value="{{ $location->id }}">{{ $location->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -124,7 +124,7 @@
                                                 class="table__item">
                                                 <div class="table__item percent">{{ $server->ip }}</div>
                                             </a>
-                                            <div class="table__item">{{ $server->location }}</div>
+                                            <div class="table__item">{{ $server->location_id }}</div>
                                             <div class="table__item volume">{{ $server->price_month }}₽</div>
                                             <div class="table__item">
                                                 <a target="_blank">{{ $server->status }}</a>

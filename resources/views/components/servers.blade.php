@@ -19,7 +19,7 @@
                     <div class="tovar">
                         <div class="country">
                             @foreach ($locations as $location)
-                                <a href="{{ route('servers', ['region' => $location->link]) }}"
+                                <a href="{{ route('servers', ['region' => $location->id]) }}"
                                     class="table__item @if (request()->region == $location->link) active @endif">
                                     {{ $location->name }}
                                 </a>

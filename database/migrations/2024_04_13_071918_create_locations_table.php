@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string('link');
             $table->timestamps();
          });
+        DB::table('location')->insert(
+            array(
+                'name' => 'Москва',
+                'link' => 'Moscow'
+            )
+        );
     }
 
     /**

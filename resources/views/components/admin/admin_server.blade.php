@@ -19,7 +19,7 @@
                                     <p>ID: <span class="bold">{{ $server->id }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Локация: <span class="bold">{{ $server->location }}</span></p>
+                                    <p>Локация: <span class="bold">{{ $server->location_id }}</span></p>
                                 </li>
                                 <li>
                                     <p>Конфигурация: <span class="bold">{{ $server->cpu }} Core | {{ $server->ram }} GB

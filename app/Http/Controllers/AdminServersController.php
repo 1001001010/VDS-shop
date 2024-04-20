@@ -15,12 +15,13 @@ class AdminServersController extends Controller
     }
     public function server($id) {
         $server = DB::table('servers')->where('id', '=', $id)->first();
-        $user = DB::table('users')->where('id', '=', $server->id_tenant)->first();
-        if ($server->id_tenant != null ) {
-            return view('components.admin.admin_server', ['server' => $server, 'user' => $user]);
-        } else {
-            return view('components.admin.admin_server', ['server' => $server, 'user' => null]);
-        }
+        return view('components.admin.admin_server', ['server' => $server, 'user' => null]);
+        // $user = DB::table('users')->where('id', '=', $server->id_tenant)->first();
+        // if ($server->id_tenant != null ) {
+        //     return view('components.admin.admin_server', ['server' => $server, 'user' => $user]);
+        // } else {
+        //     return view('components.admin.admin_server', ['server' => $server, 'user' => null]);
+        // }
     }
     public function new_server(Request $request) {
         $validatedData = $request->validate([
@@ -36,7 +37,7 @@ class AdminServersController extends Controller
         
         $data = [
             'number' => time(),
-            'location' => $request->location,
+            'location_id' => $request->location,
             'cpu' => $request->cpu,
             'ram' => $request->ram,
             'ssd' => $request->ssd,
@@ -46,7 +47,6 @@ class AdminServersController extends Controller
             'price_month' => $request->price_month,
             'price_hour' => $request->price_hour,
             'status' => 'inactive',
-            'id_tenant' => $request->id_tenant,
         ];
     
         DB::table('servers')->insert($data);
@@ -56,7 +56,7 @@ class AdminServersController extends Controller
     }
     public function new_ServerPassword($id) {
         $server = DB::table('servers')->where('id', '=', $id)->first();
-        $user = DB::table('users')->where('id', '=', $server->id_tenant)->first();
+        // $user = DB::table('users')->where('id', '=', $server->id_tenant)->first();
         $chars = 'qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP1234567890'; 
         $size = strlen($chars) - 1; 
         $length = 10;
