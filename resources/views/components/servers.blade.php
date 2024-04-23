@@ -16,6 +16,12 @@
         <section class="second__section second">
             @if (count($Delicated_servers) > 0 || count($Shared_servers) > 0)
                 <div class="container">
+                    @if (session('success'))
+                        <div id="notification" class="alert alert-success">
+                            <span id="notification-text">{{ session('success') }}</span>
+                            <button id="close-button"><img src="{{ asset('img/close.svg') }}" alt="Close"></button>
+                        </div>
+                    @endif
                     <div class="tovar">
                         <div class="country">
                             @foreach ($locations as $location)
@@ -431,5 +437,8 @@
             min_hdd.textContent = hdd.min;
             max_hdd.textContent = hdd.max;
         });
+
+        const notification = document.getElementById('notification');
+        const closeButton = document.getElementById('close-button');
     </script>
 @endsection
