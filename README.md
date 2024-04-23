@@ -32,4 +32,5 @@
 ---
 Возможности: 
 - Добавление root и тест пользователей `php artisan db:seed --class=UserSeeder`
+- Добавление локаций и тест сервера `php artisan db:seed --class=ServerSeeder`
 
