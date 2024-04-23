@@ -27,7 +27,7 @@ class ServerSeeder extends Seeder
             'name' => '🇫🇮Хельсинки',
             'link' => 'Helsinki',
         ]);
-        
-        Server::factory()->count(10)->create();
+
+        Server::factory()->count(50)->create();
     }
 }

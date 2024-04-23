@@ -14,7 +14,7 @@ class ServerFactory extends Factory
     public function definition(): array
     {
         $randomIp = rand(1, 255) . '.' . rand(1, 255) . '.' . rand(1, 255) . '.' . rand(1, 255);
-        $types = array('Shared', 'Dedicated');
+        $types = array('Shared', 'Delicated');
         return [
             'number' => time()+rand(1, 200),
             'location_id' => rand(1, 3),
