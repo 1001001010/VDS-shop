@@ -39,7 +39,6 @@ class HomeController extends Controller
         $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->get();
         $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->get();
         $locations = DB::table('location')->get();
-        // dd($region);
         return view('components.servers', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers, 'locations' => $locations]);
     }
     

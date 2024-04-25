@@ -28,13 +28,13 @@
                                     </p>
                                 </li>
                                 <li>
-                                    <p>Всего серверов: <span class="bold">53</span></p>
+                                    <p>Всего серверов: <span class="bold">{{ $servers }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Арендованно: <span class="bold">12</span></p>
+                                    <p>Арендованно: <span class="bold">{{ $rented }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Всего локаций: <span class="bold">3</span></p>
+                                    <p>Всего локаций: <span class="bold">{{ $location }}</span></p>
                                 </li>
                             </ul>
                         </div>

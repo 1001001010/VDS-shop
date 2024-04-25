@@ -29,10 +29,12 @@ class BuyServersController extends Controller
             'server_id' => $server->id,
             'price' => $price,
             'endDate' => $formattedFutureDate,
-            'status' => 'active',
+            'status' => 'not paid',
             'created_at' => $now->format('Y-m-d H:i:s')
         ];
     
         DB::table('rentals')->insert($data);
+
+        
     }        
 }
