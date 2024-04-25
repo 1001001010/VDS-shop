@@ -35,8 +35,9 @@ class HomeController extends Controller
     }
     public function servers($region)
     {
-        $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location_id', $region)->get();
-        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location_id', $region)->get();
+        $location = DB::table('location')->where('link', '=', $region)->first();
+        $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->get();
+        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->get();
         $locations = DB::table('location')->get();
         // dd($region);
         return view('components.servers', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers, 'locations' => $locations]);

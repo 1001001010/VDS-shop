@@ -20,7 +20,7 @@
                 <use xlink:href="{{ asset('img/icons.svg#divider') }}"></use>
             </svg>
             <ul class="header__reg flex align-center">
-                <li><a href="{{ route('index') }}">Выход</a></li>
+                <li><a href="{{ route('index') }}">Назад</a></li>
             </ul>
         </div>
         <div class="menu__icon">

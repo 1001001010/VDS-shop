@@ -25,7 +25,7 @@
                     <div class="tovar">
                         <div class="country">
                             @foreach ($locations as $location)
-                                <a href="{{ route('servers', ['region' => $location->id]) }}"
+                                <a href="{{ route('servers', ['region' => $location->link]) }}"
                                     class="table__item @if (request()->region == $location->link) active @endif">
                                     {{ $location->name }}
                                 </a>
@@ -86,13 +86,13 @@
                                                 <p>{{ $Shared_server->ssd }} GB NVME</p>
                                             </div>
                                             <div class="price_hour">
-                                                <a href="{{ route('buyServers', ['time' => 'hour', 'id' => $Shared_server->id]) }}"
+                                                <a href="{{ route('buyServers', ['time' => 'hour', 'region' => $Shared_server->location_id]) }}"
                                                     class="buy_serv">
                                                     <p>{{ $Shared_server->price_hour }}€</p>
                                                 </a>
                                             </div>
                                             <div class="price_month">
-                                                <a href="{{ route('buyServers', ['time' => 'month', 'id' => $Shared_server->id]) }}"
+                                                <a href="{{ route('buyServers', ['time' => 'month', 'region' => $Shared_server->location_id]) }}"
                                                     class="buy_serv">
                                                     <p>{{ $Shared_server->price_month }}€</p>
                                                 </a>

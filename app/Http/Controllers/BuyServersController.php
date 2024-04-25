@@ -12,55 +12,27 @@ class BuyServersController extends Controller
     public function buy_server($time, $id) {
         $user = Auth::user();
         $server = DB::table('servers')->where('id', '=', $id)->first();
-        if ($time === 'hour') {
-            $price = $server->price_hour;
-            if ($user->balance >= $price) {
-                $date = Carbon::now();
-                $futureDate = $date->addHours(1);
-                $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
-                $data = [
-                    'user_id' => $user->id,
-                    'server_id' => $server->id,
-                    'price' => $price,
-                    'endDate' => $futureDate,
-                    'status' => 'active'
-                ];
-            
-                DB::table('rentals')->insert($data);
-            } else {
-                $message = 'Недостаточно средств';
-                return redirect()->back()->with('success', $message);
-            }
-        } elseif ($time === 'month') {
-            $price = $server->price_month;
-            if ($user->balance >= $price) {
-                $date = Carbon::now();
-                $futureDate = $date->addMonths(1);
-                $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
-                $data = [
-                    'user_id' => $user->id,
-                    'server_id' => $server->id,
-                    'price' => $price,
-                    'endDate' => $formattedFutureDate,
-                    'status' => 'active'
-                ];
-                DB::table('rentals')->insert($data);
-            } else {
-                $message = 'Недостаточно средств';
-                return redirect()->back()->with('success', $message);
-            }
+    
+        $price = ($time === 'hour') ? $server->price_hour : $server->price_month;
+        if ($user->balance < $price) {
+            $message = 'Недостаточно средств';
+            return redirect()->back()->with('success', $message);
         }
-
-        // $date = Carbon::now(); // current date
-        // $futureDate = $date->modify('+1 month');
-        // $data = [
-        //     'user_id' => $user->id,
-        //     'location_id' => $server->id,
-        //     'price' => $time,
-        //     'endDate' => $futureDate->format('Y-m-d H:i:s'),
-        //     'status' => 'active'
-        // ];
-        // DB::table('servers')->insert($data);
-        
-    }
+    
+        $date = Carbon::now();
+        $futureDate = ($time === 'hour') ? $date->addHours(1) : $date->addMonths(1);
+        $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
+        $now = Carbon::now();
+    
+        $data = [
+            'user_id' => $user->id,
+            'server_id' => $server->id,
+            'price' => $price,
+            'endDate' => $formattedFutureDate,
+            'status' => 'active',
+            'created_at' => $now->format('Y-m-d H:i:s')
+        ];
+    
+        DB::table('rentals')->insert($data);
+    }        
 }
