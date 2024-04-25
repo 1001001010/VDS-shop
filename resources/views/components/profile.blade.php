@@ -28,44 +28,16 @@
                         </div>
                         <div class="right_block">
                             <div class="title-centre">
-                                <p>Всего аренд: <span class="bold">6</span></p>
+                                <p>Всего аренд: <span class="bold">{{ $count_rent }}</span></p>
                             </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
+                            @foreach ($rents as $rent)
+                                <div class="serv__inf__block">
+                                    <p>28.06.2023</p>
+                                    <p>ID сервера: 23</p>
+                                    <p>Срок: Месяц</p>
+                                    <p>Цена: 450</p>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

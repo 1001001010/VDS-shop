@@ -30,11 +30,13 @@ class BuyServersController extends Controller
             'price' => $price,
             'endDate' => $formattedFutureDate,
             'status' => 'not paid',
+            'duration' => $time,
             'created_at' => $now->format('Y-m-d H:i:s')
         ];
     
         DB::table('rentals')->insert($data);
-
-        
+        $rental = DB::table('rentals')->where('endDate', '=', $formattedFutureDate)->first();
+        $location = DB::table('location')->where('id', '=', $server->location_id)->first();
+        return view('components.buy_servers', ['server' => $server, 'user' => $user, 'rental' => $rental, 'location'=>$location]);
     }        
 }

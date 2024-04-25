@@ -8,25 +8,38 @@
                     <div class="Offers">
                         <div class="left_block">
                             <p class="user__title">Пользователь <span class="bold">{{ Auth::user()->name }}</span></p>
+                            <p class="user__title">Балланс: <span id="balanceValue"
+                                    class="bold">{{ Auth::user()->balance }}₽</span></p>
                             <ul type="circle" class="haracter">
                                 <li>
-                                    <p>Email: <span class="bold">{{ Auth::user()->email }}</span></p>
+                                    <p>ID Сервера: <span id="balanceValue" class="bold">{{ $server->id }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Балланс: <span id="balanceValue" class="bold">{{ Auth::user()->balance }}₽</span>
-                                    </p>
+                                    <p>Локация: <span id="balanceValue" class="bold">{{ $location->name }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Дата регистрации: <span class="bold">{{ Auth::user()->created_at }}</span></p>
+                                    <p>CPU: <span id="balanceValue" class="bold">{{ $server->cpu }}</span></p>
+                                </li>
+                                <li>
+                                    <p>RAM: <span id="balanceValue" class="bold">{{ $server->ram }}</span></p>
+                                </li>
+                                <li>
+                                    <p>SSD: <span id="balanceValue" class="bold">{{ $server->ssd }}GB</span></p>
+                                </li>
+                                <li>
+                                    <p>SSD: <span id="balanceValue" class="bold">{{ $server->ssd }}GB</span></p>
+                                </li>
+                                <li>
+                                    <p>Цена: <span id="balanceValue" class="bold">{{ $rental->price }}₽</span></p>
                                 </li>
                                 <div class="flex wrapper flex__col__start button__reduct_user gap__15 padding-t__15">
                                     <div class="table__item">
-                                        <a target="_blank">Изменить информацию</a>
+                                        <a target="_blank">Арендовать</a>
                                     </div>
                                 </div>
                             </ul>
                         </div>
-                        <div class="right_block">
+                        {{-- <div class="right_block">
                             <div class="title-centre">
                                 <p>Всего аренд: <span class="bold">6</span></p>
                             </div>
@@ -66,7 +79,7 @@
                                 <p>Срок: Месяц</p>
                                 <p>Цена: 450</p>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

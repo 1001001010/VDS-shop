@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('server_id');
             $table->foreign('server_id')->references('id')->on('servers');
             $table->integer('price');
+            $table->string('duration');
             $table->dateTime('endDate');
             $table->string('status');
             $table->timestamps();
