@@ -20,7 +20,7 @@
                 <use xlink:href="{{ asset('img/icons.svg#divider') }}"></use>
             </svg>
             <ul class="header__reg flex align-center">
-                <li><a href="{{ route('index') }}">Назад</a></li>
+                <li><a href="{{ route('index', ['region' => 'Moscow']) }}">Назад</a></li>
             </ul>
         </div>
         <div class="menu__icon">
@@ -41,6 +41,6 @@
         <li><a href="{{ route('admin_AllServers') }}">Серверы</a></li>
         <li><a href="/">Настройки</a></li>
         <li><a href="{{ route('admin_stats') }}">Статистика</a></li>
-        <li><a href="{{ route('index') }}">Выход</a></li>
+        <li><a href="{{ route('index', ['region' => 'Moscow']) }}">Назад</a></li>
     </ul>
 </div>
