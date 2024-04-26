@@ -16,7 +16,7 @@
         </div>
         <div class="header__right flex align-center">
             <ul class="header__ul flex align-center">
-                <li><a href="{{ route('index', ['region' => 1]) }}">Главная</a></li>
+                <li><a href="{{ route('index', ['region' => 'Moscow']) }}">Главная</a></li>
                 <li><a href="{{ route('servers', ['region' => 'Moscow']) }}">Серверы</a></li>
                 <li><a href="/">Информация</a></li>
                 @if (Auth::user() && Auth::user()->is_admin == 1)
@@ -87,7 +87,7 @@
 </header>
 <div class="menu__body">
     <ul class="menu__list">
-        <li><a href="{{ route('index') }}">Главная</a></li>
+        <li><a href="{{ route('index', ['region' => 'Moscow']) }}">Главная</a></li>
         <li><a href="{{ route('servers', ['region' => 'Moscow']) }}">Серверы</a></li>
         <li><a href="/">Информация</a></li>
         @if (Auth::user() && Auth::user()->is_admin == 1)

@@ -3,6 +3,7 @@
 @section('admin_content')
     <main>
         <section class="first__section first">
+            <img src="{{ asset('img/glare/third_part_1.png') }}" alt="glare" class="third__part-1" />
             <div class="container flex align-center justify-between">
                 <div class="first__left">
                     <h1>Серверы</h1>

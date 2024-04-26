@@ -7,24 +7,30 @@
 @section('content')
     <main>
         <section class="first__section first">
+            <img src="{{ asset('img/glare/third_part_1.png') }}" alt="glare" class="third__part-1" />
             <div class="container flex align-center justify-between">
                 <div class="first__left">
                     <div class="first__name flex align-center">
                         <img src="{{ asset('img/fav.svg') }}" alt="" />
-                        <span>Облачные VPS нового поколения для хостинга, разработки и
-                            обучения</span>
+                        <span>Облачные VPS нового поколения для хостинга, разработки и обучения</span>
                     </div>
                     <h1>VPS-серверы в аренду</h1>
                 </div>
             </div>
         </section>
-        {{-- <section class="second__section second">
+        <section class="second__section second">
             @if (count($Delicated_servers) > 0 || count($Shared_servers) > 0)
                 <div class="container">
+                    @if (session('success'))
+                        <div id="notification" class="alert alert-success">
+                            <span id="notification-text">{{ session('success') }}</span>
+                            <button id="close-button"><img src="{{ asset('img/close.svg') }}" alt="Close"></button>
+                        </div>
+                    @endif
                     <div class="tovar">
                         <div class="country">
                             @foreach ($locations as $location)
-                                <a href="{{ route('servers', ['region' => $location->link]) }}"
+                                <a href="{{ route('index', ['region' => $location->link]) }}"
                                     class="table__item @if (request()->region == $location->link) active @endif">
                                     {{ $location->name }}
                                 </a>
@@ -85,12 +91,14 @@
                                                 <p>{{ $Shared_server->ssd }} GB NVME</p>
                                             </div>
                                             <div class="price_hour">
-                                                <a href="/" class="buy_serv">
+                                                <a href="{{ route('buyServers', ['time' => 'hour', 'region' => $Shared_server->location_id]) }}"
+                                                    class="buy_serv">
                                                     <p>{{ $Shared_server->price_hour }}€</p>
                                                 </a>
                                             </div>
                                             <div class="price_month">
-                                                <a href="/" class="buy_serv">
+                                                <a href="{{ route('buyServers', ['time' => 'month', 'region' => $Shared_server->location_id]) }}"
+                                                    class="buy_serv">
                                                     <p>{{ $Shared_server->price_month }}€</p>
                                                 </a>
                                             </div>
@@ -165,7 +173,7 @@
                     </div>
                 </div>
             @endif
-        </section> --}}
+        </section>
         <section class="third__section third">
             <img src="{{ asset('img/glare/third_part_1.png') }}" alt="glare" class="third__part-1" />
             <div class="middle__container flex justify-between">

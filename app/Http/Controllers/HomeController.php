@@ -23,12 +23,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index($region)
     {
-        // $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location', $region)->get();
-        // $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location', $region)->get();
-        // $locations = DB::table('location')->get();
-        return view('components.main');
+        $location = DB::table('location')->where('link', '=', $region)->first();
+        $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->get();
+        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->get();
+        $locations = DB::table('location')->get();
+        return view('components.main', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers, 'locations' => $locations]);
     }
     public function profile()
     {
