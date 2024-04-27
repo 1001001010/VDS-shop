@@ -29,9 +29,21 @@
                                 <li>
                                     <p>SSD: <span id="balanceValue" class="bold">{{ $server->ssd }}GB</span></p>
                                 </li>
-                                <li>
+                                @if ($time == 'month')
+                                    <li>
+                                        <p>Цена: <span id="balanceValue" class="bold">{{ $server->price_month }}₽</span>
+                                        </p>
+                                    </li>
+                                @endif
+                                @if ($time == 'hour')
+                                    <li>
+                                        <p>Цена: <span id="balanceValue" class="bold">{{ $server->price_hour }}₽</span>
+                                        </p>
+                                    </li>
+                                @endif
+                                {{-- <li>
                                     <p>Цена: <span id="balanceValue" class="bold">{{ $rental->price }}₽</span></p>
-                                </li>
+                                </li> --}}
                                 <div class="flex wrapper flex__col__start button__reduct_user gap__15 padding-t__15">
                                     <div class="table__item">
                                         <a target="_blank">Арендовать</a>

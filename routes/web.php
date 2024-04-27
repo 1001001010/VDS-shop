@@ -19,8 +19,11 @@ Auth::routes();
 
 
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () { 
-    Route::get('/{region}','index')->name('index')->middleware([IsBan::class])->defaults('region', 'Moscow');
     Route::get('/profile','profile')->name('profile')->middleware([IsBan::class, 'auth']);
+    Route::get('/', function () { 
+        return redirect()->route('index', ['region' => 'Moscow']); 
+    })->name('home')->middleware([IsBan::class]);
+    Route::get('/{region}','index')->name('index')->middleware([IsBan::class])->defaults('region', 'Moscow');
     Route::get('/servers/{region}', 'servers')->name('servers')->middleware([IsBan::class])->defaults('region', 'Moscow');
 });
 Route::controller(App\Http\Controllers\AdminUserController::class)->group(function () {
@@ -50,5 +53,5 @@ Route::controller(App\Http\Controllers\AdminStatsController::class)->group(funct
 });
 
 Route::controller(App\Http\Controllers\BuyServersController::class)->group(function () {
-    Route::get('/buyServer/{time}/{region}','buy_server')->name('buyServers')->middleware([admin::class]);
+    Route::get('/buyServer/{time}/{region}/{server_id}','buy_server')->name('buyServers')->middleware([admin::class]);
 });
