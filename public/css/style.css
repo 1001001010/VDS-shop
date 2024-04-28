@@ -789,6 +789,33 @@ section {
     transition: all .2s
 }
 
+.table__item button {
+    padding: 6px 16px;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid #2fbdfc;
+    color: #2fbdfc;
+    font-size: 18px;
+    font-weight: 500;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: start;
+    -webkit-transition: all .2s;
+    transition: all .2s
+}
+
+.table__item button:hover {
+    border: 1px solid white;
+    color: white;
+}
+
 .second .table .table__item.green {
     color: #58F0A7;
 }
@@ -1620,10 +1647,6 @@ section {
 }
 
 .padding-t__15 {
-    padding-top: 15px;
-}
-
-.padding-b__15 {
     padding-top: 15px;
 }
 
