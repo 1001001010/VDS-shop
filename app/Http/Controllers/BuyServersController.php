@@ -36,11 +36,32 @@ class BuyServersController extends Controller
         // dd($server_id); -> ID дедика
         $user = Auth::user();
         $server = DB::table('servers')->where('id', '=', $server_id)->first();
+        $date = Carbon::now();
+        $futureDate = ($time === 'hour') ? $date->addHours(1) : $date->addMonths(1);
+        $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
         
         $price = ($time === 'hour')? $server->price_hour : $server->price_month;
         if ($user->balance < $price) {
         $message = 'Недостаточно средств';
         return redirect()->route('profile')->with('success', $message);
+        } elseif ($user->balance >= $price) {
+            // Данные для обновления таблицы пользователей
+            $user_data = [
+                'balance' => $user->balance - $price,
+                'total_servers' => $user->total_servers + 1
+            ];
+            DB::table('users')->where('id', $user->id)->update($user_data); 
+            // Данные для обновления таблицы servers
+            $server_data = [
+                'oc' => $request->radio_oc,
+                'panel' => $request->radio_po,
+                'status' => 'active',
+                'rental_until' => $formattedFutureDate
+            ];
+            DB::table('servers')->where('id', $server_id)->update($server_data);
+        } else {
+            $message = 'Непредвиденная ошибка! Попробуйте позже';
+            return redirect()->route('profile')->with('success', $message);
         }
         // else {
         //     $server_data = [
