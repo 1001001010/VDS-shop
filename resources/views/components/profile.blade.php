@@ -5,6 +5,11 @@
         <section class="second__section second">
             <div class="container">
                 <div class="tovar">
+                    @if (session('success'))
+                        <div id="notification" class="alert alert-success">
+                            <span id="notification-text">{{ session('success') }}</span>
+                        </div>
+                    @endif
                     <div class="Offers">
                         <div class="left_block">
                             <p class="user__title">Пользователь <span class="bold">{{ Auth::user()->name }}</span></p>

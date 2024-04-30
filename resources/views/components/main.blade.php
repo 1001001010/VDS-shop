@@ -24,7 +24,6 @@
                     @if (session('success'))
                         <div id="notification" class="alert alert-success">
                             <span id="notification-text">{{ session('success') }}</span>
-                            <button id="close-button"><img src="{{ asset('img/close.svg') }}" alt="Close"></button>
                         </div>
                     @endif
                     <div class="tovar">
