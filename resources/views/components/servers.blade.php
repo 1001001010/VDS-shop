@@ -88,13 +88,13 @@
                                             <div class="price_hour">
                                                 <a href="{{ route('buyServers', ['time' => 'hour', 'region' => $Shared_server->location_id, 'server_id' => $Shared_server->id]) }}"
                                                     class="buy_serv">
-                                                    <p>{{ $Shared_server->price_hour }}€</p>
+                                                    <p>{{ $Shared_server->price_hour }}₽</p>
                                                 </a>
                                             </div>
                                             <div class="price_month">
                                                 <a href="{{ route('buyServers', ['time' => 'month', 'region' => $Shared_server->location_id, 'server_id' => $Shared_server->id]) }}"
                                                     class="buy_serv">
-                                                    <p>{{ $Shared_server->price_month }}€</p>
+                                                    <p>{{ $Shared_server->price_month }}₽</p>
                                                 </a>
                                             </div>
                                         </div>
@@ -153,13 +153,13 @@
                                             <div class="price_hour">
                                                 <a href="{{ route('buyServers', ['time' => 'hour', 'region' => $Delicated_server->location_id, 'server_id' => $Delicated_server->id]) }}"
                                                     class="buy_serv">
-                                                    <p>{{ $Delicated_server->price_hour }}€</p>
+                                                    <p>{{ $Delicated_server->price_hour }}₽</p>
                                                 </a>
                                             </div>
                                             <div class="price_month">
                                                 <a href="{{ route('buyServers', ['time' => 'month', 'region' => $Delicated_server->location_id, 'server_id' => $Delicated_server->id]) }}"
                                                     class="buy_serv">
-                                                    <p>{{ $Delicated_server->price_month }}€</p>
+                                                    <p>{{ $Delicated_server->price_month }}₽</p>
                                                 </a>
                                             </div>
                                         </div>

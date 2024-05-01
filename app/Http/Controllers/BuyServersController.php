@@ -39,6 +39,7 @@ class BuyServersController extends Controller
         $date = Carbon::now();
         $futureDate = ($time === 'hour') ? $date->addHours(1) : $date->addMonths(1);
         $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
+        $formattedNowDate = Carbon::now()->format('Y-m-d H:i:s');
         
         $price = ($time === 'hour')? $server->price_hour : $server->price_month;
         if ($user->balance < $price) {
@@ -59,35 +60,23 @@ class BuyServersController extends Controller
                 'rental_until' => $formattedFutureDate
             ];
             DB::table('servers')->where('id', $server_id)->update($server_data);
+            // Данные для обновление таблицы заказов
+            $rental_data = [
+                'user_id' => $user->id,
+                'server_id' => $server->id,
+                'price' => $price,
+                'endDate' => $formattedFutureDate,
+                'status' => 'active',
+                'duration' => $time,
+                'created_at' => $formattedNowDate
+            ];
+            DB::table('rentals')->insert($rental_data);
+            $count_rent = DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count();
+            $rent = DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get();
+            return redirect()->route('profile', ['count_rent' => $count_rent, 'rents' => $rent]);
         } else {
             $message = 'Непредвиденная ошибка! Попробуйте позже';
             return redirect()->route('profile')->with('success', $message);
         }
-        // else {
-        //     $server_data = [
-        //         'oc' => $request->radio_oc,
-        //         'panel' => $request->radio_po
-        //     ];
-        //     DB::table('servers')->where('id', $server_id)->update($server_data); 
-        //     $date = Carbon::now();
-        //     $futureDate = ($time === 'hour') ? $date->addHours(1) : $date->addMonths(1);
-        //     $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
-        //     $now = Carbon::now();
-        
-        //     $data = [
-        //         'user_id' => $user->id,
-        //         'server_id' => $server->id,
-        //         'price' => $price,
-        //         'endDate' => $formattedFutureDate,
-        //         'status' => 'not paid',
-        //         'duration' => $time,
-        //         'created_at' => $now->format('Y-m-d H:i:s')
-        //     ];
-            
-        //     DB::table('rentals')->insert($data);
-        //     $rental = DB::table('rentals')->where('endDate', '=', $formattedFutureDate)->first();
-        //     // $location = DB::table('location')->where('id', '=', $server->location_id)->first();
-        //     // return view('components.buy_servers', ['server' => $server, 'user' => $user, 'rental' => $rental, 'location'=>$location]);
-        //     return view('components.profile');
     }
 }

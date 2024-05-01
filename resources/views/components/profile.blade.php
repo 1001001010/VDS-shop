@@ -37,7 +37,7 @@
                             </div>
                             @foreach ($rents as $rent)
                                 <div class="serv__inf__block">
-                                    <p>28.06.2023</p>
+                                    <p><b>{{ $rent->endDate }}</b></p>
                                     <p>ID сервера: 23</p>
                                     <p>Срок: Месяц</p>
                                     <p>Цена: 450</p>

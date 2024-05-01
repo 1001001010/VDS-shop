@@ -121,7 +121,9 @@
                                     @endif
                                     <div class="flex wrapper flex__col__start button__reduct_user gap__15 padding-t__15">
                                         <div class="table__item">
-                                            <button type="submit" class="table__item">Арендовать</button>
+                                            @if ($server->status != 'active')
+                                                <button type="submit" class="table__item">Арендовать</button>
+                                            @endif
                                         </div>
                                     </div>
                                 </ul>
