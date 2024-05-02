@@ -38,9 +38,13 @@
                             @foreach ($rents as $rent)
                                 <div class="serv__inf__block">
                                     <p><b>{{ $rent->endDate }}</b></p>
-                                    <p>ID сервера: 23</p>
-                                    <p>Срок: Месяц</p>
-                                    <p>Цена: 450</p>
+                                    <p>ID сервера: <b>{{ $rent->id }}</b></p>
+                                    @if ($rent->duration == 'month')
+                                        <p>Срок: <b>Месяц</b></p>
+                                    @elseif ($rent->duration == 'hour')
+                                        <p>Срок: <b>Час</b></p>
+                                    @endif
+                                    <p>Цена: <b>{{ $rent->price }}</b></p>
                                 </div>
                             @endforeach
                         </div>

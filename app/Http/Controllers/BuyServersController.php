@@ -34,6 +34,7 @@ class BuyServersController extends Controller
         // dd($time); -> Срок аренды дедика
         // dd($region); -> Регион расположение дедика
         // dd($server_id); -> ID дедика
+
         $user = Auth::user();
         $server = DB::table('servers')->where('id', '=', $server_id)->first();
         $date = Carbon::now();
@@ -45,7 +46,7 @@ class BuyServersController extends Controller
         if ($user->balance < $price) {
         $message = 'Недостаточно средств';
         return redirect()->route('profile')->with('success', $message);
-        } elseif ($user->balance >= $price) {
+        } else {
             // Данные для обновления таблицы пользователей
             $user_data = [
                 'balance' => $user->balance - $price,
@@ -71,12 +72,9 @@ class BuyServersController extends Controller
                 'created_at' => $formattedNowDate
             ];
             DB::table('rentals')->insert($rental_data);
-            $count_rent = DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count();
-            $rent = DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get();
-            return redirect()->route('profile', ['count_rent' => $count_rent, 'rents' => $rent]);
-        } else {
-            $message = 'Непредвиденная ошибка! Попробуйте позже';
-            return redirect()->route('profile')->with('success', $message);
+            return redirect()->route('profile', [
+                'count_rent' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(),
+                'rents' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()]);
         }
     }
 }

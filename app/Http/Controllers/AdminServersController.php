@@ -56,7 +56,7 @@ class AdminServersController extends Controller
     }
     public function new_ServerPassword($id) {
         $server = DB::table('servers')->where('id', '=', $id)->first();
-        // $user = DB::table('users')->where('id', '=', $server->id_tenant)->first();
+        #Генерация и смена пароля
         $chars = 'qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP1234567890'; 
         $size = strlen($chars) - 1; 
         $length = 10;
@@ -65,6 +65,7 @@ class AdminServersController extends Controller
             $password .= $chars[random_int(0, $size)]; 
         }
         DB::table('servers')->where('id', $id)->update(['user_pass' => $password]);
+        
         $message = 'Пароль успешно сброшен';
         return redirect()->back()->with('success', $message);
         // if ($server->id_tenant != null ) {
