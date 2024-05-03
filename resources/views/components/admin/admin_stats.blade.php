@@ -36,6 +36,9 @@
                                 <li>
                                     <p>Всего локаций: <span class="bold">{{ $location }}</span></p>
                                 </li>
+                                <li class="table__item">
+                                    <a href="{{ route('download_logs') }}">Скачать логи</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

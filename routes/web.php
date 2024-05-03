@@ -50,6 +50,7 @@ Route::controller(App\Http\Controllers\AdminServersController::class)->group(fun
 
 Route::controller(App\Http\Controllers\AdminStatsController::class)->group(function () {
     Route::get('/admin/stats','stats')->name('admin_stats')->middleware([admin::class]);
+    Route::get('/admin/stats/downloadsLog','downloadLogs')->name('download_logs')->middleware([admin::class]);
 });
 
 Route::controller(App\Http\Controllers\BuyServersController::class)->group(function () {
