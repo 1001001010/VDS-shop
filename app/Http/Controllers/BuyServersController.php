@@ -12,19 +12,22 @@ class BuyServersController extends Controller
     public function buy_server($time, $region, $server_id) {
         $user = Auth::user();
         $server = DB::table('servers')->where('id', '=', $server_id)->first();
+        $rental = DB::table('rentals')->where('user_id', '=', $user->id)->where('status', '=', 'active')->first();
         $price = ($time === 'hour') ? $server->price_hour : $server->price_month;
         if ($user->balance < $price) {
             $message = 'Недостаточно средств';
             return redirect()->back()->with('success', $message);
+        } elseif ($rental) {
+            $message = 'У вас уже есть арендованный сервер';
+            return redirect()->back()->with('success', $message);
+        } else {
+            return view('components.buy_servers', [
+                'server' => $server, 
+                'user' => $user, 
+                'location' => DB::table('location')->where('id', '=', $server->location_id)->first(), 
+                'time' => $time
+            ]);
         }
-
-        $date = Carbon::now();
-        $futureDate = ($time === 'hour') ? $date->addHours(1) : $date->addMonths(1);
-        $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
-        $now = Carbon::now();
-        $location = DB::table('location')->where('id', '=', $server->location_id)->first();
-
-        return view('components.buy_servers', ['server' => $server, 'user' => $user, 'location' => $location, 'time' => $time]);
     }        
 
     public function confirm_rental(Request $request, $time, $region, $server_id) {
@@ -74,7 +77,8 @@ class BuyServersController extends Controller
             DB::table('rentals')->insert($rental_data);
             return redirect()->route('profile', [
                 'count_rent' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(),
-                'rents' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()]);
+                'rents' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
+            ]);
         }
     }
 }
