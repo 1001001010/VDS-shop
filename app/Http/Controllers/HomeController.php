@@ -23,23 +23,31 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($region)
-    {
+    public function index($region) {
         $location = DB::table('location')->where('link', '=', $region)->first();
         $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get();
         $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get();
         $locations = DB::table('location')->get();
         return view('components.main', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers, 'locations' => $locations]);
     }
-    public function profile()
-    {
+    public function profile() {
         $user = Auth::user();
-        $count_rent = DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count();
-        $rent = DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get();
-        return view('components.profile', ['count_rent' => $count_rent, 'rents' => $rent]);
+        return view('components.profile', [
+            'count_rent' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(), 
+            'rents' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
+        ]);
     }
-    public function servers($region)
-    {
+    public function ProfileRentals($rentals_id) {
+        $user = Auth::user();
+        $rental = DB::table('rentals')->where('id', '=', $rentals_id)->first();
+        if ($user->id == $rental->user_id) {
+            dd('Все норм');
+        } else {
+            $message = 'Произошла внутренняя ошибка';
+            return redirect()->back()->with('success', $message);
+        }
+    }
+    public function servers($region) {
         $location = DB::table('location')->where('link', '=', $region)->first();
         $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get();
         $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get();

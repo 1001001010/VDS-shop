@@ -25,6 +25,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     })->name('home')->middleware([IsBan::class]);
     Route::get('/{region}','index')->name('index')->middleware([IsBan::class])->defaults('region', 'Moscow');
     Route::get('/servers/{region}', 'servers')->name('servers')->middleware([IsBan::class])->defaults('region', 'Moscow');
+    Route::get('/profile/rentals/{rentals_id}', 'ProfileRentals')->name('profile_rentals')->middleware([IsBan::class]);
 });
 Route::controller(App\Http\Controllers\AdminUserController::class)->group(function () {
     Route::get('/admin/users','all_users')->name('admin_AllUsers')->middleware([admin::class]);

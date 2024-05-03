@@ -36,7 +36,7 @@
                                 <p>Всего аренд: <span class="bold">{{ $count_rent }}</span></p>
                             </div>
                             @foreach ($rents as $rent)
-                                <a href="" class="light">
+                                <a href="{{ route('profile_rentals', ['rentals_id' => $rent->id]) }}" class="light">
                                     <div class="serv__inf__block">
                                         <p><b>{{ $rent->endDate }}</b></p>
                                         <p>ID сервера: <b>{{ $rent->id }}</b></p>
