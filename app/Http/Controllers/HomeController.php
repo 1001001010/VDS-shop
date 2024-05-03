@@ -25,10 +25,11 @@ class HomeController extends Controller
      */
     public function index($region) {
         $location = DB::table('location')->where('link', '=', $region)->first();
-        $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get();
-        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get();
-        $locations = DB::table('location')->get();
-        return view('components.main', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers, 'locations' => $locations]);
+        return view('components.main', [
+            'Shared_servers' => DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
+            'Delicated_servers' => DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
+            'locations' => DB::table('location')->get()
+        ]);
     }
     public function profile() {
         $user = Auth::user();
@@ -41,7 +42,10 @@ class HomeController extends Controller
         $user = Auth::user();
         $rental = DB::table('rentals')->where('id', '=', $rentals_id)->first();
         if ($user->id == $rental->user_id) {
-            dd('Все норм');
+            return view('components.rental_info', [
+                'server' => DB::table('servers')->where('id', '=', $rental->server_id)->first(), 
+                'rental' => $rental
+            ]);
         } else {
             $message = 'Произошла внутренняя ошибка';
             return redirect()->back()->with('success', $message);
@@ -49,10 +53,11 @@ class HomeController extends Controller
     }
     public function servers($region) {
         $location = DB::table('location')->where('link', '=', $region)->first();
-        $Shared_servers = DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get();
-        $Delicated_servers = DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get();
-        $locations = DB::table('location')->get();
-        return view('components.servers', ['Shared_servers' => $Shared_servers, 'Delicated_servers' => $Delicated_servers, 'locations' => $locations]);
+        return view('components.servers', [
+            'Shared_servers' => DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
+            'Delicated_servers' => DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
+            'locations' => DB::table('location')->get()
+        ]);
     }
     
 }

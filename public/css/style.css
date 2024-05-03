@@ -1601,7 +1601,7 @@ section {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    padding: 10px;
+    padding: 15px;
 
     flex-wrap: nowrap;
     margin-bottom: 50px;
