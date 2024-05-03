@@ -36,16 +36,18 @@
                                 <p>Всего аренд: <span class="bold">{{ $count_rent }}</span></p>
                             </div>
                             @foreach ($rents as $rent)
-                                <div class="serv__inf__block">
-                                    <p><b>{{ $rent->endDate }}</b></p>
-                                    <p>ID сервера: <b>{{ $rent->id }}</b></p>
-                                    @if ($rent->duration == 'month')
-                                        <p>Срок: <b>Месяц</b></p>
-                                    @elseif ($rent->duration == 'hour')
-                                        <p>Срок: <b>Час</b></p>
-                                    @endif
-                                    <p>Цена: <b>{{ $rent->price }}</b></p>
-                                </div>
+                                <a href="" class="light">
+                                    <div class="serv__inf__block">
+                                        <p><b>{{ $rent->endDate }}</b></p>
+                                        <p>ID сервера: <b>{{ $rent->id }}</b></p>
+                                        @if ($rent->duration == 'month')
+                                            <p>Срок: <b>Месяц</b></p>
+                                        @elseif ($rent->duration == 'hour')
+                                            <p>Срок: <b>Час</b></p>
+                                        @endif
+                                        <p>Цена: <b>{{ $rent->price }}</b></p>
+                                    </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>

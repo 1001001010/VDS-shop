@@ -1599,8 +1599,10 @@ section {
     width: 100%;
     margin-top: 50px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-direction: row;
+    padding: 10px;
+    
     flex-wrap: nowrap;
     margin-bottom: 50px;
 }
