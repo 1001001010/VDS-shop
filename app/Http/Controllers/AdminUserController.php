@@ -9,12 +9,14 @@ use Illuminate\Support\Facades\DB;
 class AdminUserController extends Controller
 {
     public function all_users() {
-        $users = DB::table('users')->get();
-        return view('components.admin.admin_users', ['users' => $users]);
+        return view('components.admin.admin_users', [
+            'users' => DB::table('users')->get()
+        ]);
     }
     public function user($id) {
-        $user = DB::table('users')->where('id', '=', $id)->first();
-        return view('components.admin.admin_user', ['user' => $user]);
+        return view('components.admin.admin_user', [
+            'user' => DB::table('users')->where('id', '=', $id)->first()
+        ]);
     }
     public function ban_user($id) {
         $user = DB::table('users')->where('id', '=', $id)->first();
@@ -44,21 +46,20 @@ class AdminUserController extends Controller
 
     public function search_users(Request $request) {
         $word = $request->search_users;
-        $users = DB::table('users')->where('email', 'LIKE', "%{$word}%")->orderBy('email')->get();
-        return view('components.admin.admin_users', ['users' => $users]);
+        return view('components.admin.admin_users', [
+            'users' => DB::table('users')->where('email', 'LIKE', "%{$word}%")->orderBy('email')->get()
+        ]);
     }
     public function addbalance(Request $request, $id)
     {
         DB::table('users')->where('id', $id)->increment('balance', $request->input('number'));
         $user = DB::table('users')->where('id', '=', $id)->first();
-        $message = 'Балланс успешно выдан';
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'Балланс успешно выдан');
     }
     public function reworkbalance(Request $request, $id)
     {
         DB::table('users')->where('id', $id)->update(['balance' => $request->input('number')]);
         $user = DB::table('users')->where('id', '=', $id)->first();
-        $message = 'Балланс успешно изменен';
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'Балланс успешно изменен');
     }
 }

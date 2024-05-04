@@ -9,13 +9,16 @@ use Illuminate\Support\Facades\DB;
 class AdminServersController extends Controller
 {
     public function all_servers() {
-        $servers = DB::table('servers')->get();
-        $location = DB::table('location')->get();
-        return view('components.admin.admin_servers', ['servers' => $servers, 'locations' => $location]);
+        return view('components.admin.admin_servers', [
+            'servers' => DB::table('servers')->get(), 
+            'locations' => DB::table('location')->get()
+    ]);
     }
     public function server($id) {
-        $server = DB::table('servers')->where('id', '=', $id)->first();
-        return view('components.admin.admin_server', ['server' => $server, 'user' => null]);
+        return view('components.admin.admin_server', [
+            'server' => DB::table('servers')->where('id', '=', $id)->first(),
+            'user' => null
+        ]);
         // $user = DB::table('users')->where('id', '=', $server->id_tenant)->first();
         // if ($server->id_tenant != null ) {
         //     return view('components.admin.admin_server', ['server' => $server, 'user' => $user]);
@@ -50,8 +53,7 @@ class AdminServersController extends Controller
         ];
     
         DB::table('servers')->insert($data);
-        $message = 'Сервер был успешно добавлен';
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'Сервер был успешно добавлен');
     
     }
     public function new_ServerPassword($id) {
@@ -66,8 +68,7 @@ class AdminServersController extends Controller
         }
         DB::table('servers')->where('id', $id)->update(['user_pass' => $password]);
         
-        $message = 'Пароль успешно сброшен';
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'Пароль успешно сброшен');
         // if ($server->id_tenant != null ) {
         //     return view('components.admin.admin_server', ['server' => $server, 'user' => $user]);
         // } else {
@@ -76,8 +77,9 @@ class AdminServersController extends Controller
     }
     public function search_servers(Request $request){
         $word = $request->search_servers;
-        $all_servers = DB::table('servers')->where('number', 'LIKE', "%{$word}%")->orWhere('ip', 'LIKE', "%{$word}%")->orderBy('id')->get();
-        return view('components.admin.admin_servers', ['servers' => $all_servers]);
+        return view('components.admin.admin_servers', [
+            'servers' => DB::table('servers')->where('number', 'LIKE', "%{$word}%")->orWhere('ip', 'LIKE', "%{$word}%")->orderBy('id')->get()
+        ]);
     }
     public function editPrice(Request $request, $id){
         $validatedData = $request->validate([
@@ -85,30 +87,26 @@ class AdminServersController extends Controller
             'price_hour' => 'required|integer',
         ]);
         DB::table('servers')->where('id', $id)->update(['price_month' => $request->price_month, 'price_hour' => $request->price_hours]); #Стоит еще подумать
-        $message = 'Цена успешно изменена';
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'Цена успешно изменена');
     }
     public function editLogin(Request $request, $id){
         $validatedData = $request->validate([
             'username' => 'required',
         ]);
         DB::table('servers')->where('id', $id)->update(['user_name' => $request->username]);
-        $message = 'username успешно изменен';
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'username успешно изменен');
     }
     public function editIP(Request $request, $id){
         $validatedData = $request->validate([
             'IP' => 'required|ip',
         ]);
         DB::table('servers')->where('id', $id)->update(['ip' => $request->IP]);
-        $message = 'IP успешно изменен';
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'IP успешно изменен');
     }
 
     public function editType(Request $request, $id)
     {
         DB::table('servers')->where('id', $id)->update(['type' => $request->server_type]);
-        $message = 'Тип сервера успешно изменен';
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'Тип сервера успешно изменен');
     }
 }

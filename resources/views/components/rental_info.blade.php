@@ -10,7 +10,7 @@
                 <div class="tovar">
                     <div class="Offers">
                         <div class="left_block">
-                            <p class="user__title">Пользователь <span class="bold">{{ Auth::user()->name }}</span></p <ul
+                            <p class="user__title">Пользователь <span class="bold">{{ Auth::user()->name }}</span></p
                                 type="circle" class="haracter">
                             <ul type="circle" class="haracter">
                                 <li>
@@ -35,7 +35,7 @@
                                     <p>ID сервера: <span class="bold">{{ $server->id }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Конфигурация: <span class="bold">{{ $server->cpu }} core | {{ $server->ram }} GB
+                                    <p>Конфигурация: <span class="bold">{{ $server->cpu }} CORE | {{ $server->ram }} GB
                                             RAM | {{ $server->ssd }} GB SSD</span></p>
                                 </li>
                                 @if ($server->oc)

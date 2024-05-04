@@ -47,8 +47,7 @@ class HomeController extends Controller
                 'rental' => $rental
             ]);
         } else {
-            $message = 'Произошла внутренняя ошибка';
-            return redirect()->back()->with('success', $message);
+            return redirect()->back()->with('success', 'Произошла внутренняя ошибка');
         }
     }
     public function servers($region) {

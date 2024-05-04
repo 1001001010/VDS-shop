@@ -15,11 +15,9 @@ class BuyServersController extends Controller
         $rental = DB::table('rentals')->where('user_id', '=', $user->id)->where('status', '=', 'active')->first();
         $price = ($time === 'hour') ? $server->price_hour : $server->price_month;
         if ($user->balance < $price) {
-            $message = 'Недостаточно средств';
-            return redirect()->back()->with('success', $message);
+            return redirect()->back()->with('success', 'Недостаточно средств');
         } elseif ($rental) {
-            $message = 'У вас уже есть арендованный сервер';
-            return redirect()->back()->with('success', $message);
+            return redirect()->back()->with('success', 'У вас уже есть арендованный сервер');
         } else {
             return view('components.buy_servers', [
                 'server' => $server, 
@@ -47,8 +45,7 @@ class BuyServersController extends Controller
         
         $price = ($time === 'hour')? $server->price_hour : $server->price_month;
         if ($user->balance < $price) {
-        $message = 'Недостаточно средств';
-        return redirect()->route('profile')->with('success', $message);
+            return redirect()->route('profile')->with('success', 'Недостаточно средств');
         } else {
             // Данные для обновления таблицы пользователей
             $user_data = [
