@@ -3,15 +3,14 @@
 @section('content')
     <main>
         <section class="second__section second">
-            <a href="{{ route('servers', ['region' => 'Moscow']) }}" class="header__reg button__back">⬅ Назад</a>
+            <a href="{{ route('profile') }}" class="header__reg button__back">⬅ Назад</a>
             <img class="right_photo" src="{{ asset('img/glare/first_part-2.png') }}" alt="blick" />
             <img class="left_photo" src="{{ asset('img/glare/first_part-1.png') }}" alt="blick" />
             <div class="container">
                 <div class="tovar">
                     <div class="Offers">
                         <div class="left_block">
-                            <p class="user__title">Пользователь <span class="bold">{{ Auth::user()->name }}</span></p
-                                type="circle" class="haracter">
+                            <p class="user__title">Пользователь <span class="bold">{{ Auth::user()->name }}</span></p>
                             <ul type="circle" class="haracter">
                                 <li>
                                     <p>Цена аренды: <span class="bold">{{ $rental->price }}</span></p>

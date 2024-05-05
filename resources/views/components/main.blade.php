@@ -295,7 +295,7 @@
                                 stroke="#B2BEE2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <input type="email" placeholder="Example@gmail.com" />
-                        <a href="/registr.html">Регистрация</a>
+                        <a href="{{ route('register') }}">Регистрация</a>
                     </div>
                 </div>
             </section>

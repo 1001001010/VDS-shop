@@ -34,16 +34,19 @@
                         @if (count($Shared_servers) > 0)
                             <div class="Offers">
                                 <div class="left_block">
-                                    <p class="for_what1"
-                                        data-tooltip="Облачные серверы с процессором AMD Ryzen 9 7950X3D, общим vCPU и NVMe накопителем, идеальны для размещения веб-сайтов, VPN и разработки проектов. Вложенная виртуализация отключена.">
-                                        Для чего подходит?
-                                    </p>
-                                    <p class="for_what">Облачные серверы базового уровня по сбалансированной цене на базе
-                                        процессора
-                                        AMD Ryzen 9
-                                        7950X3D, с общим vCPU и NVMe накопителем. Идеальный вариант для таких задач, как
-                                        размещение
-                                        веб-сайтов, VPN, или разработка проектов. Вложенная виртуализация отключена.</p>
+                                    <div class="dropdown">
+                                        <a id="dropdown-toggle" class="for_what1 dropdown">Для чего подходит?</a>
+                                        <div id="dropdown-content" class="dropdown-content">
+                                            <p>
+                                                <p3>
+                                                    Облачные серверы базового уровня по сбалансированной цене на базе
+                                                    процессора AMD Ryzen 9 7950X3D, с общим vCPU и NVMe накопителем.
+                                                    Идеальный вариант для таких задач, как размещение веб-сайтов, VPN, или
+                                                    разработка проектов. Вложенная виртуализация отключена
+                                                </p3>
+                                            </p>
+                                        </div>
+                                    </div>
                                     <h1>Shared</h1>
                                     <ul type="circle" class="haracter">
                                         <li>
@@ -105,10 +108,20 @@
                         @if (count($Delicated_servers) > 0)
                             <div class="Offers">
                                 <div class="left_block">
-                                    <p class="for_what1"
-                                        data-tooltip="Облачные серверы с процессором AMD Ryzen 9 7950X3D, общим vCPU и NVMe накопителем, идеальны для размещения веб-сайтов, VPN и разработки проектов. Вложенная виртуализация отключена.">
-                                        Для чего подходит?
-                                    </p>
+                                    <div class="dropdown">
+                                        <a id="dropdown-toggle" class="for_what1 dropdown">Для чего подходит?</a>
+                                        <div id="dropdown-content" class="dropdown-content">
+                                            <p>
+                                                <p3>
+                                                    Облачные серверы высшего уровня с гарантированными ресурсами
+                                                    процессора
+                                                    AMD Ryzen 9 7950X3D и хранилищем NVMe с RAM Cache для самых
+                                                    требовательных задач, например 1С, Битрикс или размещение
+                                                    высоконагруженных сервисов. Вложенная виртуализация отключена
+                                                </p3>
+                                            </p>
+                                        </div>
+                                    </div>
                                     <h1>Delicated</h1>
                                     <ul type="circle" class="haracter">
                                         <li>
