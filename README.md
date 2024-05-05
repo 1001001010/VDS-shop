@@ -27,10 +27,10 @@
 >*Файл .env* <br> - Отредактировать файл конфигурации
 - Создать ключ приложения `php artisan key:generate`
 - Мигрировать таблицы `php artisan migrate`
-- Запустить приложения `npm run dev` и `php artisan serve`
+- Запустить приложения `npm run dev` и `php artisan serve` и `php artisan schedule:work`
 
 ---
 Возможности: 
 - Добавление root и тест пользователей `php artisan db:seed --class=UserSeeder`
 - Добавление локаций и тест сервера `php artisan db:seed --class=ServerSeeder`
-
+- список всех запланированных задач и время их следующего запуска `php artisan schedule:list`
