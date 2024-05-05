@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Rental;
+use App\Models\Server;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
@@ -13,12 +14,33 @@ class CheckRentalEndDate extends Command
 
     public function handle(): int
     {
-        Rental::where('endDate', '<', now())
+        // Обновление таблицы аренд с истекшими датами
+        $expiredRentals = Rental::where('endDate', '<', now())
             ->whereIn('status', ['active'])
-            ->update(['status' => 'expired']);
+            ->get();
+    
+        if ($expiredRentals->isNotEmpty()) {
+            $expiredRentals->each(function (Rental $rental) {
+                $rental->update(['status' => 'completed']);
+    
+                // Получение id сервера
+                $serverId = $rental->server_id;
+    
+                // Обновление данных сервера
+                $server = Server::find($serverId);
 
-        $this->info("Аренды, чьи сроки истекли, были обновлены.");
-        $this->info(now());
+                // Обновление данных сервера
+                $server->oc = null;
+                $server->panel = null;
+                $server->rental_until = null;
+                $server->user_pass = '123';
+                $server->status = 'inactive';
+                $server->save();
+            });
+    
+            $this->info("Аренды, чьи сроки истекли, были обновлены.");
+        }
+    
         return 0;
     }
 }

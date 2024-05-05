@@ -9,6 +9,24 @@ class Server extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'number',
+        'location_id',
+        'cpu',
+        'ram',
+        'ssd',
+        'oc',
+        'panel',
+        'ip',
+        'user_name',
+        'user_pass',
+        'rental_until',
+        'price_month',
+        'price_hour',
+        'status',
+        'type',
+    ];
+
     public function location() {
         return $this->belongsTo(Location::class);
     }
