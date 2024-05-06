@@ -22,14 +22,9 @@ class AdminServersController extends Controller
     public function server($id) {
         return view('components.admin.admin_server', [
             'server' => DB::table('servers')->where('id', '=', $id)->first(),
+            'locations' => DB::table('location')->get(),
             'user' => null
         ]);
-        // $user = DB::table('users')->where('id', '=', $server->id_tenant)->first();
-        // if ($server->id_tenant != null ) {
-        //     return view('components.admin.admin_server', ['server' => $server, 'user' => $user]);
-        // } else {
-        //     return view('components.admin.admin_server', ['server' => $server, 'user' => null]);
-        // }
     }
     public function new_server(Request $request) {
         $validatedData = $request->validate([
@@ -74,11 +69,6 @@ class AdminServersController extends Controller
         DB::table('servers')->where('id', $id)->update(['user_pass' => $password]);
         
         return redirect()->back()->with('success', 'Пароль успешно сброшен');
-        // if ($server->id_tenant != null ) {
-        //     return view('components.admin.admin_server', ['server' => $server, 'user' => $user]);
-        // } else {
-        //     return view('components.admin.admin_server', ['server' => $server, 'user' => null]);
-        // }
     }
     public function search_servers(Request $request){
         $word = $request->search_servers;
@@ -109,10 +99,14 @@ class AdminServersController extends Controller
         return redirect()->back()->with('success', 'IP успешно изменен');
     }
 
-    public function editType(Request $request, $id)
-    {
+    public function editType(Request $request, $id) {
         DB::table('servers')->where('id', $id)->update(['type' => $request->server_type]);
         return redirect()->back()->with('success', 'Тип сервера успешно изменен');
+    }
+
+    public function editLocation(Request $request, $id) {
+        DB::table('servers')->where('id', $id)->update(['location_id' => $request->location_id]);
+        return redirect()->back()->with('success', 'Локация сервера успешно изменена');
     }
 }
  

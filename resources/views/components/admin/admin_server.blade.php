@@ -21,9 +21,12 @@
                                     <p>Локация: <span class="bold">{{ $server->location_id }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Конфигурация: <span class="bold">{{ $server->cpu }} Core | {{ $server->ram }} GB
-                                            DDR4 | {{ $server->ssd }} GB
-                                            SSD</span></p>
+                                    <p>Конфигурация:
+                                        <span class="bold">
+                                            {{ $server->cpu }} Core | {{ $server->ram }} GB DDR4 | {{ $server->ssd }}
+                                            GB SSD
+                                        </span>
+                                    </p>
                                 </li>
                                 <li>
                                     <p>IP-адрес: <span class="bold">{{ $server->ip }}</span></p>
@@ -47,8 +50,7 @@
                                     <p>Статус: <span class="bold">{{ $server->status }}</span></p>
                                 </li>
                                 <li>
-                                    <p>
-                                        Тип:
+                                    <p>Тип:
                                         <span class="bold">
                                             <select id="server_type">
                                                 <option value="">Не выбрано</option>
@@ -98,7 +100,35 @@
                                         </div>
                                     </div>
                                     <div class="table__item">
-                                        <a href="/" target="_blank">Изменить локацию</a>
+                                        <a id="open-modal_location">Изменить локацию</a>
+                                        <div id="modal_location" class="modal">
+                                            <div class="modal-content new_server">
+                                                <span class="close_location">Закрыть</span>
+                                                <div class="">
+                                                    <form method="POST"
+                                                        action="{{ route('admin_editLocation', ['id' => $server->id]) }}"
+                                                        class="flex flex__col__centr">
+                                                        @csrf
+                                                        <p>Выберите локацию</p>
+                                                        <span class="bold" style="padding: 50px">
+                                                            <select id="server_type" name="location_id">
+                                                                @foreach ($locations as $location)
+                                                                    <option value="{{ $location->id }}"
+                                                                        {{ $location->id == old('location_id', $server->location_id) ? 'selected' : '' }}>
+                                                                        {{ $location->name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </span>
+                                                        <ul class="header__reg flex justify-start">
+                                                            <li>
+                                                                <button type="submit">Сохранить</button>
+                                                            </li>
+                                                        </ul>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="table__item">
                                         <a id="editUsername">Изменить логин</a>
@@ -148,6 +178,15 @@
 
         document.getElementsByClassName('close')[0].addEventListener('click', function() {
             document.getElementById('modal').style.display = 'none';
+        });
+
+        document.getElementById('open-modal_location').addEventListener('click', function() {
+            document.getElementById('modal_location').style.display = 'block';
+        });
+
+
+        document.getElementsByClassName('close_location')[0].addEventListener('click', function() {
+            document.getElementById('modal_location').style.display = 'none';
         });
 
         window.addEventListener('click', function(event) {
@@ -210,11 +249,8 @@
         });
 
         document.getElementById('server_type').addEventListener('change', function() {
-            // Set the value of the 'server_type' field to the value of the selected 'option' element
             document.getElementById('server-type-form').querySelector('input[name="server_type"]').value = this
                 .value;
-
-            // Set the '_method' field to 'POST' and submit the form
             document.getElementById('server-type-form').querySelector('input[name="_method"]').value = 'POST';
             document.getElementById('server-type-form').submit();
         });
