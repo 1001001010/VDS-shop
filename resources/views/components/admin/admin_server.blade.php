@@ -18,7 +18,7 @@
                                     <p>ID: <span class="bold">{{ $server->id }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Локация: <span class="bold">{{ $server->location_id }}</span></p>
+                                    <p>Локация: <span class="bold">{{ $server_location->name }}</span></p>
                                 </li>
                                 <li>
                                     <p>Конфигурация:

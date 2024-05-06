@@ -20,10 +20,12 @@ class AdminServersController extends Controller
         ]);
     }
     public function server($id) {
+        $server = DB::table('servers')->where('id', '=', $id)->first();
+        $location = DB::table('location')->where('id', '=', $server->location_id)->first();
         return view('components.admin.admin_server', [
-            'server' => DB::table('servers')->where('id', '=', $id)->first(),
+            'server' => $server,
             'locations' => DB::table('location')->get(),
-            'user' => null
+            'server_location' => $location
         ]);
     }
     public function new_server(Request $request) {

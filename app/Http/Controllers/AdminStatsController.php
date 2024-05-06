@@ -27,4 +27,5 @@ class AdminStatsController extends Controller
             return redirect()->back()->with('success', 'Файл логов не найден');
         }
     }
+    
 }
