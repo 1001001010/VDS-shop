@@ -125,7 +125,7 @@
                                                 class="table__item">
                                                 <div class="table__item percent">{{ $server->ip }}</div>
                                             </a>
-                                            <div class="table__item">{{ $server->location_id }}</div>
+                                            <div class="table__item">{{ $locations[$server->id]->name }}</div>
                                             <div class="table__item volume">{{ $server->price_month }}₽</div>
                                             <div class="table__item">
                                                 <a target="_blank">{{ $server->status }}</a>

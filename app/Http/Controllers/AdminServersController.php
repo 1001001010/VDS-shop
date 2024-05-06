@@ -9,10 +9,15 @@ use Illuminate\Support\Facades\DB;
 class AdminServersController extends Controller
 {
     public function all_servers() {
+        $servers = DB::table('servers')->get();
+        $locations = [];
+        foreach ($servers as $server) {
+            $locations[$server->id] = DB::table('location')->where('id', '=', $server->location_id)->first();
+        }
         return view('components.admin.admin_servers', [
-            'servers' => DB::table('servers')->get(), 
-            'locations' => DB::table('location')->get()
-    ]);
+            'servers' => $servers,
+            'locations' => $locations
+        ]);
     }
     public function server($id) {
         return view('components.admin.admin_server', [
@@ -110,3 +115,4 @@ class AdminServersController extends Controller
         return redirect()->back()->with('success', 'Тип сервера успешно изменен');
     }
 }
+ 
