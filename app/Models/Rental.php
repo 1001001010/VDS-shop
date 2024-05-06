@@ -13,7 +13,12 @@ class Rental extends Model
         'price',
         'duration',
         'endDate',
-        'status',
+        'cpu',
+        'ram',
+        'ssd',
+        'oc',
+        'panel',
+        'status'
     ];
 
     public function server(){

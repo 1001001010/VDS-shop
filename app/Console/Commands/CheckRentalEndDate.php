@@ -15,9 +15,7 @@ class CheckRentalEndDate extends Command
     public function handle(): int
     {
         // Обновление таблицы аренд с истекшими датами
-        $expiredRentals = Rental::where('endDate', '<', now())
-            ->whereIn('status', ['active'])
-            ->get();
+        $expiredRentals = Rental::where('endDate', '<', now())->whereIn('status', ['active'])->get();
     
         if ($expiredRentals->isNotEmpty()) {
             $expiredRentals->each(function (Rental $rental) {

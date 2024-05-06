@@ -20,6 +20,11 @@ return new class extends Migration
             $table->integer('price');
             $table->string('duration');
             $table->dateTime('endDate');
+            $table->integer('cpu');
+            $table->integer('ram');
+            $table->integer('ssd');
+            $table->string('oc');
+            $table->string('panel');
             $table->string('status');
             $table->timestamps();
         });

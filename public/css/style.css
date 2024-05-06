@@ -1600,6 +1600,7 @@ section {
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     flex-direction: row;
     padding: 15px;
 

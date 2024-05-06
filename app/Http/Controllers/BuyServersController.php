@@ -69,7 +69,12 @@ class BuyServersController extends Controller
                 'endDate' => $formattedFutureDate,
                 'status' => 'active',
                 'duration' => $time,
-                'created_at' => $formattedNowDate
+                'created_at' => $formattedNowDate,
+                'cpu' => $server->cpu,
+                'ram' => $server->ram,
+                'ssd' => $server->ssd,
+                'oc' => $request->radio_oc,
+                'panel' => $request->radio_po
             ];
             DB::table('rentals')->insert($rental_data);
             return redirect()->route('profile', [

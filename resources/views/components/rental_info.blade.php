@@ -26,7 +26,11 @@
                                     <p>Начало аренды: <span class="bold">{{ $rental->created_at }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Активен до: <span class="bold">{{ $rental->endDate }}</span></p>
+                                    @if ($server->status == 'active')
+                                        <p>Активен до: <span class="bold">{{ $rental->endDate }}</span></p>
+                                    @else
+                                        <p>Аренда закончилась: <span class="bold">{{ $rental->endDate }}</span></p>
+                                    @endif
                                 </li>
                             </ul>
                             <ul type="circle" class="haracter">
@@ -34,12 +38,12 @@
                                     <p>ID сервера: <span class="bold">{{ $server->id }}</span></p>
                                 </li>
                                 <li>
-                                    <p>Конфигурация: <span class="bold">{{ $server->cpu }} CORE | {{ $server->ram }} GB
-                                            RAM | {{ $server->ssd }} GB SSD</span></p>
+                                    <p>Конфигурация: <span class="bold">{{ $rental->cpu }} CORE | {{ $rental->ram }} GB
+                                            RAM | {{ $rental->ssd }} GB SSD</span></p>
                                 </li>
                                 @if ($server->oc)
                                     <li>
-                                        <p>Система: <span class="bold">{{ $server->oc }}</span></p>
+                                        <p>Система: <span class="bold">{{ $rental->oc }}</span></p>
                                     </li>
                                 @else
                                     <li>
@@ -48,22 +52,24 @@
                                 @endif
                                 @if ($server->panel)
                                     <li>
-                                        <p>Инструменты: <span class="bold">{{ $server->panel }}</span></p>
+                                        <p>Инструменты: <span class="bold">{{ $rental->panel }}</span></p>
                                     </li>
                                 @else
                                     <li>
                                         <p>Инструменты: <span class="bold">Без ОС</span></p>
                                     </li>
                                 @endif
-                                <li>
-                                    <p>IP-адрес сервера: <span class="bold">{{ $server->ip }}</span></p>
-                                </li>
-                                <li>
-                                    <p>Имя пользователя: <span class="bold">{{ $server->user_name }}</span></p>
-                                </li>
-                                <li>
-                                    <p>Пароль: <span class="bold">{{ $server->user_pass }}</span></p>
-                                </li>
+                                @if ($server->status == 'active')
+                                    <li>
+                                        <p>IP-адрес сервера: <span class="bold">{{ $server->ip }}</span></p>
+                                    </li>
+                                    <li>
+                                        <p>Имя пользователя: <span class="bold">{{ $server->user_name }}</span></p>
+                                    </li>
+                                    <li>
+                                        <p>Пароль: <span class="bold">{{ $server->user_pass }}</span></p>
+                                    </li>
+                                @endif
                                 @if ($server->status == 'active')
                                     <li>
                                         <p>Текущее состояние сервера: <span class="bold">Активен</span>
