@@ -1593,13 +1593,17 @@ section {
     flex-direction: row;
     flex-wrap: nowrap;
     margin-bottom: 50px
-}
+}  
 
+.testblock{
+    padding: 20px;
+    margin-top: 10px;
+}
 .serv__inf__block {
     width: 100%;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 20px;
     flex-direction: row;
     padding: 15px;

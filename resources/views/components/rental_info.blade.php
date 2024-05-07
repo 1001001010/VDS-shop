@@ -13,7 +13,7 @@
                             <p class="user__title">Пользователь <span class="bold">{{ Auth::user()->name }}</span></p>
                             <ul type="circle" class="haracter">
                                 <li>
-                                    <p>Цена аренды: <span class="bold">{{ $rental->price }}</span></p>
+                                    <p>Цена аренды: <span class="bold">{{ $rental->price }}₽</span></p>
                                 </li>
                                 <li>
                                     @if ($rental->duration == 'month')
