@@ -11,9 +11,9 @@
                         <div class="country">
                             @foreach ($location_list as $list)
                                 <p class="table__item">
-                                    <div>
-                                        {{ $list->name }}
-                                    </div>
+                                <div>
+                                    {{ $list->name }}
+                                </div>
                                 </p>
                             @endforeach
                             <div class="table__item">
@@ -98,11 +98,8 @@
                                     <div class="reg_select">
                                         <label for="location">Локация</label>
                                         <select id="location" name="location">
-                                            @foreach ($locations as $location)
-                                                {{-- <option value="moscow" selected>Москва</option>
-                                            <option value="falkenstein">Фалькенштайн</option>
-                                            <option value="helsinki">Хельсинки</option> --}}
-                                                <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                            @foreach ($location_list as $list)
+                                                <option value="{{ $list->id }}">{{ $list->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

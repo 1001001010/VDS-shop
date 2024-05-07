@@ -37,17 +37,17 @@
                             </div>
                             <div class="testblock">
                                 @foreach ($rents as $rent)
-                                        <a href="{{ route('profile_rentals', ['rentals_id' => $rent->id]) }}" class="light">
-                                            <div class="serv__inf__block">
-                                                <p>Аренда <b>{{ $rent->created_at }}</b></p>
-                                                <p>Цена <b>{{ $rent->price }}₽</b></p>
-                                                @if ($rent->status == 'active')
-                                                    <p><b>Активен</b></p>
-                                                @else
-                                                    <p><b>Неактивен</b></p>
-                                                @endif
-                                            </div>
-                                        </a>
+                                    <a href="{{ route('profile_rentals', ['rentals_id' => $rent->id]) }}" class="light">
+                                        <div class="serv__inf__block">
+                                            <p>Аренда <b>{{ $rent->created_at }}</b></p>
+                                            <p>Цена <b>{{ $rent->price }}₽</b></p>
+                                            @if ($rent->status == 'active')
+                                                <p><b>Активен</b></p>
+                                            @else
+                                                <p><b>Неактивен</b></p>
+                                            @endif
+                                        </div>
+                                    </a>
                                 @endforeach
                             </div>
                         </div>

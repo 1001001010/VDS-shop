@@ -14,8 +14,11 @@ class AdminUserController extends Controller
         ]);
     }
     public function user($id) {
+        $user = DB::table('users')->where('id', '=', $id)->first();
         return view('components.admin.admin_user', [
-            'user' => DB::table('users')->where('id', '=', $id)->first()
+            'user' => $user,
+            'count_rent' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(), 
+            'rents' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
         ]);
     }
     public function ban_user($id) {

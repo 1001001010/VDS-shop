@@ -19,7 +19,7 @@ class Rental extends Model
         'oc',
         'panel',
         'status'
-    ];
+    ]; 
 
     public function server(){
     return $this->hasOne(Server::class);

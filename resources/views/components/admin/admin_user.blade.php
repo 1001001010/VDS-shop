@@ -52,7 +52,7 @@
                                         @endif
                                     </div>
                                     <div class="table__item">
-                                        <a id="addBalance">Выдать балланс</a>
+                                        <a id="addBalance">Пополнить балланс</a>
                                     </div>
                                     <div class="table__item">
                                         <a id="reworkBalance">Изменить балланс</a>
@@ -71,43 +71,22 @@
                         </div>
                         <div class="right_block">
                             <div class="title-centre">
-                                <p>Всего аренд: <span class="bold">{{ $user->total_servers }}</span></p>
+                                <p>Всего аренд: <span class="bold">{{ $count_rent }}</span></p>
                             </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
-                            </div>
-                            <div class="serv__inf__block">
-                                <p>28.06.2023</p>
-                                <p>ID сервера: 23</p>
-                                <p>Срок: Месяц</p>
-                                <p>Цена: 450</p>
+                            <div class="testblock">
+                                @foreach ($rents as $rent)
+                                    <a href="{{ route('profile_rentals', ['rentals_id' => $rent->id]) }}" class="light">
+                                        <div class="serv__inf__block">
+                                            <p>Аренда <b>{{ $rent->created_at }}</b></p>
+                                            <p>Цена <b>{{ $rent->price }}₽</b></p>
+                                            @if ($rent->status == 'active')
+                                                <p><b>Активен</b></p>
+                                            @else
+                                                <p><b>Неактивен</b></p>
+                                            @endif
+                                        </div>
+                                    </a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
