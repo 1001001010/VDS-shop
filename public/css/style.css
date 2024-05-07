@@ -601,6 +601,16 @@ section {
     border-radius: 30px;
 }
 
+.modal-content-width {
+    background-color: #08090b;
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    margin: 15% auto;
+    border: 1px solid #222d3e;
+    border-radius: 30px;
+}
+
 .modal-content span {
     cursor: pointer;
     height: 10px;
@@ -1456,6 +1466,18 @@ section {
     font-family: Inter, sans-serif;
     align-items: center;
 
+}
+
+.country_edit {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-left: 0px;
+    font-family: Inter, sans-serif;
+    align-items: center;
 }
 
 .align_items {

@@ -8,7 +8,7 @@
                 <div class="first__left">
                     <h1>Локации</h1>
                     <div class="tovar">
-                        <div class="country">
+                        <div class="country_edit">
                             @foreach ($location_list as $list)
                                 <p class="table__item">
                                 <div class="emoji">
@@ -26,6 +26,9 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <section class="first__section first">
+            <img class="left_photo" src="{{ asset('img/glare/first_part-1.png') }}" alt="blick" />
             <div class="container flex align-center justify-between">
                 <div class="first__left">
                     <h1>Серверы</h1>
@@ -43,7 +46,7 @@
                 <div>
                     <button class="new_sever" id="open-modal_newserver">Добавить сервер</button>
                     <div id="modal" class="modal">
-                        <div class="modal-content">
+                        <div class="modal-content-width">
                             <span class="close">Закрыть</span>
                             <form method="POST" action="{{ route('admin_NewServer') }}" class="">
                                 @csrf
