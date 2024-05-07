@@ -37,15 +37,10 @@
                 <div class="flex">
                     <div class="footer__col">
                         <ul>
-                            <li><a href="/">Главная</a></li>
-                            <li><a href="/">Серверы</a></li>
-                            <li><a href="/">Информация</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__col">
-                        <ul>
-                            <li><a href="/">Политика конфиденциальности</a></li>
-                            <li><a href="/">Правила</a></li>
+                            <li><a href="{{ route('index', ['region' => 'Moscow']) }}">Главная</a></li>
+                            <li><a href="{{ route('servers', ['region' => 'Moscow']) }}">Серверы</a></li>
+                            <li><a href="https://10010010s-organization.gitbook.io/baza-znanii-zetrix/">Информация</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

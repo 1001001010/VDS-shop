@@ -41,7 +41,7 @@
                                     <p>Конфигурация: <span class="bold">{{ $rental->cpu }} CORE | {{ $rental->ram }} GB
                                             RAM | {{ $rental->ssd }} GB SSD</span></p>
                                 </li>
-                                @if ($server->oc)
+                                @if ($rental->oc)
                                     <li>
                                         <p>Система: <span class="bold">{{ $rental->oc }}</span></p>
                                     </li>
@@ -50,7 +50,7 @@
                                         <p>Система: <span class="bold">Без ОС</span></p>
                                     </li>
                                 @endif
-                                @if ($server->panel)
+                                @if ($rental->panel)
                                     <li>
                                         <p>Инструменты: <span class="bold">{{ $rental->panel }}</span></p>
                                     </li>

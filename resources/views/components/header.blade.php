@@ -18,7 +18,7 @@
             <ul class="header__ul flex align-center">
                 <li><a href="{{ route('index', ['region' => 'Moscow']) }}">Главная</a></li>
                 <li><a href="{{ route('servers', ['region' => 'Moscow']) }}">Серверы</a></li>
-                <li><a href="/">Информация</a></li>
+                <li><a href="https://10010010s-organization.gitbook.io/baza-znanii-zetrix/">Информация</a></li>
                 @if (Auth::user() && Auth::user()->is_admin == 1)
                     <li><a href="{{ route('admin_AllUsers') }}">Админка</a></li>
                 @endif
@@ -89,7 +89,7 @@
     <ul class="menu__list">
         <li><a href="{{ route('index', ['region' => 'Moscow']) }}">Главная</a></li>
         <li><a href="{{ route('servers', ['region' => 'Moscow']) }}">Серверы</a></li>
-        <li><a href="/">Информация</a></li>
+        <li><a href="https://10010010s-organization.gitbook.io/baza-znanii-zetrix/">Информация</a></li>
         @if (Auth::user() && Auth::user()->is_admin == 1)
             <li><a href="{{ route('admin_AllUsers') }}">Админка</a></li>
         @endif
