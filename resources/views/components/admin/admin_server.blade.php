@@ -18,7 +18,7 @@
                                     <p>ID: <span class="bold">{{ $server->id }}</span></p>
                                 </li>
                                 <li>
-                                    <div>Локация: <span class="bold">{{ $server_location->name }}</span></div>
+                                    <div>Локация: <span class="bold emoji">{{ $server_location->name }}</span></div>
                                 </li>
                                 <li>
                                     <p>Конфигурация:
@@ -113,7 +113,7 @@
                                                         <span class="bold" style="padding: 50px">
                                                             <select id="server_type" name="location_id">
                                                                 @foreach ($locations as $location)
-                                                                    <option value="{{ $location->id }}"
+                                                                    <option value="{{ $location->id }}" class="emoji"
                                                                         {{ $location->id == old('location_id', $server->location_id) ? 'selected' : '' }}>
                                                                         {{ $location->name }}
                                                                     </option>

@@ -16,10 +16,9 @@ input[type="number"]::-webkit-inner-spin-button {
     src: url('../fonts/NotoColorEmoji.ttf');
 }
 
-div {
-    font-family: 'NotoColorEmojiLimited', -apple-system, BlinkMacSystemFont, 
-    'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 
-    'Segoe UI Emoji', 'Segoe UI Symbol';
+
+.emoji {
+    font-family: 'NotoColorEmojiLimited', sans-serif;
 }
 
 input[type='number'],
@@ -1605,12 +1604,13 @@ section {
     flex-direction: row;
     flex-wrap: nowrap;
     margin-bottom: 50px
-}  
+}
 
-.testblock{
+.testblock {
     padding: 20px;
     margin-top: 10px;
 }
+
 .serv__inf__block {
     width: 100%;
     /* margin-top: 50px; */

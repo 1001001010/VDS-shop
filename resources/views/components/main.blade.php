@@ -30,10 +30,8 @@
                         <div class="country">
                             @foreach ($locations as $location)
                                 <a href="{{ route('index', ['region' => $location->link]) }}"
-                                    class="table__item @if (request()->region == $location->link) active @endif">
-                                    <div>
-                                        {{ $location->name }}
-                                    </div>
+                                    class="table__item emoji @if (request()->region == $location->link) active @endif">
+                                    {{ $location->name }}
                                 </a>
                             @endforeach
                         </div>
