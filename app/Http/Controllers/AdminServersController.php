@@ -16,7 +16,8 @@ class AdminServersController extends Controller
         }
         return view('components.admin.admin_servers', [
             'servers' => $servers,
-            'locations' => $locations
+            'locations' => $locations,
+            'location_list' => DB::table('location')->get()
         ]);
     }
     public function server($id) {

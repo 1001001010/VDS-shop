@@ -6,6 +6,28 @@
             <img src="{{ asset('img/glare/third_part_1.png') }}" alt="glare" class="third__part-1" />
             <div class="container flex align-center justify-between">
                 <div class="first__left">
+                    <h1>Локации</h1>
+                    <div class="tovar">
+                        <div class="country">
+                            @foreach ($location_list as $list)
+                                <p class="table__item">
+                                    <div>
+                                        {{ $list->name }}
+                                    </div>
+                                </p>
+                            @endforeach
+                            <div class="table__item">
+                                <a>Добавить локацию</a>
+                            </div>
+                            <div class="table__item">
+                                <a>Удалить локацию</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container flex align-center justify-between">
+                <div class="first__left">
                     <h1>Серверы</h1>
                 </div>
             </div>

@@ -31,7 +31,9 @@
                             @foreach ($locations as $location)
                                 <a href="{{ route('index', ['region' => $location->link]) }}"
                                     class="table__item @if (request()->region == $location->link) active @endif">
-                                    {{ $location->name }}
+                                    <div>
+                                        {{ $location->name }}
+                                    </div>
                                 </a>
                             @endforeach
                         </div>
