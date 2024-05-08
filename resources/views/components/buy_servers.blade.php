@@ -13,8 +13,8 @@
                             <p class="user__title">Пользователь <span class="bold">{{ Auth::user()->name }}</span></p>
                             <p class="user__title">Балланс: <span id="balanceValue"
                                     class="bold">{{ Auth::user()->balance }}₽</span></p>
-                            <form method="POST"
-                                action="{{ route('confirmRental', ['time' => $time, 'region' => $location->id, 'server_id' => $server->id]) }}">
+                                <form method="POST"
+                                    action="{{ route('confirmRental', ['time' => $time, 'region' => $location->id, 'server_id' => $server->id]) }}">
                                 @csrf
                                 <ul type="circle" class="haracter">
                                     <li>

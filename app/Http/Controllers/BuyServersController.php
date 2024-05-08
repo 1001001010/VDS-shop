@@ -83,4 +83,7 @@ class BuyServersController extends Controller
             ]);
         }
     }
+    public function mineServer(Request $request) {
+        dd($request);
+    }
 }

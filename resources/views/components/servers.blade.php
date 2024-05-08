@@ -288,88 +288,86 @@
                     </h2>
                 </div>
                 <div class="third__right_centre">
-                    <form action="" class="form_config">
+                    <form method="POST" action="{{ route('mineServer') }}" class="form_config">
+                        @csrf
                         <h2>Регион размещения</h2>
-                        <div class="form_radio_btn cursor__pointer">
-                            <input id="region-1" type="radio" name="radio_region" value="1" checked>
-                            <label for="region-1" class="cursor__pointer">
-                                <p>Москва</p>
-                            </label>
-                        </div>
-                        <div class="form_radio_btn cursor__pointer">
-                            <input id="region-2" type="radio" name="radio_region" value="2">
-                            <label for="region-2" class="cursor__pointer">Фалькенштайн</label>
-                        </div>
-                        <div class="form_radio_btn cursor__pointer">
-                            <input id="region-3" type="radio" name="radio_region" value="3">
-                            <label for="region-3" class="cursor__pointer">Хельсинки</label>
-                        </div>
+                        @foreach ($locations as $location)
+                            <div class="form_radio_btn cursor__pointer">
+                                <input id="{{ $location->id }}" type="radio" name="radio_region"
+                                    value="{{ $location->id }}">
+                                <label for="{{ $location->id }}"
+                                    class="cursor__pointer emoji">{{ $location->name }}</label>
+                            </div>
+                        @endforeach
+
+                        {{-- тут бы цикл с бд, мне боюсь, что мне лень --}}
+
                         <h2>Операционная система</h2>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="oc-1" type="radio" name="radio_oc" value="">
-                            <label for="oc-1" class="cursor__pointer">
+                            <input id="Almalinux" type="radio" name="system" value="Almalinux">
+                            <label for="Almalinux" class="cursor__pointer">
                                 <p>Almalinux</p>
                             </label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="oc-2" type="radio" name="radio_oc" value="2">
-                            <label for="oc-2" class="cursor__pointer">Centos</label>
+                            <input id="Centos" type="radio" name="system" value="Centos">
+                            <label for="Centos" class="cursor__pointer">Centos</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="oc-3" type="radio" name="radio_oc" value="3">
-                            <label for="oc-3" class="cursor__pointer">Debian</label>
+                            <input id="Debian" type="radio" name="system" value="Debian">
+                            <label for="Debian" class="cursor__pointer">Debian</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="oc-4" type="radio" name="radio_oc" value="4">
-                            <label for="oc-4" class="cursor__pointer">Ubuntu</label>
+                            <input id="Ubuntu" type="radio" name="system" value="Ubuntu">
+                            <label for="Ubuntu" class="cursor__pointer">Ubuntu</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="oc-5" type="radio" name="radio_oc" value="5">
-                            <label for="oc-5" class="cursor__pointer">Windows</label>
+                            <input id="Windows" type="radio" name="system" value="Windows">
+                            <label for="Windows" class="cursor__pointer">Windows</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="oc-6" type="radio" name="radio_oc" value="6">
-                            <label for="oc-6" class="cursor__pointer">Astrelinux</label>
+                            <input id="Astrelinux" type="radio" name="system" value="Astrelinux">
+                            <label for="Astrelinux" class="cursor__pointer">Astrelinux</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="oc-7" type="radio" name="radio_oc" value="7">
-                            <label for="oc-7" class="cursor__pointer">Rockylinux</label>
+                            <input id="Rockylinux" type="radio" name="system" value="Rockylinux">
+                            <label for="Rockylinux" class="cursor__pointer">Rockylinux</label>
                         </div>
                         <h2>Приложения и панели управления</h2>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="dop-2" type="radio" name="radio_po" value="2">
-                            <label for="dop-2" class="cursor__pointer">Gitlab</label>
+                            <input id="Gitlab" type="radio" name="panel" value="Gitlab">
+                            <label for="Gitlab" class="cursor__pointer">Gitlab</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="dop-3" type="radio" name="radio_po" value="3">
-                            <label for="dop-3" class="cursor__pointer">Doker</label>
+                            <input id="Doker" type="radio" name="panel" value="Doker">
+                            <label for="Doker" class="cursor__pointer">Doker</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="dop-4" type="radio" name="radio_po" value="2">
-                            <label for="dop-4" class="cursor__pointer">Fastpanel</label>
+                            <input id="Fastpanel" type="radio" name="panel" value="Fastpanel">
+                            <label for="Fastpanel" class="cursor__pointer">Fastpanel</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="dop-5" type="radio" name="radio_po" value="3">
-                            <label for="dop-5" class="cursor__pointer">Node js</label>
+                            <input id="Node_js" type="radio" name="panel" value="Node js">
+                            <label for="Node_js" class="cursor__pointer">Node js</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="dop-1" type="radio" name="radio_po" value="">
-                            <label for="dop-1" class="cursor__pointer">Redmine</label>
+                            <input id="Redmine" type="radio" name="panel" value="Redmine">
+                            <label for="Redmine" class="cursor__pointer">Redmine</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="dop-6" type="radio" name="radio_po" value="2">
-                            <label for="dop-6" class="cursor__pointer">Wireguard</label>
+                            <input id="Wireguard" type="radio" name="panel" value="Wireguard">
+                            <label for="Wireguard" class="cursor__pointer">Wireguard</label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="dop-7" type="radio" name="radio_po" value="3">
-                            <label for="dop-7" class="cursor__pointer">Ruby on Rails</label>
+                            <input id="Ruby" type="radio" name="panel" value="Ruby on Rails">
+                            <label for="Ruby" class="cursor__pointer">Ruby on Rails</label>
                         </div>
                         <h2>Количество ядер vCPU</h2>
                         <div class="border__button">
                             <div class="polzunok">
                                 <p id="min_cpu"></p>
                                 <input type="range" min="1" max="24" step="1" value="4"
-                                    id="cpu" class="cursor__pointer">
+                                    id="cpu" class="cursor__pointer" name="CPU">
                                 <p id="max_cpu"></p>
                             </div>
                             <p id="cpu_screen"></p>
@@ -379,7 +377,7 @@
                             <div class="polzunok">
                                 <p id="min_ram"></p>
                                 <input type="range" min="1" max="48" step="1" value="4"
-                                    id="ram" class="cursor__pointer">
+                                    id="ram" class="cursor__pointer" name="RAM">
                                 <p id="max_ram"></p>
                             </div>
                             <p id="ram_screen"></p>
@@ -389,23 +387,23 @@
                             <div class="polzunok">
                                 <p id="min_hdd"></p>
                                 <input type="range" min="20" max="480" step="20" value="40"
-                                    id="hdd" class="cursor__pointer">
+                                    id="hdd" class="cursor__pointer" name="SSD">
                                 <p id="max_hdd"></p>
                             </div>
                             <p id="hdd_screen"></p>
                         </div>
                         <h2>Срок аренды</h2>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="hour" type="radio" name="radio" value="1">
+                            <input id="hour" type="radio" name="term" value="hour">
                             <label for="hour" class="cursor__pointer">
                                 <p>Час</p>
                             </label>
                         </div>
                         <div class="form_radio_btn cursor__pointer">
-                            <input id="month" type="radio" name="radio" value="2">
+                            <input id="month" type="radio" name="term" value="month">
                             <label for="month" class="cursor__pointer">Месяц</label>
                         </div>
-                        <button class="zakazat cursor__pointer">Заказать</button>
+                        <button type="submit" class="zakazat cursor__pointer">Заказать</button>
                     </form>
                 </div>
             </div>

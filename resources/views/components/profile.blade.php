@@ -24,11 +24,11 @@
                                 <li>
                                     <p>Дата регистрации: <span class="bold">{{ Auth::user()->created_at }}</span></p>
                                 </li>
-                                <div class="flex wrapper flex__col__start button__reduct_user gap__15 padding-t__15">
+                                {{-- <div class="flex wrapper flex__col__start button__reduct_user gap__15 padding-t__15">
                                     <div class="table__item">
                                         <a target="_blank">Изменить информацию</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </ul>
                         </div>
                         <div class="right_block">

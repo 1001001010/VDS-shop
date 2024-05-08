@@ -58,4 +58,5 @@ Route::controller(App\Http\Controllers\AdminStatsController::class)->group(funct
 Route::controller(App\Http\Controllers\BuyServersController::class)->group(function () {
     Route::get('/buyServer/{time}/{region}/{server_id}','buy_server')->name('buyServers')->middleware(['auth']);
     Route::post('/confirmRental/{time}/{region}/{server_id}','confirm_rental')->name('confirmRental')->middleware(['auth']);
+    Route::post('/buyMineServer','mineServer')->name('mineServer')->middleware(['auth']);
 });
