@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\AppHelper;
 
 
 class AdminServersController extends Controller
@@ -61,14 +62,7 @@ class AdminServersController extends Controller
     }
     public function new_ServerPassword($id) {
         $server = DB::table('servers')->where('id', '=', $id)->first();
-        #Генерация и смена пароля
-        $chars = 'qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP1234567890'; 
-        $size = strlen($chars) - 1; 
-        $length = 10;
-        $password = ''; 
-        while($length--) {
-            $password .= $chars[random_int(0, $size)]; 
-        }
+        $password = AppHelper::instance()->generate_password();
         DB::table('servers')->where('id', $id)->update(['user_pass' => $password]);
         
         return redirect()->back()->with('success', 'Пароль успешно сброшен');

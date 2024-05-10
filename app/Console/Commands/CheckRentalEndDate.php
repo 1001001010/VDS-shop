@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Rental;
+use App\Helpers\AppHelper;
 use App\Models\Server;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -27,14 +28,7 @@ class CheckRentalEndDate extends Command
                 // Обновление данных сервера
                 $server = Server::find($serverId);
                 
-                #Генерация пароля
-                $chars = 'qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP1234567890'; 
-                $size = strlen($chars) - 1; 
-                $length = 10;
-                $password = ''; 
-                while($length--) {
-                    $password .= $chars[random_int(0, $size)]; 
-                }
+                $password = AppHelper::instance()->generate_password();
                 // Обновление данных сервера
                 $server->oc = null;
                 $server->panel = null;
