@@ -87,6 +87,7 @@ class BuyServersController extends Controller
         // dd($request);
         $randomIp = rand(1, 255) . '.' . rand(1, 255) . '.' . rand(1, 255) . '.' . rand(1, 255);
         $date = Carbon::now();
+        $unix = time();
         $futureDate = ($request->term === 'hour') ? $date->addHours(1) : $date->addMonths(1);
         $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
         $formattedNowDate = Carbon::now()->format('Y-m-d H:i:s');
@@ -107,8 +108,7 @@ class BuyServersController extends Controller
         };
 
         $server_data = [
-            'id' => $date,
-            'number' => $date,
+            'number' => $unix,
             'location_id' => $request->radio_region,
             'cpu' => $request->CPU,
             'ram' => $request->RAM,
@@ -121,9 +121,11 @@ class BuyServersController extends Controller
             'status' => 'active',
             'type' => 'temporary'
         ];
+        DB::table('servers')->insert($server_data);
+        $server = DB::table('servers')->where('number', $unix)->first();
         $rental_data = [
             'user_id' => Auth::user()->id, 
-            'server_id' => $date,
+            'server_id' => $server->id,
             'price' => $summ,
             'endDate' => $formattedFutureDate,
             'status' => 'active',
