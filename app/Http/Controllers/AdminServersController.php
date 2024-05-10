@@ -3,30 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Helpers\AppHelper;
-
+use App\Models\{Server, Location};
 
 class AdminServersController extends Controller
 {
     public function all_servers() {
-        $servers = DB::table('servers')->get();
+        $servers = Server::all();
         $locations = [];
         foreach ($servers as $server) {
-            $locations[$server->id] = DB::table('location')->where('id', '=', $server->location_id)->first();
+            $locations[$server->id] = Location::where('id', '=', $server->location_id)->first();
         }
         return view('components.admin.admin_servers', [
             'servers' => $servers,
             'locations' => $locations,
-            'location_list' => DB::table('location')->get()
+            'location_list' => Location::all()
         ]);
     }
     public function server($id) {
-        $server = DB::table('servers')->where('id', '=', $id)->first();
-        $location = DB::table('location')->where('id', '=', $server->location_id)->first();
+        $server = Server::where('id', '=', $id)->first();
+        $location = Location::where('id', '=', $server->location_id)->first();
         return view('components.admin.admin_server', [
             'server' => $server,
-            'locations' => DB::table('location')->get(),
+            'locations' => Location::all(),
             'server_location' => $location
         ]);
     }
@@ -56,53 +55,60 @@ class AdminServersController extends Controller
             'status' => 'inactive',
         ];
     
-        DB::table('servers')->insert($data);
+        Server::create($data);
         return redirect()->back()->with('success', 'Сервер был успешно добавлен');
     
     }
     public function new_ServerPassword($id) {
-        $server = DB::table('servers')->where('id', '=', $id)->first();
+        $server = Server::where('id', $id)->first();
         $password = AppHelper::instance()->generate_password();
-        DB::table('servers')->where('id', $id)->update(['user_pass' => $password]);
+        Server::where('id', $id)->update(['user_pass' => $password]);
         
         return redirect()->back()->with('success', 'Пароль успешно сброшен');
     }
     public function search_servers(Request $request){
         $word = $request->search_servers;
+        $servers = Server::all();
+        $locations = [];
+        foreach ($servers as $server) {
+            $locations[$server->id] = Location::where('id', '=', $server->location_id)->first();
+        }
         return view('components.admin.admin_servers', [
-            'servers' => DB::table('servers')->where('number', 'LIKE', "%{$word}%")->orWhere('ip', 'LIKE', "%{$word}%")->orderBy('id')->get()
+            'servers' => Server::where('number', 'like', "%{$word}%")->orWhere('ip', 'like', "%{$word}%")->orderBy('id')->get(),
+            'locations' => $locations,
+            'location_list' => Location::all()
         ]);
     }
     public function editPrice(Request $request, $id){
         $validatedData = $request->validate([
             'price_month' => 'required|integer',
-            'price_hour' => 'required|integer',
+            'price_hours' => 'required|integer',
         ]);
-        DB::table('servers')->where('id', $id)->update(['price_month' => $request->price_month, 'price_hour' => $request->price_hours]); #Стоит еще подумать
+        Server::where('id', $id)->update(['price_month' => $request->price_month, 'price_hour' => $request->price_hours]); #Стоит еще подумать
         return redirect()->back()->with('success', 'Цена успешно изменена');
     }
     public function editLogin(Request $request, $id){
         $validatedData = $request->validate([
             'username' => 'required',
         ]);
-        DB::table('servers')->where('id', $id)->update(['user_name' => $request->username]);
+        Server::where('id', $id)->update(['user_name' => $request->username]);
         return redirect()->back()->with('success', 'username успешно изменен');
     }
     public function editIP(Request $request, $id){
         $validatedData = $request->validate([
             'IP' => 'required|ip',
-        ]);
-        DB::table('servers')->where('id', $id)->update(['ip' => $request->IP]);
+        ]);;
+        Server::where('id', $id)->update(['ip' => $request->IP]);
         return redirect()->back()->with('success', 'IP успешно изменен');
     }
 
     public function editType(Request $request, $id) {
-        DB::table('servers')->where('id', $id)->update(['type' => $request->server_type]);
+        Server::where('id', $id)->update(['type' => $request->server_type]);
         return redirect()->back()->with('success', 'Тип сервера успешно изменен');
     }
 
     public function editLocation(Request $request, $id) {
-        DB::table('servers')->where('id', $id)->update(['location_id' => $request->location_id]);
+        Server::where('id', $id)->update(['location_id' => $request->location_id]);
         return redirect()->back()->with('success', 'Локация сервера успешно изменена');
     }
 }

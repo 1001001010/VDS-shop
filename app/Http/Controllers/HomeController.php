@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Auth;
+use App\Models\{Server, Rental, Location};
 
 class HomeController extends Controller
 {
@@ -24,26 +24,26 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index($region) {
-        $location = DB::table('location')->where('link', '=', $region)->first();
+        $location = Location::where('link', '=', $region)->first();
         return view('components.main', [
-            'Shared_servers' => DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
-            'Delicated_servers' => DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
-            'locations' => DB::table('location')->get()
+            'Shared_servers' => Server::where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
+            'Delicated_servers' => Server::where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
+            'locations' => Location::all()
         ]);
     }
     public function profile() {
         $user = Auth::user();
         return view('components.profile', [
-            'count_rent' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(), 
-            'rents' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
+            'count_rent' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(), 
+            'rents' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
         ]);
     }
     public function ProfileRentals($rentals_id) {
         $user = Auth::user();
-        $rental = DB::table('rentals')->where('id', '=', $rentals_id)->first();
+        $rental = Rental::where('id', '=', $rentals_id)->first();
         if ($user->id == $rental->user_id) {
             return view('components.rental_info', [
-                'server' => DB::table('servers')->where('id', '=', $rental->server_id)->first(), 
+                'server' => Server::where('id', '=', $rental->server_id)->first(), 
                 'rental' => $rental
             ]);
         } else {
@@ -51,11 +51,11 @@ class HomeController extends Controller
         }
     }
     public function servers($region) {
-        $location = DB::table('location')->where('link', '=', $region)->first();
+        $location = Location::where('link', '=', $region)->first();
         return view('components.servers', [
-            'Shared_servers' => DB::table('servers')->where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
-            'Delicated_servers' => DB::table('servers')->where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
-            'locations' => DB::table('location')->get()
+            'Shared_servers' => Server::where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
+            'Delicated_servers' => Server::where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
+            'locations' => Location::all()
         ]);
     }
     

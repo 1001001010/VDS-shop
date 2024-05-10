@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\{User, Server, Location};
 
 class AdminStatsController extends Controller
 {
     public function stats() {
-        $sum = DB::table('users')->sum('balance');
+        $sum = User::sum('balance');
         $sum = number_format($sum, 0, '', ' ');
         return view('components.admin.admin_stats', [
-            'users' => DB::table('users')->count(), 
-            'ban_user' => DB::table('users')->where('ban', 1)->count(), 
+            'users' => User::count(), 
+            'ban_user' => User::where('ban', 1)->count(), 
             'sum' => $sum, 
-            'servers' => DB::table('servers')->count(), 
-            'rented' => DB::table('servers')->where('status', 'rented')->count(), 
-            'location' => DB::table('location')->count()
+            'servers' => Server::count(), 
+            'rented' => Server::where('status', 'rented')->count(), 
+            'location' => Location::count()
         ]);
     }
     public function downloadLogs() {

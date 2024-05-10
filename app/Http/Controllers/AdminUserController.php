@@ -4,28 +4,28 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\{User, Rental};
 
 class AdminUserController extends Controller
 {
     public function all_users() {
         return view('components.admin.admin_users', [
-            'users' => DB::table('users')->get()
+            'users' => User::all()
         ]);
     }
     public function user($id) {
-        $user = DB::table('users')->where('id', '=', $id)->first();
+        $user = User::where('id', $id)->first();
         return view('components.admin.admin_user', [
             'user' => $user,
-            'count_rent' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(), 
-            'rents' => DB::table('rentals')->where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
+            'count_rent' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(), 
+            'rents' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
         ]);
     }
     public function ban_user($id) {
-        $user = DB::table('users')->where('id', '=', $id)->first();
+        $user = User::where('id', '=', $id)->first();
         if($user) {
             $ban = ($user->ban == 1) ? 0 : 1;
-            DB::table('users')->where('id', $id)->update([
+            User::where('id', $id)->update([
                 'ban' => $ban
             ]);
             $message = $ban == 1 ? 'Пользователь был заблокирован' : 'Пользователь был разблокирован';
@@ -35,10 +35,10 @@ class AdminUserController extends Controller
     }
 
     public function make_admin($id) {
-        $user = DB::table('users')->where('id', '=', $id)->first();
+        $user = User::where('id', '=', $id)->first();
         if($user) {
             $is_admin = ($user->is_admin == 1) ? 0 : 1;
-            DB::table('users')->where('id', $id)->update([
+            User::where('id', $id)->update([
                 'is_admin' => $is_admin
             ]);
             $message = $is_admin == 1 ? 'Пользователь назначен администратором' : 'Пользователь больше не администратор';
@@ -50,19 +50,19 @@ class AdminUserController extends Controller
     public function search_users(Request $request) {
         $word = $request->search_users;
         return view('components.admin.admin_users', [
-            'users' => DB::table('users')->where('email', 'LIKE', "%{$word}%")->orderBy('email')->get()
+            'users' => User::where('email', 'LIKE', "%{$word}%")->orderBy('email')->get()
         ]);
     }
     public function addbalance(Request $request, $id)
     {
-        DB::table('users')->where('id', $id)->increment('balance', $request->input('number'));
-        $user = DB::table('users')->where('id', '=', $id)->first();
+        User::where('id', $id)->increment('balance', $request->input('number'));
+        $user = USer::where('id', '=', $id)->first();
         return redirect()->back()->with('success', 'Балланс успешно выдан');
     }
     public function reworkbalance(Request $request, $id)
     {
-        DB::table('users')->where('id', $id)->update(['balance' => $request->input('number')]);
-        $user = DB::table('users')->where('id', '=', $id)->first();
+        User::where('id', $id)->update(['balance' => $request->input('number')]);
+        $user = USer::where('id', '=', $id)->first();
         return redirect()->back()->with('success', 'Балланс успешно изменен');
     }
 }

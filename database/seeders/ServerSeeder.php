@@ -15,15 +15,15 @@ class ServerSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('location')->insert([
+        DB::table('locations')->insert([
             'name' => '🇷🇺 Москва',
             'link' => 'Moscow',
         ]);
-        DB::table('location')->insert([
+        DB::table('locations')->insert([
             'name' => '🇩🇪 Фалькенштайн',
             'link' => 'Falkenstein',
         ]);
-        DB::table('location')->insert([
+        DB::table('locations')->insert([
             'name' => '🇫🇮 Хельсинки',
             'link' => 'Helsinki',
         ]);

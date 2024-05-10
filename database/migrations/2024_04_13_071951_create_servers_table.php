@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('number');
             $table->unsignedBigInteger('location_id');
-            $table->foreign('location_id')->references('id')->on('location')->onDelete('cascade');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
             $table->string('cpu');
             $table->string('ram');
             $table->string('ssd');
