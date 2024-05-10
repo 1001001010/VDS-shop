@@ -84,6 +84,61 @@ class BuyServersController extends Controller
         }
     }
     public function mineServer(Request $request) {
-        dd($request);
+        // dd($request);
+        $randomIp = rand(1, 255) . '.' . rand(1, 255) . '.' . rand(1, 255) . '.' . rand(1, 255);
+        $date = Carbon::now();
+        $futureDate = ($request->term === 'hour') ? $date->addHours(1) : $date->addMonths(1);
+        $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
+        $formattedNowDate = Carbon::now()->format('Y-m-d H:i:s');
+        $summ = ($request->CPU*150)+($request->RAM*150)+($request->SSD*2.5); //Формирирование цены сервера
+        $chars = 'qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP1234567890'; 
+        $size = strlen($chars) - 1; 
+        $length = 10;
+        $password = ''; 
+        while($length--) {
+            $password .= $chars[random_int(0, $size)]; 
+        };
+        if ($request->term == 'hour') {
+            $price_hour = $summ;
+            $price_month = 0;
+        } else {
+            $price_hour = 0;
+            $price_month = $summ;
+        };
+
+        $server_data = [
+            'id' => $date,
+            'number' => $date,
+            'location_id' => $request->radio_region,
+            'cpu' => $request->CPU,
+            'ram' => $request->RAM,
+            'ssd' => $request->SSD,
+            'ip' => $randomIp,
+            'user_name' => 'admin',
+            'user_pass' => $password,
+            'price_month' => $price_month,
+            'price_hour' => $price_month,
+            'status' => 'active',
+            'type' => 'temporary'
+        ];
+        $rental_data = [
+            'user_id' => Auth::user()->id, 
+            'server_id' => $date,
+            'price' => $summ,
+            'endDate' => $formattedFutureDate,
+            'status' => 'active',
+            'duration' => $request->term,
+            'created_at' => $formattedNowDate,
+            'cpu' => $request->CPU,
+            'ram' => $request->RAM,
+            'ssd' => $request->SSD,
+            'oc' => $request->system,
+            'panel' => $request->panel
+        ];
+        DB::table('rentals')->insert($rental_data);
+        return redirect()->route('profile', [
+            'count_rent' => DB::table('rentals')->where('user_id', Auth::user()->id)->whereIn('status', ['completed', 'active'])->count(),
+            'rents' => DB::table('rentals')->where('user_id', Auth::user()->id)->whereIn('status', ['completed', 'active'])->get()
+        ]);
     }
 }
