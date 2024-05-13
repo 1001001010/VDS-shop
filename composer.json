@@ -30,7 +30,7 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "App\\Models\\": "app/Models/",
-            "files": [
+            "files\\": [
                 "app/Helpers/your_helper_function.php"
             ]
         }
