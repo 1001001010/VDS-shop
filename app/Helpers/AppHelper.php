@@ -2,8 +2,9 @@
 
 namespace App\Helpers;
 
-class AppHelper
-{
+use Carbon\Carbon;
+
+class AppHelper {
     private static $instance;
 
     private function __construct() {}
@@ -22,5 +23,12 @@ class AppHelper
         $chars = str_shuffle($chars);
         $password = substr($chars, 0, $length);
         return $password;
+    }
+
+    public function get_future($term) {
+        $date = Carbon::now();
+        $futureDate = ($term === 'hour') ? $date->addHours(1) : $date->addMonths(1);
+        $formattedFutureDate = $futureDate->format('Y-m-d H:i:s');
+        return $formattedFutureDate;
     }
 }
