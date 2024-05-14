@@ -24,7 +24,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index($region) {
-        $location = Location::where('link', '=', $region)->first();
+        $location = Location::where('link', $region)->first();
         return view('components.main', [
             'Shared_servers' => Server::where('type', 'Shared')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
             'Delicated_servers' => Server::where('type', 'Delicated')->where('location_id', $location->id)->where('status', '!=', 'active')->get(), 
