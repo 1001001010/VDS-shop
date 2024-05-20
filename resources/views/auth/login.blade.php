@@ -34,7 +34,6 @@
             </ul>
         </form>
         <div class="text-center link__list">
-            <a href="{{ route('password.request') }}">Забыли пароль?</a>
             <a href="{{ route('register') }}">Регистрация</a>
         </div>
     </div>

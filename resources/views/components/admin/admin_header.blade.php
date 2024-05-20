@@ -13,7 +13,6 @@
             <ul class="header__ul flex align-center">
                 <li><a href="{{ route('admin_AllUsers') }}">Пользователи</a></li>
                 <li><a href="{{ route('admin_AllServers') }}">Серверы</a></li>
-                <li><a href="/">Настройки</a></li>
                 <li><a href="{{ route('admin_stats') }}">Статистика</a></li>
             </ul>
             <svg class="divider">
@@ -39,7 +38,6 @@
     <ul class="menu__list">
         <li><a href="{{ route('admin_AllUsers') }}">Пользователи</a></li>
         <li><a href="{{ route('admin_AllServers') }}">Серверы</a></li>
-        <li><a href="/">Настройки</a></li>
         <li><a href="{{ route('admin_stats') }}">Статистика</a></li>
         <li><a href="{{ route('index', ['region' => 'Moscow']) }}">Назад</a></li>
     </ul>

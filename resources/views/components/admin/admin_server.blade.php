@@ -141,7 +141,44 @@
                                         <a id="editIP">Изменить IP-адрес</a>
                                     </div>
                                     <div class="table__item">
-                                        <a href="/" target="_blank">Изменить конфигурацию</a>
+                                        <a id="open-modal_configuration">Изменить конфигурацию</a>
+                                    </div>
+                                    <div class="table__item">
+                                        <div id="modal_configuration" class="modal">
+                                            <div class="modal-content new_server">
+                                                <span class="close_location">Закрыть</span>
+                                                <div class="">
+                                                    <form method="POST"
+                                                        action="{{ route('admin_editConfiguration', ['id' => $server->id]) }}"
+                                                        class="flex flex__col__centr">
+                                                        @csrf
+                                                        <p>CPU</p>
+                                                        <div class="reg__input flex align-center">
+                                                            <p><span class="bold">₽</span></p>
+                                                            <input id="cpu" type="text" class="input"
+                                                                name="cpu" value="{{ $server->cpu }}" />
+                                                        </div>
+                                                        <p>RAM</p>
+                                                        <div class="reg__input flex align-center">
+                                                            <p><span class="bold">₽</span></p>
+                                                            <input id="ram" type="text" class="input"
+                                                                name="ram" value="{{ $server->ram }}" />
+                                                        </div>
+                                                        <p>SSD</p>
+                                                        <div class="reg__input flex align-center">
+                                                            <p><span class="bold">₽</span></p>
+                                                            <input id="ssd" type="text" class="input"
+                                                                name="ssd" value="{{ $server->ssd }}" />
+                                                        </div>
+                                                        <ul class="header__reg flex justify-start">
+                                                            <li>
+                                                                <button type="submit">Сохранить</button>
+                                                            </li>
+                                                        </ul>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </ul>
@@ -184,6 +221,9 @@
             document.getElementById('modal_location').style.display = 'block';
         });
 
+        document.getElementById('open-modal_configuration').addEventListener('click', function() {
+            document.getElementById('modal_configuration').style.display = 'block';
+        });
 
         document.getElementsByClassName('close_location')[0].addEventListener('click', function() {
             document.getElementById('modal_location').style.display = 'none';

@@ -111,5 +111,9 @@ class AdminServersController extends Controller
         Server::where('id', $id)->update(['location_id' => $request->location_id]);
         return redirect()->back()->with('success', 'Локация сервера успешно изменена');
     }
+    public function editConfiguration(Request $request, $id) {
+        Server::where('id', $id)->update(['cpu' => $request->cpu, 'ram' => $request->ram, 'ssd' => $request->ssd]);
+        return redirect()->back()->with('success', 'Конфигурация сервера успешно изменена');
+    }
 }
  
