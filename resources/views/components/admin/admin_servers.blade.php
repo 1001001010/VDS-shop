@@ -1,7 +1,7 @@
 @extends('layouts.admin_app')
-
-@section('admin_content')
-    <main>
+<@php
+    dd($location_list);
+@endphp @section('admin_content') <main>
         <section class="first__section first">
             <img src="{{ asset('img/glare/third_part_1.png') }}" alt="glare" class="third__part-1" />
             <div class="container flex align-center justify-between">
@@ -16,6 +16,34 @@
                                 </div>
                                 </p>
                             @endforeach
+                            <div id="modal_location" class="modal">
+                                <div class="modal-content new_server">
+                                    <span class="close_location">Закрыть</span>
+                                    <div class="">
+                                        <form method="POST"
+                                            action="{{ route('deleteLocation', ['location_id' => $locations]) }}"
+                                            class="flex flex__col__centr">
+                                            @csrf
+                                            <p>Выберите локацию</p>
+                                            <span class="bold" style="padding: 50px">
+                                                <select id="server_type" name="location_id">
+                                                    @foreach ($locations as $location)
+                                                        <option value="{{ $location->id }}" class="emoji"
+                                                            {{ $location->id == old('location_id', $server->location_id) ? 'selected' : '' }}>
+                                                            {{ $location->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </span>
+                                            <ul class="header__reg flex justify-start">
+                                                <li>
+                                                    <button type="submit">Сохранить</button>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="table__item">
                                 <a>Добавить локацию</a>
                             </div>
@@ -163,42 +191,42 @@
             </div>
             </div>
         </section>
-    </main>
-    <script>
-        document.getElementById('open-modal_newserver').addEventListener('click', function() {
-            document.getElementById('modal').style.display = 'block';
-        });
+        </main>
+        <script>
+            document.getElementById('open-modal_newserver').addEventListener('click', function() {
+                document.getElementById('modal').style.display = 'block';
+            });
 
 
-        document.getElementsByClassName('close')[0].addEventListener('click', function() {
-            document.getElementById('modal').style.display = 'none';
-        });
-
-        window.addEventListener('click', function(event) {
-            if (event.target == document.getElementById('modal')) {
+            document.getElementsByClassName('close')[0].addEventListener('click', function() {
                 document.getElementById('modal').style.display = 'none';
-            }
-        });
+            });
 
-        function editlogin() {
-            let result = prompt("Введите новый логин");
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = `/admin/server/${id}/editLogin`;
-            const csrfField = document.createElement('input');
-            csrfField.type = 'hidden';
-            csrfField.name = '_token';
-            csrfField.value = '{{ csrf_token() }}';
-            const numberField = document.createElement('input');
-            numberField.type = 'hidden';
-            numberField.name = 'number';
-            numberField.value = result;
-            form.appendChild(csrfField);
-            form.appendChild(numberField);
-            document.body.appendChild(form);
-            form.submit();
-        }
-        const notification = document.getElementById('notification');
-        const closeButton = document.getElementById('close-button');
-    </script>
-@endsection
+            window.addEventListener('click', function(event) {
+                if (event.target == document.getElementById('modal')) {
+                    document.getElementById('modal').style.display = 'none';
+                }
+            });
+
+            function editlogin() {
+                let result = prompt("Введите новый логин");
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = `/admin/server/${id}/editLogin`;
+                const csrfField = document.createElement('input');
+                csrfField.type = 'hidden';
+                csrfField.name = '_token';
+                csrfField.value = '{{ csrf_token() }}';
+                const numberField = document.createElement('input');
+                numberField.type = 'hidden';
+                numberField.name = 'number';
+                numberField.value = result;
+                form.appendChild(csrfField);
+                form.appendChild(numberField);
+                document.body.appendChild(form);
+                form.submit();
+            }
+            const notification = document.getElementById('notification');
+            const closeButton = document.getElementById('close-button');
+        </script>
+    @endsection

@@ -61,3 +61,8 @@ Route::controller(App\Http\Controllers\BuyServersController::class)->group(funct
     Route::post('/confirmRental/{time}/{region}/{server_id}','confirm_rental')->name('confirmRental')->middleware(['auth']);
     Route::post('/buyMineServer','mineServer')->name('mineServer')->middleware(['auth']);
 });
+
+Route::controller(App\Http\Controllers\LocationController::class)->group(function () {
+    Route::post('/admin/deleteLocation/{location_id}','deleteLocation')->name('deleteLocation')->middleware(['auth']);
+    Route::post('/admin/addLocation','addLocation')->name('addLocation')->middleware(['auth']);
+});
