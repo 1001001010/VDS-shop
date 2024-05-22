@@ -18,39 +18,35 @@
                                 </div>
                                 </p>
                             @endforeach
-                            <div id="modal_location" class="modal">
+                            <div id="modal_location_delete" class="modal">
                                 <div class="modal-content new_server">
-                                    <span class="close_location">Закрыть</span>
-                                    <div class="">
-                                        {{-- <form method="POST"
-                                            action="{{ route('deleteLocation', ['location_id' => $locations]) }}"
-                                            class="flex flex__col__centr">
-                                            @csrf
-                                            <p>Выберите локацию</p>
-                                            <span class="bold" style="padding: 50px">
-                                                <select id="server_type" name="location_id">
-                                                    @foreach ($locations as $location)
-                                                        <option value="{{ $location->id }}" class="emoji"
-                                                            {{ $location->id == old('location_id', $server->location_id) ? 'selected' : '' }}>
-                                                            {{ $location->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </span>
-                                            <ul class="header__reg flex justify-start">
-                                                <li>
-                                                    <button type="submit">Сохранить</button>
-                                                </li>
-                                            </ul>
-                                        </form> --}}
-                                    </div>
+                                    <span class="close">Закрыть</span>
+                                    <form method="POST" action="{{ route('deleteLocation') }}"
+                                        class="flex flex__col__centr">
+                                        @csrf
+                                        <p>Выберите локацию</p>
+                                        <span class="bold" style="padding: 50px">
+                                            <select id="server_type" name="location_id">
+                                                @foreach ($location_list as $location)
+                                                    <option value="{{ $location->id }}" class="emoji">
+                                                        {{ $location->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </span>
+                                        <ul class="header__reg flex justify-start">
+                                            <li>
+                                                <button type="submit">Сохранить</button>
+                                            </li>
+                                        </ul>
+                                    </form>
                                 </div>
                             </div>
                             <div class="table__item">
                                 <a>Добавить локацию</a>
                             </div>
                             <div class="table__item">
-                                <a>Удалить локацию</a>
+                                <a id="modal_delete_location">Удалить локацию</a>
                             </div>
                         </div>
                     </div>
@@ -195,13 +191,17 @@
         </section>
     </main>
     <script>
+        document.getElementById('modal_delete_location').addEventListener('click', function() {
+            document.getElementById('modal_location_delete').style.display = 'block';
+        });
+
         document.getElementById('open-modal_newserver').addEventListener('click', function() {
             document.getElementById('modal').style.display = 'block';
         });
 
-
         document.getElementsByClassName('close')[0].addEventListener('click', function() {
             document.getElementById('modal').style.display = 'none';
+            document.getElementById('modal_location_delete').style.display = 'none';
         });
 
         window.addEventListener('click', function(event) {

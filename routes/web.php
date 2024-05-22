@@ -63,6 +63,6 @@ Route::controller(App\Http\Controllers\BuyServersController::class)->group(funct
 });
 
 Route::controller(App\Http\Controllers\LocationController::class)->group(function () {
-    Route::post('/admin/deleteLocation/{location_id}','deleteLocation')->name('deleteLocation')->middleware(['auth']);
-    Route::post('/admin/addLocation','addLocation')->name('addLocation')->middleware(['auth']);
+    Route::post('/admin/deleteLocation','deleteLocation')->name('deleteLocation')->middleware([admin::class]);
+    Route::post('/admin/addLocation','addLocation')->name('addLocation')->middleware([admin::class]);
 });

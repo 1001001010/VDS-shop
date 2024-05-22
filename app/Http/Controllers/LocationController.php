@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Location;
+use App\Models\Location;
 
 class LocationController extends Controller
 {
-    public function deleteLocation(Request $request, $location_id) {
-        dd(123);
+    public function deleteLocation(Request $request) {
+        Location::where('id', $request->location_id)->delete();
+        return redirect()->back()->with('success', "Локация успешно удалена");
     }
 }
