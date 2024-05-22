@@ -1,4 +1,7 @@
 @extends('layouts.admin_app')
+@section('title')
+    ZETRIX - Админ/Список пользователей
+@endsection
 
 @section('admin_content')
     <main>

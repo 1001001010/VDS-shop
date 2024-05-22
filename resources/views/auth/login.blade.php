@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.verif')
+@section('title')
+    Zetrix - Вход
+@endsection
 
 @section('content')
     <a href="{{ route('index', ['region' => 'Moscow']) }}" class="header__reg button__back">⬅ Назад</a>

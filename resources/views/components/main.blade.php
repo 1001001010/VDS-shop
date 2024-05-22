@@ -1,7 +1,7 @@
-@extends('index')
+@extends('layouts.app')
 
 @section('title')
-    ZETRIX - надежный хостинг для вашего бизнеса.
+    ZETRIX - надежный хостинг для вашего бизнеса
 @endsection
 
 @section('content')

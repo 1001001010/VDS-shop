@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    ZETRIX - Вы заблокированы.
+    ZETRIX - Вы заблокированы
 @endsection
 
 @section('content')

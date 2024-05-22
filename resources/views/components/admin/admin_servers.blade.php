@@ -1,7 +1,9 @@
 @extends('layouts.admin_app')
-<@php
-    dd($location_list);
-@endphp @section('admin_content') <main>
+@section('title')
+    ZETRIX - Админ/Список серверов
+@endsection
+
+@section('admin_content') <main>
         <section class="first__section first">
             <img src="{{ asset('img/glare/third_part_1.png') }}" alt="glare" class="third__part-1" />
             <div class="container flex align-center justify-between">
@@ -20,7 +22,7 @@
                                 <div class="modal-content new_server">
                                     <span class="close_location">Закрыть</span>
                                     <div class="">
-                                        <form method="POST"
+                                        {{-- <form method="POST"
                                             action="{{ route('deleteLocation', ['location_id' => $locations]) }}"
                                             class="flex flex__col__centr">
                                             @csrf
@@ -40,7 +42,7 @@
                                                     <button type="submit">Сохранить</button>
                                                 </li>
                                             </ul>
-                                        </form>
+                                        </form> --}}
                                     </div>
                                 </div>
                             </div>
@@ -191,42 +193,42 @@
             </div>
             </div>
         </section>
-        </main>
-        <script>
-            document.getElementById('open-modal_newserver').addEventListener('click', function() {
-                document.getElementById('modal').style.display = 'block';
-            });
+    </main>
+    <script>
+        document.getElementById('open-modal_newserver').addEventListener('click', function() {
+            document.getElementById('modal').style.display = 'block';
+        });
 
 
-            document.getElementsByClassName('close')[0].addEventListener('click', function() {
+        document.getElementsByClassName('close')[0].addEventListener('click', function() {
+            document.getElementById('modal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('modal')) {
                 document.getElementById('modal').style.display = 'none';
-            });
-
-            window.addEventListener('click', function(event) {
-                if (event.target == document.getElementById('modal')) {
-                    document.getElementById('modal').style.display = 'none';
-                }
-            });
-
-            function editlogin() {
-                let result = prompt("Введите новый логин");
-                const form = document.createElement('form');
-                form.method = 'POST';
-                form.action = `/admin/server/${id}/editLogin`;
-                const csrfField = document.createElement('input');
-                csrfField.type = 'hidden';
-                csrfField.name = '_token';
-                csrfField.value = '{{ csrf_token() }}';
-                const numberField = document.createElement('input');
-                numberField.type = 'hidden';
-                numberField.name = 'number';
-                numberField.value = result;
-                form.appendChild(csrfField);
-                form.appendChild(numberField);
-                document.body.appendChild(form);
-                form.submit();
             }
-            const notification = document.getElementById('notification');
-            const closeButton = document.getElementById('close-button');
-        </script>
-    @endsection
+        });
+
+        function editlogin() {
+            let result = prompt("Введите новый логин");
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = `/admin/server/${id}/editLogin`;
+            const csrfField = document.createElement('input');
+            csrfField.type = 'hidden';
+            csrfField.name = '_token';
+            csrfField.value = '{{ csrf_token() }}';
+            const numberField = document.createElement('input');
+            numberField.type = 'hidden';
+            numberField.name = 'number';
+            numberField.value = result;
+            form.appendChild(csrfField);
+            form.appendChild(numberField);
+            document.body.appendChild(form);
+            form.submit();
+        }
+        const notification = document.getElementById('notification');
+        const closeButton = document.getElementById('close-button');
+    </script>
+@endsection

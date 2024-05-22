@@ -1,5 +1,7 @@
-@extends('index')
-
+@extends('layouts.app')
+@section('title')
+    ZETRIX - Список серверов
+@endsection
 @section('content')
     <main>
         <section class="first__section first">
