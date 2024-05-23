@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{User, Server, Location};
+use App\Http\Middleware\IsAdmin;
 
 class AdminStatsController extends Controller
 {
+    public function __construct() {
+        $this->middleware([IsAdmin::class]);
+    }
+
     public function stats() {
         $sum = User::sum('balance');
         $sum = number_format($sum, 0, '', ' ');

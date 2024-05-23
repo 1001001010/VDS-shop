@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{User, Rental};
+use App\Http\Middleware\IsAdmin;
 
 class AdminUserController extends Controller
 {
+    public function __construct() {
+        $this->middleware([IsAdmin::class]);
+    }
+
     public function all_users() {
         return view('components.admin.admin_users', [
             'users' => User::all()

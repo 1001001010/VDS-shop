@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\AppHelper;
 use App\Models\{Server, Location};
+use App\Http\Middleware\IsAdmin;
 
 class AdminServersController extends Controller
 {
+    public function __construct() {
+        $this->middleware([IsAdmin::class]);
+    }
+
     public function all_servers() {
         $servers = Server::all();
         $locations = [];
