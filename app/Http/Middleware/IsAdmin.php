@@ -13,12 +13,16 @@ class IsAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next)
-    {
-         if (Auth::user() &&  Auth::user()->is_admin == 1) {
-                return $next($request);
-         }
+    public function handle($request, Closure $next) {
+        /**
+        * Функция првоерки на админа (HTTP запрос, след. страница)
+        *
+        * return след. страница
+        */
+        if (Auth::user() &&  Auth::user()->is_admin == 1) {
+            return $next($request);
+        }
 
-         return redirect()->back();
+        return redirect()->back();
     }
 }

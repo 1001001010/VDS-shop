@@ -14,8 +14,12 @@ class IsBan
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next)
-    {
+    public function handle($request, Closure $next) {
+        /**
+        * Функция првоерки на блокировку (HTTP запрос, след. страница)
+        *
+        * return след. страница
+        */
         if (Auth::user() &&  Auth::user()->ban == 0) {
             return $next($request);
         }

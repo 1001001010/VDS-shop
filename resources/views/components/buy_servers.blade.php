@@ -21,8 +21,7 @@
                                         <p>ID Сервера: <span id="balanceValue" class="bold">{{ $server->id }}</span></p>
                                     </li>
                                     <li>
-                                        <p>Локация: <span id="balanceValue" class="bold emoji">{{ $location->name }}</span>
-                                        </p>
+                                        <p>Локация: <span id="balanceValue" class="bold emoji">{{ $location->name }}</span></p>
                                     </li>
                                     <li>
                                         <p>CPU: <span id="balanceValue" class="bold">{{ $server->cpu }}</span></p>

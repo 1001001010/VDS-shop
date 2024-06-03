@@ -11,9 +11,14 @@ use App\Models\{Server, Rental, Location, User};
 class BuyServersController extends Controller
 {
     public function buy_server($time, $region, $server_id) {
+        /**
+        * просмотр информации о аренде (Время аренды, регион расположения сервера, ID сервера)  
+        *
+        * return страница components.buy_servers ($users - список пользователей)
+        */
         $user = Auth::user();
-        $server = Server::where('id', '=', $server_id)->first();
-        $rental = Rental::where('user_id', '=', $user->id)->where('status', '=', 'active')->first();
+        $server = Server::where('id', $server_id)->first();
+        $rental = Rental::where('user_id', $user->id)->where('status', 'active')->first();
         $price = ($time === 'hour') ? $server->price_hour : $server->price_month;
         if ($user->balance < $price) {
             return redirect()->back()->with('success', 'Недостаточно средств');
@@ -30,15 +35,13 @@ class BuyServersController extends Controller
     }        
 
     public function confirm_rental(Request $request, $time, $region, $server_id) {
-        // Параметры функции: 
-        // dd($request->radio_oc); -> ОС дедика
-        // dd($request->radio_po); -> Доп. ПО дедика
-        // dd($time); -> Срок аренды дедика
-        // dd($region); -> Регион расположение дедика
-        // dd($server_id); -> ID дедика
-
+        /**
+        * Подтверждение аренды сервера (HTTP запрос, время аренды, регион расположения сервера, ID сервера)
+        *
+        * return страница components.profile ($rents - список аренд)
+        */
         $user = Auth::user();
-        $server = Server::where('id', '=', $server_id)->first();
+        $server = Server::where('id', $server_id)->first();
         $formattedFutureDate = AppHelper::instance()->get_future($term = $time);
         $formattedNowDate = Carbon::now()->format('Y-m-d H:i:s');
         
@@ -77,12 +80,17 @@ class BuyServersController extends Controller
             ];
             Rental::create($rental_data);
             return redirect()->route('profile', [
-                'count_rent' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(),
+                // 'count_rent' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(),
                 'rents' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
             ]);
         }
     }
     public function mineServer(Request $request) {
+        /**
+        * Сборка своего сервера (HTTP запрос)
+        *
+        * return страница components.profile ($rents - список аренд)
+        */
         $summ = ($request->CPU*150)+($request->RAM*150)+($request->SSD*2.5); //Формирирование цены сервера
         if (Auth::user()->balance < $summ) {
             return redirect()->back()->with('success', 'Недостаточно средств');
@@ -133,7 +141,6 @@ class BuyServersController extends Controller
             ];
             Rental::create($rental_data);
             return redirect()->route('profile', [
-                'count_rent' => Rental::where('user_id', Auth::user()->id)->whereIn('status', ['completed', 'active'])->count(),
                 'rents' => Rental::where('user_id', Auth::user()->id)->whereIn('status', ['completed', 'active'])->get()
             ]);
         }

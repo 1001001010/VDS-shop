@@ -74,10 +74,10 @@
                         </div>
                         <div class="right_block">
                             <div class="title-centre">
-                                <p>Всего аренд: <span class="bold">{{ count($rents) }}</span></p>
+                                <p>Всего аренд: <span class="bold">{{ count($user->rentals) }}</span></p>
                             </div>
                             <div class="testblock">
-                                @foreach ($rents as $rent)
+                                @foreach ($user->rentals as $rent)
                                     <a href="{{ route('profile_rentals', ['rentals_id' => $rent->id]) }}" class="light">
                                         <div class="serv__inf__block">
                                             <p>Аренда <b>{{ $rent->created_at }}</b></p>
