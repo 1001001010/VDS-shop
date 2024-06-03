@@ -74,7 +74,7 @@
                         </div>
                         <div class="right_block">
                             <div class="title-centre">
-                                <p>Всего аренд: <span class="bold">{{ $count_rent }}</span></p>
+                                <p>Всего аренд: <span class="bold">{{ count($rents) }}</span></p>
                             </div>
                             <div class="testblock">
                                 @foreach ($rents as $rent)

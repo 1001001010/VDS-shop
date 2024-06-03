@@ -34,7 +34,6 @@ class HomeController extends Controller
     public function profile() {
         $user = Auth::user();
         return view('components.profile', [
-            'count_rent' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(), 
             'rents' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
         ]);
     }

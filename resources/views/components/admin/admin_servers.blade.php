@@ -42,8 +42,33 @@
                                     </form>
                                 </div>
                             </div>
+                            <div id="modal_location_add" class="modal">
+                                <div class="modal-content new_server">
+                                    <span class="close">Закрыть</span>
+                                    <form method="POST" action="{{ route('addLocation') }}" class="flex flex__col__centr">
+                                        @csrf
+                                        <div class="new_ser_form gap__15">
+                                            <div class="reg__input flex align-center">
+                                                <img src="{{ asset('img/PC/USERNAME.svg') }}" alt="NAME">
+                                                <input id="location_name" type="text" class="input" name="location_name"
+                                                    placeholder="Название локации" autofocus />
+                                            </div>
+                                            <div class="reg__input flex align-center">
+                                                <img src="{{ asset('img/PC/LINK.svg') }}" alt="LINK">
+                                                <input id="location_link" type="text" class="input" name="location_link"
+                                                    placeholder="Ссылка на локацию" autofocus />
+                                            </div>
+                                        </div>
+                                        <ul class="header__reg flex justify-start">
+                                            <li>
+                                                <button type="submit">Сохранить</button>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                </div>
+                            </div>
                             <div class="table__item">
-                                <a>Добавить локацию</a>
+                                <a id="modal_add_location">Добавить локацию</a>
                             </div>
                             <div class="table__item">
                                 <a id="modal_delete_location">Удалить локацию</a>
@@ -194,12 +219,19 @@
         document.getElementById('modal_delete_location').addEventListener('click', function() {
             document.getElementById('modal_location_delete').style.display = 'block';
         });
-
+        document.getElementById('modal_add_location').addEventListener('click', function() {
+            document.getElementById('modal_location_add').style.display = 'block';
+        });
         document.getElementById('open-modal_newserver').addEventListener('click', function() {
             document.getElementById('modal').style.display = 'block';
         });
 
         document.getElementsByClassName('close')[0].addEventListener('click', function() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('modal_location_delete').style.display = 'none';
+        });
+
+        document.getElementsByClassName('close')[1].addEventListener('click', function() {
             document.getElementById('modal').style.display = 'none';
             document.getElementById('modal_location_delete').style.display = 'none';
         });

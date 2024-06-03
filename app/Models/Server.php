@@ -27,7 +27,7 @@ class Server extends Model
         'type',
     ];
 
-    public function locations() {
+    public function location() {
         return $this->belongsTo(Location::class);
     }
     public function rental() {

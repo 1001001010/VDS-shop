@@ -22,7 +22,6 @@ class AdminUserController extends Controller
         $user = User::where('id', $id)->first();
         return view('components.admin.admin_user', [
             'user' => $user,
-            'count_rent' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->count(), 
             'rents' => Rental::where('user_id', $user->id)->whereIn('status', ['completed', 'active'])->get()
         ]);
     }

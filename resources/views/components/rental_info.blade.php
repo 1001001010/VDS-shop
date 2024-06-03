@@ -83,11 +83,6 @@
                                 @endif
                             </ul>
                         </div>
-                        <div class="right_block">
-                            <ul type="circle" class="haracter">
-                                <li>Тут еще можно разместить текст</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
