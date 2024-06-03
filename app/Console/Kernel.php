@@ -12,6 +12,11 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule): void
     {
+        /**
+        * Выполнение команды check:rental-end-date каждую минуту (что тут написать)
+        *
+        * return выполнение команды 
+        */
         $schedule->command('check:rental-end-date')->everyMinute()->withoutOverlapping();
     }
 
