@@ -3,16 +3,7 @@
         <div class="header__left flex align-center">
             <a href="/" class="header__logo">
                 <img src="{{ asset('img/logo.svg') }}" alt="" />
-            </a>
-            <svg class="divider">
-                <use xlink:href="{{ asset('img/icons.svg#divider') }}"></use>
-            </svg>
-            <div class="header__search flex align-center">
-                <svg>
-                    <use xlink:href="{{ asset('img/icons.svg#search') }}"></use>
-                </svg>
-                <input type="text" placeholder="Поиск" />
-            </div>
+            </a>    
         </div>
         <div class="header__right flex align-center">
             <ul class="header__ul flex align-center">

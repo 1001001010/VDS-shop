@@ -38,10 +38,6 @@
                         @if (count($Shared_servers) > 0)
                             <div class="Offers">
                                 <div class="left_block">
-                                    <p class="for_what1"
-                                        data-tooltip="Облачные серверы с процессором AMD Ryzen 9 7950X3D, общим vCPU и NVMe накопителем, идеальны для размещения веб-сайтов, VPN и разработки проектов. Вложенная виртуализация отключена.">
-                                        Для чего подходит?
-                                    </p>
                                     <p class="for_what">Облачные серверы базового уровня по сбалансированной цене на базе
                                         процессора
                                         AMD Ryzen 9
@@ -109,10 +105,6 @@
                         @if (count($Delicated_servers) > 0)
                             <div class="Offers">
                                 <div class="left_block">
-                                    <p class="for_what1"
-                                        data-tooltip="Облачные серверы с процессором AMD Ryzen 9 7950X3D, общим vCPU и NVMe накопителем, идеальны для размещения веб-сайтов, VPN и разработки проектов. Вложенная виртуализация отключена.">
-                                        Для чего подходит?
-                                    </p>
                                     <h1>Delicated</h1>
                                     <ul type="circle" class="haracter">
                                         <li>
