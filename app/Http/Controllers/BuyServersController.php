@@ -40,6 +40,10 @@ class BuyServersController extends Controller
         *
         * return страница components.profile ($rents - список аренд)
         */
+        $validatedData = $request->validate([
+            'radio_oc' => 'required|string',
+            'radio_po' => 'required|string',
+        ]);
         $user = Auth::user();
         $server = Server::where('id', $server_id)->first();
         $formattedFutureDate = AppHelper::instance()->get_future($term = $time);
